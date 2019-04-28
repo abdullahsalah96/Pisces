@@ -1,6 +1,11 @@
 import pyodbc
 from datetime import datetime
 
+import TankClass
+import UserClass
+import WaterQualityClass
+
+
 class Database:
     def __init__(self):
         self.server = 'mia-robotics.database.windows.net'
@@ -55,13 +60,17 @@ class Database:
         print("Username = ", row[1])
         print("Password = ", row[2])
         print("FirstName  = ", row[3])
-        print("Lastname = ", row[4], "\n")
+        print("Lastname = ", row[4])
+        print("email = " , row[5])
+        print("faceID = ", row[6] )
         username =  row[1]
         password =  row[2]
         firstName  =  row[3]
         lastName =  row[4]
+        email = row[5]
+        faceID = row[6]
         tankList = self.loadTankList(userID)
-        user = UserClass.User(firstName,lastName,username,password,userID,tankList)
+        user = UserClass.User(firstName,lastName,username,password,email,faceID,userID,tankList)
         return user
 
     #load tanks list and returns it
@@ -131,11 +140,11 @@ class Database:
         Takes user object as parameter and adds new entry in database
         returns true if the user was added to the database/ false if it's not added
         """
-        if(validateUsername(user.username)):
+        if(self.validateUsername(user.username)):
             print ('Inserting a new row into User Table')
             #Insert Query
-            tsql = "INSERT INTO [User] (username, password, firstName, lastName) VALUES (?,?,?,?);"
-            with self.cursor.execute(tsql, user.username, user.password, user.firstName, user.lastName):
+            tsql = "INSERT INTO [User] (username, password, firstName, lastName, email, faceID) VALUES (?,?,?,?,?,?);"
+            with self.cursor.execute(tsql, user.username, user.password, user.firstName, user.lastName, user.email,user.faceID):
                 print ('Successfully Inserted!')
             return True
         else:
@@ -187,3 +196,19 @@ class Database:
         with self.cursor.execute(tsql, waterQuality.waterQualityLevel):
             print ('Successfully Deleted!')
         return None
+
+    def printUsers(self):
+        tsql = "SELECT * FROM [User]"
+        self.cursor.execute(tsql)
+        result_set = self.cursor.fetchall()
+        print( str(len(result_set)) + " Entry in Database")
+
+        for row in result_set:
+            print("Id = ", row[0])
+            print("Username = ", row[1])
+            print("Password = ", row[2])
+            print("FirstName  = ", row[3])
+            print("Lastname = ", row[4])
+            print("email = ", row[5])
+            print("faceID = ", row[6])
+

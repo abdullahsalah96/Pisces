@@ -51,7 +51,7 @@ test_result = CF.face.detect(test_url)
 test_faceId = test_result[0]['faceId']
 
 r = CF.face.verify(res[0]['faceId'], test_faceId)
-print r
+print(r)
 
 cv2.waitKey(0)
 

@@ -4,13 +4,15 @@ import TankClass
 class User:
     # userTankList: TankClass
 
-    def __init__(self, firstName, lastName ,username, password, userID, userTankList):
+    def __init__(self, firstName, lastName ,username, password, email, faceID, userID, userTankList):
         self.firstName = firstName
         self.lastName = lastName
         self.username = username
         self.password = password
         self.userID = userID
         self.userTankList = userTankList
+        self.email = email
+        self.faceID = faceID
 
     def getFirstName(self):
         '''a function that returns user's first name'''

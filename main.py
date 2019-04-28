@@ -7,33 +7,45 @@ import pyodbc
 import WaterQualityClass
 from DatabaseClass import Database
 
-wQ = WaterQualityClass.waterQuality(datetime.datetime.now(), 1, 20, 0.5)
-wQlist = []
-wQlist.append(wQ)
-tank = TankClass.Tank("1","a",2,1,3, wQlist)
-tanklist = []
-tanklist.append(tank)
+# wQ = WaterQualityClass.waterQuality(datetime.datetime.now(), 1, 20, 0.5)
+# wQlist = []
+# wQlist.append(wQ)
+# tank = TankClass.Tank("1","a",2,1,3, wQlist)
+# tanklist = []
+# tanklist.append(tank)
+#
+# print("water quality list = " + str(len(tank.getWaterQualityHistory())))
+# user = UserClass.User("mah","elkara","mahmou","1111","6", tanklist)
+# print("tank list = " + str(len(user.getTankList())))
+from RandomDataGenerator import RDG
 
-print("water quality list = " + str(len(tank.getWaterQualityHistory())))
-user = UserClass.User("mah","elkara","mahmou","1111","6", tanklist)
-print("tank list = " + str(len(user.getTankList())))
+database = Database()
+#database.authenticateLogIn('abdullah','1234')
 
+rdg = RDG()
 
+user = rdg.createRandomUser()
+# while user != None:
+#     print(user.firstName + " " + user.lastName + " " + user.username + " " + user.email + " " + user.password)
+#     database.addNewUser(user)
+#     user = rdg.createRandomUser()
+
+database.printUsers()
 #Opening webCam
 # camera.openWebCam()
 #Opening RovCamera
 # camera.openRovCamera()
 
-print(user.getFirstName())
-print(user.getLastName())
-print(user.getUserID())
+# print(user.getFirstName())
+# print(user.getLastName())
+# print(user.getUserID())
 
-tk = TankClass.Tank(5, "a", 10, 20, 30, 5)
-
-db = Database()
-
-# db.addNewUser(user)
-db.addNewTank(tk, user)
+# tk = TankClass.Tank(5, "a", 10, 20, 30, 5)
+#
+# db = Database()
+#
+# # db.addNewUser(user)
+# db.addNewTank(tk, user)
 # db.deleteUser(user)
 
 # server = 'mia-robotics.database.windows.net'
