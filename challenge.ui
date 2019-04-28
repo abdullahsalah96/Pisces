@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1037</width>
-    <height>670</height>
+    <width>636</width>
+    <height>469</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,10 +17,10 @@
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>10</y>
-      <width>1001</width>
-      <height>621</height>
+      <x>0</x>
+      <y>0</y>
+      <width>631</width>
+      <height>491</height>
      </rect>
     </property>
     <property name="mouseTracking">
@@ -29,14 +29,14 @@
     <property name="currentIndex">
      <number>2</number>
     </property>
-    <widget class="QWidget" name="page">
+    <widget class="QWidget" name="page_login">
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>210</x>
         <y>160</y>
         <width>200</width>
-        <height>60</height>
+        <height>50</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout">
@@ -119,9 +119,9 @@
      <widget class="QPushButton" name="button_createOne">
       <property name="geometry">
        <rect>
-        <x>270</x>
+        <x>280</x>
         <y>320</y>
-        <width>91</width>
+        <width>75</width>
         <height>23</height>
        </rect>
       </property>
@@ -130,12 +130,12 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page_2">
+    <widget class="QWidget" name="page_signup">
      <widget class="QPushButton" name="button_signup">
       <property name="geometry">
        <rect>
-        <x>220</x>
-        <y>310</y>
+        <x>280</x>
+        <y>280</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -147,31 +147,16 @@
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>210</x>
+        <x>200</x>
         <y>120</y>
         <width>231</width>
-        <height>173</height>
+        <height>128</height>
        </rect>
       </property>
-      <layout class="QGridLayout" name="gridLayout_3">
-       <item row="1" column="1">
-        <widget class="QLineEdit" name="lineEdit_lastName"/>
-       </item>
-       <item row="0" column="0" rowspan="4">
-        <layout class="QGridLayout" name="gridLayout_2">
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_4">
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Username:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0">
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="0">
+        <layout class="QVBoxLayout" name="verticalLayout_9">
+         <item>
           <widget class="QLabel" name="label_2">
            <property name="font">
             <font>
@@ -183,7 +168,7 @@
            </property>
           </widget>
          </item>
-         <item row="1" column="0">
+         <item>
           <widget class="QLabel" name="label_3">
            <property name="font">
             <font>
@@ -195,7 +180,19 @@
            </property>
           </widget>
          </item>
-         <item row="3" column="0">
+         <item>
+          <widget class="QLabel" name="label_4">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Username:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QLabel" name="label_5">
            <property name="font">
             <font>
@@ -207,54 +204,48 @@
            </property>
           </widget>
          </item>
+         <item>
+          <widget class="QLabel" name="label_20">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Email Address:</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </item>
-       <item row="3" column="1">
-        <widget class="QLineEdit" name="lineEdit_password_signup"/>
-       </item>
        <item row="0" column="1">
-        <widget class="QLineEdit" name="lineEdit_firstName"/>
-       </item>
-       <item row="2" column="1">
-        <widget class="QLineEdit" name="lineEdit_username_signup"/>
-       </item>
-       <item row="4" column="1">
-        <widget class="QLineEdit" name="lineEdit_Email"/>
-       </item>
-       <item row="4" column="0">
-        <widget class="QLabel" name="label_11">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Email:</string>
-         </property>
-        </widget>
+        <layout class="QVBoxLayout" name="verticalLayout_10">
+         <item>
+          <widget class="QLineEdit" name="lineEdit_firstName"/>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_lastName"/>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_username_signup"/>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_password_signup"/>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_10"/>
+         </item>
+        </layout>
        </item>
       </layout>
      </widget>
-     <widget class="QPushButton" name="button_scanFace">
-      <property name="geometry">
-       <rect>
-        <x>320</x>
-        <y>310</y>
-        <width>121</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Scan your face</string>
-      </property>
-     </widget>
     </widget>
-    <widget class="QWidget" name="page_3">
+    <widget class="QWidget" name="page_mainPage">
      <widget class="QPushButton" name="button_logout">
       <property name="geometry">
        <rect>
-        <x>270</x>
-        <y>400</y>
+        <x>10</x>
+        <y>100</y>
         <width>75</width>
         <height>23</height>
        </rect>
@@ -263,57 +254,556 @@
        <string>Logout</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_8">
+     <widget class="QLabel" name="label_displayName">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>370</y>
-        <width>121</width>
-        <height>16</height>
+        <y>70</y>
+        <width>81</width>
+        <height>20</height>
        </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Number of Tanks:</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_tanksNumber">
-      <property name="geometry">
-       <rect>
-        <x>120</x>
-        <y>370</y>
-        <width>47</width>
-        <height>13</height>
-       </rect>
-      </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);</string>
       </property>
       <property name="text">
        <string/>
       </property>
      </widget>
+     <widget class="QStackedWidget" name="stackedWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>50</y>
+        <width>431</width>
+        <height>361</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="page_blank"/>
+      <widget class="QWidget" name="page_dashboard">
+       <widget class="QWidget" name="layoutWidget_3">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>70</y>
+          <width>234</width>
+          <height>76</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_7">
+         <item row="0" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout_13">
+           <item>
+            <widget class="QLabel" name="label_26">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Fish Type:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_28">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Harvest Date:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_29">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Next Feeding in:</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="0" column="1">
+          <layout class="QVBoxLayout" name="verticalLayout_14">
+           <item>
+            <widget class="QLineEdit" name="lineEdit_fishType_tank"/>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_harvestDate_tank"/>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_nextFeeding">
+             <property name="text">
+              <string>6:00:00</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="layoutWidget_4">
+        <property name="geometry">
+         <rect>
+          <x>230</x>
+          <y>440</y>
+          <width>158</width>
+          <height>26</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QPushButton" name="pushButton_3">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Email path</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_4">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Subscribe</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="layoutWidget_5">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>100</y>
+          <width>141</width>
+          <height>64</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_8">
+         <item row="0" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout_15">
+           <item>
+            <widget class="QLabel" name="label_30">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Cleaning:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_31">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Holes:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_32">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Pipes:</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="0" column="1">
+          <layout class="QVBoxLayout" name="verticalLayout_16">
+           <item>
+            <widget class="QLabel" name="label_cleaning_2">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_holes_2">
+             <property name="text">
+              <string>l</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_pipes_2">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="layoutWidget_6">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>170</y>
+          <width>221</width>
+          <height>48</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_9">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_33">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Temperature:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="lineEdit_temp"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_34">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>PH:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="lineEdit_ph"/>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>30</y>
+          <width>161</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <widget class="QLabel" name="label_35">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Choose a tank!</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="comboBox">
+           <item>
+            <property name="text">
+             <string>Tank 1</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>290</y>
+          <width>158</width>
+          <height>25</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QPushButton" name="button_emailPath">
+           <property name="text">
+            <string>Email path</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="button_subscribe">
+           <property name="text">
+            <string>Subscribe</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_analyzeTanks">
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>120</y>
+          <width>281</width>
+          <height>85</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_10">
+         <item row="0" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout_17">
+           <item>
+            <widget class="QPushButton" name="button_cleaning_2">
+             <property name="text">
+              <string>Inspect fishnet for cleaning</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="button_holes_2">
+             <property name="text">
+              <string>Inspect fishnet holes </string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="button_pipe_2">
+             <property name="text">
+              <string>Inspect pipe</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="0" column="1">
+          <layout class="QVBoxLayout" name="verticalLayout_18">
+           <item>
+            <widget class="QLabel" name="label_cleaning2">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_holes2">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_pipe2">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_createTank">
+       <widget class="QPushButton" name="button_main_create">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>250</y>
+          <width>111</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Create a Tank!</string>
+        </property>
+       </widget>
+       <widget class="QWidget" name="layoutWidget_7">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>50</y>
+          <width>319</width>
+          <height>154</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_6">
+         <item row="0" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout_7">
+           <item>
+            <widget class="QLabel" name="label_14">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Fish type:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_15">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Feeding schedule:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_16">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Water quality threshold:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_17">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Temperature lower threshold:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_18">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Temperature upper threshold:</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_19">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Harverst date:</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="0" column="1">
+          <layout class="QVBoxLayout" name="verticalLayout_8">
+           <item>
+            <widget class="QLineEdit" name="lineEdit_fishType_create"/>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_feedingSchedule"/>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_wqThreshold"/>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_tempLThreshold"/>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_tempUThreshold"/>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_harvestDate_create"/>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_settings">
+       <widget class="QLabel" name="label_8">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>40</y>
+          <width>91</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Settings</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>60</x>
-        <y>70</y>
-        <width>106</width>
-        <height>58</height>
+        <x>10</x>
+        <y>190</y>
+        <width>79</width>
+        <height>131</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_4">
        <item>
-        <widget class="QPushButton" name="button_analyzeTanks">
+        <widget class="QPushButton" name="button_dashboard">
          <property name="text">
-          <string>Analyze Tanks</string>
+          <string>Dashboard</string>
          </property>
         </widget>
        </item>
@@ -324,193 +814,21 @@
          </property>
         </widget>
        </item>
-      </layout>
-     </widget>
-     <widget class="QPushButton" name="button_update">
-      <property name="geometry">
-       <rect>
-        <x>50</x>
-        <y>400</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Update</string>
-      </property>
-     </widget>
-     <widget class="QWidget" name="layoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>360</x>
-        <y>130</y>
-        <width>221</width>
-        <height>58</height>
-       </rect>
-      </property>
-      <layout class="QGridLayout" name="gridLayout_4">
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_6">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
+       <item>
+        <widget class="QPushButton" name="button_analyzeTanks">
          <property name="text">
-          <string>Temperature:</string>
+          <string>Analyze Tanks</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="1">
-        <widget class="QLineEdit" name="lineEdit_temp"/>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_7">
-         <property name="font">
-          <font>
-           <pointsize>10</pointsize>
-          </font>
-         </property>
+       <item>
+        <widget class="QPushButton" name="button_settings">
          <property name="text">
-          <string>PH:</string>
+          <string>Settings</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="1">
-        <widget class="QLineEdit" name="lineEdit_ph"/>
-       </item>
       </layout>
-     </widget>
-     <widget class="QStackedWidget" name="stackedWidget_2">
-      <property name="geometry">
-       <rect>
-        <x>440</x>
-        <y>250</y>
-        <width>511</width>
-        <height>321</height>
-       </rect>
-      </property>
-      <widget class="QWidget" name="page_6">
-       <widget class="QLabel" name="label_cameraFeed">
-        <property name="geometry">
-         <rect>
-          <x>160</x>
-          <y>10</y>
-          <width>201</width>
-          <height>181</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="button_cleaning">
-        <property name="geometry">
-         <rect>
-          <x>150</x>
-          <y>290</y>
-          <width>194</width>
-          <height>25</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Inspect fishnet for cleaning</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="button_pipe">
-        <property name="geometry">
-         <rect>
-          <x>150</x>
-          <y>259</y>
-          <width>194</width>
-          <height>25</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Inspect pipe</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="button_holes">
-        <property name="geometry">
-         <rect>
-          <x>150</x>
-          <y>228</y>
-          <width>194</width>
-          <height>25</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Inspect fishnet holes </string>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="page_7"/>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="page_4">
-     <widget class="QLabel" name="label_9">
-      <property name="geometry">
-       <rect>
-        <x>250</x>
-        <y>10</y>
-        <width>101</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Analyze Tanks</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="button_main_analyze">
-      <property name="geometry">
-       <rect>
-        <x>260</x>
-        <y>200</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Main Page</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="page_5">
-     <widget class="QLabel" name="label_10">
-      <property name="geometry">
-       <rect>
-        <x>250</x>
-        <y>10</y>
-        <width>101</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>10</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Create Tanks</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="button_main_create">
-      <property name="geometry">
-       <rect>
-        <x>260</x>
-        <y>200</y>
-        <width>75</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Main Page</string>
-      </property>
      </widget>
     </widget>
    </widget>
@@ -520,8 +838,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1037</width>
-     <height>22</height>
+     <width>636</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>
