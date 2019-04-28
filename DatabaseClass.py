@@ -31,6 +31,19 @@ class Database:
         else:
             return None
 
+    def validateUsername(self, username):
+        """
+        takes username and verifies that it doesn't exist in the database
+        if it exists returns false and if it doesn't returns true
+        """
+        tsql = "SELECT * FROM [User] WHERE username = ?"
+        self.cursor.execute(tsql, username)
+        result_set = self.cursor.fetchall()
+        if len(result_set): #if username exists
+            return False
+        else:
+            return True
+
     #loads user data from database and returns user object
     def loadUser(self, userID):
         tsql = "SELECT * FROM [User] WHERE userID = ?"
@@ -112,13 +125,23 @@ class Database:
         return waterQualityList
 
     #take objects as parameter and adds new entry in database
+    #returns
     def addNewUser(self, user):
-        print ('Inserting a new row into User Table')
-        #Insert Query
-        tsql = "INSERT INTO [User] (username, password, firstName, lastName) VALUES (?,?,?,?);"
-        with self.cursor.execute(tsql, user.username, user.password, user.firstName, user.lastName):
-            print ('Successfully Inserted!')
-        return None
+        """
+        Takes user object as parameter and adds new entry in database
+        returns true if the user was added to the database/ false if it's not added
+        """
+        if(validateUsername(user.username)):
+            print ('Inserting a new row into User Table')
+            #Insert Query
+            tsql = "INSERT INTO [User] (username, password, firstName, lastName) VALUES (?,?,?,?);"
+            with self.cursor.execute(tsql, user.username, user.password, user.firstName, user.lastName):
+                print ('Successfully Inserted!')
+            return True
+        else:
+            print('Username already exists!')
+            return False
+
 
     #take objects as parameter and adds new entry in database
     def addNewTank(self, tank, user):
