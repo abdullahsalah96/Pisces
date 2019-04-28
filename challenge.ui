@@ -233,7 +233,7 @@
           <widget class="QLineEdit" name="lineEdit_password_signup"/>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_10"/>
+          <widget class="QLineEdit" name="lineEdit_email_signup"/>
          </item>
         </layout>
        </item>
@@ -277,7 +277,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="page_blank"/>
       <widget class="QWidget" name="page_dashboard">
