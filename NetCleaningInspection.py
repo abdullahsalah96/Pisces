@@ -2,8 +2,7 @@ from cognitiveServices import Server
 
 
 class NetCleaning(Server):
-    def __init__(self, imgPath):
-        self.imgPath = imgPath
+    def __init__(self):
         self.httpAddress = 'australiaeast.api.cognitive.microsoft.com'
         self.subAddress = "/customvision/v3.0/Prediction/0894325a-97a6-4390-9277-3ecda4230665/classify/iterations/Cars%20or%20Trucks/image"
         self.predKey = 'bd5db334ffa249f1bd8ca2d43ccf5da3'
