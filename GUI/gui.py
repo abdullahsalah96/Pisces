@@ -640,7 +640,7 @@ class Ui_MainWindow(object):
         username_login=self.lineEdit_username_login.text()
         password_login=self.lineEdit_password_login.text()
         self.stackedWidget.setCurrentIndex(2)
-        text = "Welcome," + username_login
+        text = username_login
         self.label_displayName.setText(text)
 
     def createOneIsClicked(self):
