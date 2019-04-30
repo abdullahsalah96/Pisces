@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1000</width>
-    <height>873</height>
+    <height>840</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -162,7 +162,7 @@ font: 25 10pt &quot;Roboto Light&quot;;</string>
       <property name="geometry">
        <rect>
         <x>340</x>
-        <y>620</y>
+        <y>640</y>
         <width>320</width>
         <height>44</height>
        </rect>
@@ -311,7 +311,7 @@ font: 25 10pt &quot;Roboto Light&quot;;</string>
       <property name="geometry">
        <rect>
         <x>70</x>
-        <y>740</y>
+        <y>770</y>
         <width>130</width>
         <height>42</height>
        </rect>
@@ -365,7 +365,7 @@ color: rgb(235, 235, 235);</string>
        <string notr="true">border-image: url(:/Resources/CreateBG.png);</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="page_blank">
        <property name="styleSheet">
@@ -596,7 +596,7 @@ color: rgb(245, 29, 69);</string>
         <property name="geometry">
          <rect>
           <x>350</x>
-          <y>790</y>
+          <y>780</y>
           <width>127</width>
           <height>33</height>
          </rect>
@@ -623,7 +623,7 @@ border-image: url(:/Resources/subscribePressed.png);
         <property name="geometry">
          <rect>
           <x>200</x>
-          <y>790</y>
+          <y>780</y>
           <width>127</width>
           <height>33</height>
          </rect>
@@ -853,7 +853,7 @@ border-image: url(:/Resources/PipesPressed.png);
         <property name="geometry">
          <rect>
           <x>250</x>
-          <y>790</y>
+          <y>775</y>
           <width>127</width>
           <height>33</height>
          </rect>
@@ -1194,7 +1194,6 @@ color: rgb(235, 235, 235);</string>
     </widget>
    </widget>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
   <include location="photos.qrc"/>
