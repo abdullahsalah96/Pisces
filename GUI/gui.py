@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1026, 870)
+        MainWindow.resize(1000, 873)
         MainWindow.setStyleSheet("border-image: url(:/Resources/whiteBG.png);")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -20,115 +20,134 @@ class Ui_MainWindow(object):
         self.stackedWidget.setMouseTracking(True)
         self.stackedWidget.setObjectName("stackedWidget")
         self.page_login = QtWidgets.QWidget()
+        self.page_login.setStyleSheet("border-image: url(:/Resources/SignInBG.png);")
         self.page_login.setObjectName("page_login")
-        self.layoutWidget = QtWidgets.QWidget(self.page_login)
-        self.layoutWidget.setGeometry(QtCore.QRect(210, 160, 200, 55))
-        self.layoutWidget.setObjectName("layoutWidget")
-        self.gridLayout = QtWidgets.QGridLayout(self.layoutWidget)
-        self.gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.gridLayout.setObjectName("gridLayout")
-        self.verticalLayout = QtWidgets.QVBoxLayout()
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.label_username = QtWidgets.QLabel(self.layoutWidget)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        font.setBold(False)
-        font.setWeight(50)
-        self.label_username.setFont(font)
-        self.label_username.setObjectName("label_username")
-        self.verticalLayout.addWidget(self.label_username)
-        self.label_password = QtWidgets.QLabel(self.layoutWidget)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.label_password.setFont(font)
-        self.label_password.setObjectName("label_password")
-        self.verticalLayout.addWidget(self.label_password)
-        self.gridLayout.addLayout(self.verticalLayout, 0, 0, 1, 1)
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.lineEdit_username_login = QtWidgets.QLineEdit(self.layoutWidget)
-        self.lineEdit_username_login.setObjectName("lineEdit_username_login")
-        self.verticalLayout_2.addWidget(self.lineEdit_username_login)
-        self.lineEdit_password_login = QtWidgets.QLineEdit(self.layoutWidget)
-        self.lineEdit_password_login.setObjectName("lineEdit_password_login")
-        self.verticalLayout_2.addWidget(self.lineEdit_password_login)
-        self.gridLayout.addLayout(self.verticalLayout_2, 0, 1, 1, 1)
         self.button_login = QtWidgets.QPushButton(self.page_login)
-        self.button_login.setGeometry(QtCore.QRect(280, 230, 75, 23))
+        self.button_login.setGeometry(QtCore.QRect(340, 530, 320, 44))
+        self.button_login.setStyleSheet("QPushButton{\n"
+"border-image: url(:/Resources/signIn.png);\n"
+"background-repeat: none;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"border-image: url(:/Resources/signInPressed.png);\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"border-image: url(:/Resources/signInPressed.png);\n"
+"}x")
+        self.button_login.setText("")
         self.button_login.setObjectName("button_login")
-        self.label = QtWidgets.QLabel(self.page_login)
-        self.label.setGeometry(QtCore.QRect(250, 290, 141, 16))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.label.setFont(font)
-        self.label.setMouseTracking(True)
-        self.label.setObjectName("label")
         self.button_createOne = QtWidgets.QPushButton(self.page_login)
-        self.button_createOne.setGeometry(QtCore.QRect(280, 320, 75, 23))
+        self.button_createOne.setGeometry(QtCore.QRect(340, 590, 320, 44))
+        self.button_createOne.setStyleSheet("QPushButton{\n"
+"border-image: url(:/Resources/signUp.png);\n"
+"background-repeat: none;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"border-image: url(:/Resources/signUpPressed.png);\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"border-image: url(:/Resources/signUpPressed.png);\n"
+"}x")
+        self.button_createOne.setText("")
         self.button_createOne.setObjectName("button_createOne")
+        self.lineEdit_username_login = QtWidgets.QLineEdit(self.page_login)
+        self.lineEdit_username_login.setGeometry(QtCore.QRect(310, 341, 361, 31))
+        self.lineEdit_username_login.setStyleSheet("border-image: url(:/Resources/darkBlackBG.png);\n"
+"color: rgb(130, 130, 144);\n"
+"font: 25 10pt \"Roboto Light\";")
+        self.lineEdit_username_login.setObjectName("lineEdit_username_login")
+        self.close_4 = QtWidgets.QPushButton(self.page_login)
+        self.close_4.setGeometry(QtCore.QRect(940, 30, 21, 21))
+        self.close_4.setStyleSheet("QPushButton{\n"
+"border-image: url(:/Resources/exitGrey.png);\n"
+"background-repeat: none;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"border-image: url(:/Resources/exitRed.png);\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"border-image: url(:/Resources/exitRed.png);\n"
+"}x")
+        self.close_4.setText("")
+        self.close_4.setObjectName("close_4")
+        self.lineEdit_password_login = QtWidgets.QLineEdit(self.page_login)
+        self.lineEdit_password_login.setGeometry(QtCore.QRect(310, 422, 361, 31))
+        self.lineEdit_password_login.setStyleSheet("border-image: url(:/Resources/darkBlackBG.png);\n"
+"color: rgb(130, 130, 144);\n"
+"font: 25 10pt \"Roboto Light\";")
+        self.lineEdit_password_login.setObjectName("lineEdit_password_login")
         self.stackedWidget.addWidget(self.page_login)
         self.page_signup = QtWidgets.QWidget()
+        self.page_signup.setStyleSheet("border-image: url(:/Resources/signUpBG.png);")
         self.page_signup.setObjectName("page_signup")
         self.button_signup = QtWidgets.QPushButton(self.page_signup)
-        self.button_signup.setGeometry(QtCore.QRect(280, 280, 75, 23))
+        self.button_signup.setGeometry(QtCore.QRect(340, 620, 320, 44))
+        self.button_signup.setStyleSheet("QPushButton{\n"
+"border-image: url(:/Resources/signUp.png);\n"
+"background-repeat: none;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"border-image: url(:/Resources/signUpPressed.png);\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"border-image: url(:/Resources/signUpPressed.png);\n"
+"}x")
+        self.button_signup.setText("")
         self.button_signup.setObjectName("button_signup")
-        self.layoutWidget1 = QtWidgets.QWidget(self.page_signup)
-        self.layoutWidget1.setGeometry(QtCore.QRect(200, 120, 231, 142))
-        self.layoutWidget1.setObjectName("layoutWidget1")
-        self.gridLayout_2 = QtWidgets.QGridLayout(self.layoutWidget1)
-        self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.gridLayout_2.setObjectName("gridLayout_2")
-        self.verticalLayout_9 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_9.setObjectName("verticalLayout_9")
-        self.label_2 = QtWidgets.QLabel(self.layoutWidget1)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.label_2.setFont(font)
-        self.label_2.setObjectName("label_2")
-        self.verticalLayout_9.addWidget(self.label_2)
-        self.label_3 = QtWidgets.QLabel(self.layoutWidget1)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.label_3.setFont(font)
-        self.label_3.setObjectName("label_3")
-        self.verticalLayout_9.addWidget(self.label_3)
-        self.label_4 = QtWidgets.QLabel(self.layoutWidget1)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.label_4.setFont(font)
-        self.label_4.setObjectName("label_4")
-        self.verticalLayout_9.addWidget(self.label_4)
-        self.label_5 = QtWidgets.QLabel(self.layoutWidget1)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.label_5.setFont(font)
-        self.label_5.setObjectName("label_5")
-        self.verticalLayout_9.addWidget(self.label_5)
-        self.label_20 = QtWidgets.QLabel(self.layoutWidget1)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.label_20.setFont(font)
-        self.label_20.setObjectName("label_20")
-        self.verticalLayout_9.addWidget(self.label_20)
-        self.gridLayout_2.addLayout(self.verticalLayout_9, 0, 0, 1, 1)
-        self.verticalLayout_10 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_10.setObjectName("verticalLayout_10")
-        self.lineEdit_firstName = QtWidgets.QLineEdit(self.layoutWidget1)
+        self.close_3 = QtWidgets.QPushButton(self.page_signup)
+        self.close_3.setGeometry(QtCore.QRect(940, 30, 21, 21))
+        self.close_3.setStyleSheet("QPushButton{\n"
+"border-image: url(:/Resources/exitGrey.png);\n"
+"background-repeat: none;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"border-image: url(:/Resources/exitRed.png);\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"border-image: url(:/Resources/exitRed.png);\n"
+"}x")
+        self.close_3.setText("")
+        self.close_3.setObjectName("close_3")
+        self.lineEdit_firstName = QtWidgets.QLineEdit(self.page_signup)
+        self.lineEdit_firstName.setGeometry(QtCore.QRect(310, 327, 151, 31))
+        self.lineEdit_firstName.setStyleSheet("border-image: url(:/Resources/darkBlackBG.png);\n"
+"color: rgb(130, 130, 144);\n"
+"font: 25 10pt \"Roboto Light\";")
         self.lineEdit_firstName.setObjectName("lineEdit_firstName")
-        self.verticalLayout_10.addWidget(self.lineEdit_firstName)
-        self.lineEdit_lastName = QtWidgets.QLineEdit(self.layoutWidget1)
+        self.lineEdit_lastName = QtWidgets.QLineEdit(self.page_signup)
+        self.lineEdit_lastName.setGeometry(QtCore.QRect(540, 327, 141, 31))
+        self.lineEdit_lastName.setStyleSheet("border-image: url(:/Resources/darkBlackBG.png);\n"
+"color: rgb(130, 130, 144);\n"
+"font: 25 10pt \"Roboto Light\";")
         self.lineEdit_lastName.setObjectName("lineEdit_lastName")
-        self.verticalLayout_10.addWidget(self.lineEdit_lastName)
-        self.lineEdit_username_signup = QtWidgets.QLineEdit(self.layoutWidget1)
+        self.lineEdit_username_signup = QtWidgets.QLineEdit(self.page_signup)
+        self.lineEdit_username_signup.setGeometry(QtCore.QRect(310, 490, 371, 21))
+        self.lineEdit_username_signup.setStyleSheet("border-image: url(:/Resources/darkBlackBG.png);\n"
+"color: rgb(130, 130, 144);\n"
+"font: 25 10pt \"Roboto Light\";")
         self.lineEdit_username_signup.setObjectName("lineEdit_username_signup")
-        self.verticalLayout_10.addWidget(self.lineEdit_username_signup)
-        self.lineEdit_password_signup = QtWidgets.QLineEdit(self.layoutWidget1)
+        self.lineEdit_password_signup = QtWidgets.QLineEdit(self.page_signup)
+        self.lineEdit_password_signup.setGeometry(QtCore.QRect(310, 570, 371, 21))
+        self.lineEdit_password_signup.setStyleSheet("border-image: url(:/Resources/darkBlackBG.png);\n"
+"color: rgb(130, 130, 144);\n"
+"font: 25 10pt \"Roboto Light\";")
         self.lineEdit_password_signup.setObjectName("lineEdit_password_signup")
-        self.verticalLayout_10.addWidget(self.lineEdit_password_signup)
-        self.lineEdit_email_signup = QtWidgets.QLineEdit(self.layoutWidget1)
+        self.lineEdit_email_signup = QtWidgets.QLineEdit(self.page_signup)
+        self.lineEdit_email_signup.setGeometry(QtCore.QRect(310, 410, 371, 21))
+        self.lineEdit_email_signup.setStyleSheet("border-image: url(:/Resources/darkBlackBG.png);\n"
+"color: rgb(130, 130, 144);\n"
+"font: 25 10pt \"Roboto Light\";")
         self.lineEdit_email_signup.setObjectName("lineEdit_email_signup")
-        self.verticalLayout_10.addWidget(self.lineEdit_email_signup)
-        self.gridLayout_2.addLayout(self.verticalLayout_10, 0, 1, 1, 1)
         self.stackedWidget.addWidget(self.page_signup)
         self.page_mainPage = QtWidgets.QWidget()
         self.page_mainPage.setStyleSheet("border-image: url(:/Resources/mainWidgetBG.png);")
@@ -156,8 +175,8 @@ class Ui_MainWindow(object):
 "color: rgb(235, 235, 235);")
         self.label_displayName.setObjectName("label_displayName")
         self.stackedWidget_2 = QtWidgets.QStackedWidget(self.page_mainPage)
-        self.stackedWidget_2.setGeometry(QtCore.QRect(330, 0, 661, 851))
-        self.stackedWidget_2.setStyleSheet("")
+        self.stackedWidget_2.setGeometry(QtCore.QRect(290, 0, 711, 851))
+        self.stackedWidget_2.setStyleSheet("border-image: url(:/Resources/CreateBG.png);")
         self.stackedWidget_2.setObjectName("stackedWidget_2")
         self.page_blank = QtWidgets.QWidget()
         self.page_blank.setStyleSheet("border-image: url(:/Resources/whiteBG.png);")
@@ -183,7 +202,7 @@ class Ui_MainWindow(object):
         self.close_button1.setText("")
         self.close_button1.setObjectName("close_button1")
         self.comboBox = QtWidgets.QComboBox(self.page_dashboard)
-        self.comboBox.setGeometry(QtCore.QRect(230, 60, 128, 33))
+        self.comboBox.setGeometry(QtCore.QRect(260, 60, 128, 33))
         self.comboBox.setStyleSheet("QComboBox {\n"
 "border-image: url(:/Resources/comboBoxBG.png);\n"
 "    color: black;\n"
@@ -258,7 +277,7 @@ class Ui_MainWindow(object):
 "color: rgb(245, 29, 69);")
         self.label_pipes_2.setObjectName("label_pipes_2")
         self.button_subscribe = QtWidgets.QPushButton(self.page_dashboard)
-        self.button_subscribe.setGeometry(QtCore.QRect(340, 790, 127, 33))
+        self.button_subscribe.setGeometry(QtCore.QRect(350, 790, 127, 33))
         self.button_subscribe.setStyleSheet("QPushButton{\n"
 "border-image: url(:/Resources/subscribe.png);\n"
 "background-repeat: none;\n"
@@ -274,7 +293,7 @@ class Ui_MainWindow(object):
         self.button_subscribe.setText("")
         self.button_subscribe.setObjectName("button_subscribe")
         self.button_emailPath = QtWidgets.QPushButton(self.page_dashboard)
-        self.button_emailPath.setGeometry(QtCore.QRect(190, 790, 127, 33))
+        self.button_emailPath.setGeometry(QtCore.QRect(200, 790, 127, 33))
         self.button_emailPath.setStyleSheet("QPushButton{\n"
 "border-image: url(:/Resources/EmailButton.png);\n"
 "background-repeat: none;\n"
@@ -291,121 +310,189 @@ class Ui_MainWindow(object):
         self.button_emailPath.setObjectName("button_emailPath")
         self.stackedWidget_2.addWidget(self.page_dashboard)
         self.page_analyzeTanks = QtWidgets.QWidget()
+        self.page_analyzeTanks.setStyleSheet("border-image: url(:/Resources/AnalyzeBG.png);")
         self.page_analyzeTanks.setObjectName("page_analyzeTanks")
-        self.layoutWidget2 = QtWidgets.QWidget(self.page_analyzeTanks)
-        self.layoutWidget2.setGeometry(QtCore.QRect(70, 120, 281, 102))
-        self.layoutWidget2.setObjectName("layoutWidget2")
-        self.gridLayout_10 = QtWidgets.QGridLayout(self.layoutWidget2)
-        self.gridLayout_10.setContentsMargins(0, 0, 0, 0)
-        self.gridLayout_10.setObjectName("gridLayout_10")
-        self.verticalLayout_17 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_17.setObjectName("verticalLayout_17")
-        self.button_cleaning_2 = QtWidgets.QPushButton(self.layoutWidget2)
-        self.button_cleaning_2.setObjectName("button_cleaning_2")
-        self.verticalLayout_17.addWidget(self.button_cleaning_2)
-        self.button_holes_2 = QtWidgets.QPushButton(self.layoutWidget2)
-        self.button_holes_2.setObjectName("button_holes_2")
-        self.verticalLayout_17.addWidget(self.button_holes_2)
-        self.button_pipe_2 = QtWidgets.QPushButton(self.layoutWidget2)
-        self.button_pipe_2.setObjectName("button_pipe_2")
-        self.verticalLayout_17.addWidget(self.button_pipe_2)
-        self.gridLayout_10.addLayout(self.verticalLayout_17, 0, 0, 1, 1)
-        self.verticalLayout_18 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_18.setObjectName("verticalLayout_18")
-        self.label_cleaning2 = QtWidgets.QLabel(self.layoutWidget2)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.label_cleaning2.setFont(font)
-        self.label_cleaning2.setText("")
-        self.label_cleaning2.setObjectName("label_cleaning2")
-        self.verticalLayout_18.addWidget(self.label_cleaning2)
-        self.label_holes2 = QtWidgets.QLabel(self.layoutWidget2)
-        self.label_holes2.setText("")
+        self.camLabel = QtWidgets.QLabel(self.page_analyzeTanks)
+        self.camLabel.setGeometry(QtCore.QRect(91, 240, 533, 260))
+        self.camLabel.setStyleSheet("border-image: url(:/Resources/darkBlackBG.png);")
+        self.camLabel.setText("")
+        self.camLabel.setObjectName("camLabel")
+        self.close = QtWidgets.QPushButton(self.page_analyzeTanks)
+        self.close.setGeometry(QtCore.QRect(640, 20, 21, 21))
+        self.close.setStyleSheet("QPushButton{\n"
+"border-image: url(:/Resources/exitBlue.png);\n"
+"background-repeat: none;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"border-image: url(:/Resources/exitWhiteBlue.png);\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"border-image: url(:/Resources/exitWhiteBlue.png);\n"
+"}x")
+        self.close.setText("")
+        self.close.setObjectName("close")
+        self.label_holes2 = QtWidgets.QLabel(self.page_analyzeTanks)
+        self.label_holes2.setGeometry(QtCore.QRect(310, 645, 161, 21))
+        self.label_holes2.setStyleSheet("border-image: url(:/Resources/whiteBG.png);\n"
+"color: rgb(60, 59, 63);\n"
+"font: 25 10pt \"Roboto Light\";")
         self.label_holes2.setObjectName("label_holes2")
-        self.verticalLayout_18.addWidget(self.label_holes2)
-        self.label_pipe2 = QtWidgets.QLabel(self.layoutWidget2)
+        self.label_pipe2 = QtWidgets.QLabel(self.page_analyzeTanks)
+        self.label_pipe2.setGeometry(QtCore.QRect(310, 737, 161, 21))
         font = QtGui.QFont()
+        font.setFamily("Roboto Light")
         font.setPointSize(10)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(3)
         self.label_pipe2.setFont(font)
-        self.label_pipe2.setText("")
+        self.label_pipe2.setStyleSheet("border-image: url(:/Resources/whiteBG.png);\n"
+"color: rgb(60, 59, 63);\n"
+"font: 25 10pt \"Roboto Light\";")
         self.label_pipe2.setObjectName("label_pipe2")
-        self.verticalLayout_18.addWidget(self.label_pipe2)
-        self.gridLayout_10.addLayout(self.verticalLayout_18, 0, 1, 1, 1)
+        self.label_cleaning2 = QtWidgets.QLabel(self.page_analyzeTanks)
+        self.label_cleaning2.setGeometry(QtCore.QRect(310, 690, 161, 21))
+        font = QtGui.QFont()
+        font.setFamily("Roboto Light")
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(3)
+        self.label_cleaning2.setFont(font)
+        self.label_cleaning2.setStyleSheet("border-image: url(:/Resources/whiteBG.png);\n"
+"color: rgb(60, 59, 63);\n"
+"font: 25 10pt \"Roboto Light\";")
+        self.label_cleaning2.setObjectName("label_cleaning2")
+        self.button_cleaning_2 = QtWidgets.QPushButton(self.page_analyzeTanks)
+        self.button_cleaning_2.setGeometry(QtCore.QRect(280, 560, 127, 33))
+        self.button_cleaning_2.setStyleSheet("QPushButton{\n"
+"border-image: url(:/Resources/Cleaning.png);\n"
+"background-repeat: none;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"border-image: url(:/Resources/CleaningPressed.png);\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"border-image: url(:/Resources/CleaningPressed.png);\n"
+"}x")
+        self.button_cleaning_2.setText("")
+        self.button_cleaning_2.setObjectName("button_cleaning_2")
+        self.button_holes_2 = QtWidgets.QPushButton(self.page_analyzeTanks)
+        self.button_holes_2.setGeometry(QtCore.QRect(140, 560, 127, 33))
+        self.button_holes_2.setStyleSheet("QPushButton{\n"
+"border-image: url(:/Resources/Holes.png);\n"
+"background-repeat: none;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"border-image: url(:/Resources/HolesPressed.png);\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"border-image: url(:/Resources/HolesPressed.png);\n"
+"}x")
+        self.button_holes_2.setText("")
+        self.button_holes_2.setObjectName("button_holes_2")
+        self.button_pipe_2 = QtWidgets.QPushButton(self.page_analyzeTanks)
+        self.button_pipe_2.setGeometry(QtCore.QRect(430, 560, 127, 33))
+        self.button_pipe_2.setStyleSheet("QPushButton{\n"
+"border-image: url(:/Resources/Pipes.png);\n"
+"background-repeat: none;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"border-image: url(:/Resources/PipesPressed.png);\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"border-image: url(:/Resources/PipesPressed.png);\n"
+"}x")
+        self.button_pipe_2.setText("")
+        self.button_pipe_2.setObjectName("button_pipe_2")
         self.stackedWidget_2.addWidget(self.page_analyzeTanks)
         self.page_createTank = QtWidgets.QWidget()
         self.page_createTank.setObjectName("page_createTank")
         self.button_main_create = QtWidgets.QPushButton(self.page_createTank)
-        self.button_main_create.setGeometry(QtCore.QRect(160, 250, 111, 23))
+        self.button_main_create.setGeometry(QtCore.QRect(250, 790, 127, 33))
         font = QtGui.QFont()
         font.setPointSize(10)
         self.button_main_create.setFont(font)
+        self.button_main_create.setStyleSheet("QPushButton{\n"
+"    border-image: url(:/Resources/createButton.png);\n"
+"background-repeat: none;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"border-image: url(:/Resources/createButtonPressed.png);\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"border-image: url(:/Resources/createButtonPressed.png);\n"
+"}x")
+        self.button_main_create.setText("")
         self.button_main_create.setObjectName("button_main_create")
-        self.layoutWidget_7 = QtWidgets.QWidget(self.page_createTank)
-        self.layoutWidget_7.setGeometry(QtCore.QRect(60, 50, 319, 171))
-        self.layoutWidget_7.setObjectName("layoutWidget_7")
-        self.gridLayout_6 = QtWidgets.QGridLayout(self.layoutWidget_7)
-        self.gridLayout_6.setContentsMargins(0, 0, 0, 0)
-        self.gridLayout_6.setObjectName("gridLayout_6")
-        self.verticalLayout_7 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_7.setObjectName("verticalLayout_7")
-        self.label_14 = QtWidgets.QLabel(self.layoutWidget_7)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.label_14.setFont(font)
-        self.label_14.setObjectName("label_14")
-        self.verticalLayout_7.addWidget(self.label_14)
-        self.label_15 = QtWidgets.QLabel(self.layoutWidget_7)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.label_15.setFont(font)
-        self.label_15.setObjectName("label_15")
-        self.verticalLayout_7.addWidget(self.label_15)
-        self.label_16 = QtWidgets.QLabel(self.layoutWidget_7)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.label_16.setFont(font)
-        self.label_16.setObjectName("label_16")
-        self.verticalLayout_7.addWidget(self.label_16)
-        self.label_17 = QtWidgets.QLabel(self.layoutWidget_7)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.label_17.setFont(font)
-        self.label_17.setObjectName("label_17")
-        self.verticalLayout_7.addWidget(self.label_17)
-        self.label_18 = QtWidgets.QLabel(self.layoutWidget_7)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.label_18.setFont(font)
-        self.label_18.setObjectName("label_18")
-        self.verticalLayout_7.addWidget(self.label_18)
-        self.label_19 = QtWidgets.QLabel(self.layoutWidget_7)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.label_19.setFont(font)
-        self.label_19.setObjectName("label_19")
-        self.verticalLayout_7.addWidget(self.label_19)
-        self.gridLayout_6.addLayout(self.verticalLayout_7, 0, 0, 1, 1)
-        self.verticalLayout_8 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_8.setObjectName("verticalLayout_8")
-        self.lineEdit_fishType_create = QtWidgets.QLineEdit(self.layoutWidget_7)
+        self.close_2 = QtWidgets.QPushButton(self.page_createTank)
+        self.close_2.setGeometry(QtCore.QRect(640, 20, 21, 21))
+        self.close_2.setStyleSheet("QPushButton{\n"
+"border-image: url(:/Resources/exitWhiteBlue.png);\n"
+"background-repeat: none;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"border-image: url(:/Resources/black_blue.png);\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"border-image: url(:/Resources/black_blue.png);\n"
+"}x")
+        self.close_2.setText("")
+        self.close_2.setObjectName("close_2")
+        self.lineEdit_fishType_create = QtWidgets.QLineEdit(self.page_createTank)
+        self.lineEdit_fishType_create.setGeometry(QtCore.QRect(430, 488, 161, 21))
+        self.lineEdit_fishType_create.setStyleSheet("border-image: url(:/Resources/darkBlackBG.png);\n"
+"color: rgb(235, 235, 235);\n"
+"font: 25 10pt \"Roboto Light\";\n"
+"")
         self.lineEdit_fishType_create.setObjectName("lineEdit_fishType_create")
-        self.verticalLayout_8.addWidget(self.lineEdit_fishType_create)
-        self.lineEdit_feedingSchedule = QtWidgets.QLineEdit(self.layoutWidget_7)
+        self.lineEdit_feedingSchedule = QtWidgets.QLineEdit(self.page_createTank)
+        self.lineEdit_feedingSchedule.setGeometry(QtCore.QRect(430, 582, 161, 21))
+        self.lineEdit_feedingSchedule.setStyleSheet("border-image: url(:/Resources/darkBlackBG.png);\n"
+"color: rgb(235, 235, 235);\n"
+"font: 25 10pt \"Roboto Light\";\n"
+"")
         self.lineEdit_feedingSchedule.setObjectName("lineEdit_feedingSchedule")
-        self.verticalLayout_8.addWidget(self.lineEdit_feedingSchedule)
-        self.lineEdit_wqThreshold = QtWidgets.QLineEdit(self.layoutWidget_7)
+        self.lineEdit_wqThreshold = QtWidgets.QLineEdit(self.page_createTank)
+        self.lineEdit_wqThreshold.setGeometry(QtCore.QRect(430, 730, 161, 21))
+        self.lineEdit_wqThreshold.setStyleSheet("border-image: url(:/Resources/darkBlackBG.png);\n"
+"color: rgb(235, 235, 235);\n"
+"font: 25 10pt \"Roboto Light\";\n"
+"")
         self.lineEdit_wqThreshold.setObjectName("lineEdit_wqThreshold")
-        self.verticalLayout_8.addWidget(self.lineEdit_wqThreshold)
-        self.lineEdit_tempLThreshold = QtWidgets.QLineEdit(self.layoutWidget_7)
+        self.lineEdit_tempLThreshold = QtWidgets.QLineEdit(self.page_createTank)
+        self.lineEdit_tempLThreshold.setGeometry(QtCore.QRect(430, 630, 171, 21))
+        self.lineEdit_tempLThreshold.setStyleSheet("border-image: url(:/Resources/darkBlackBG.png);\n"
+"color: rgb(235, 235, 235);\n"
+"font: 25 10pt \"Roboto Light\";\n"
+"")
         self.lineEdit_tempLThreshold.setObjectName("lineEdit_tempLThreshold")
-        self.verticalLayout_8.addWidget(self.lineEdit_tempLThreshold)
-        self.lineEdit_tempUThreshold = QtWidgets.QLineEdit(self.layoutWidget_7)
+        self.lineEdit_tempUThreshold = QtWidgets.QLineEdit(self.page_createTank)
+        self.lineEdit_tempUThreshold.setGeometry(QtCore.QRect(430, 680, 161, 21))
+        self.lineEdit_tempUThreshold.setStyleSheet("border-image: url(:/Resources/darkBlackBG.png);\n"
+"color: rgb(235, 235, 235);\n"
+"font: 25 10pt \"Roboto Light\";\n"
+"")
         self.lineEdit_tempUThreshold.setObjectName("lineEdit_tempUThreshold")
-        self.verticalLayout_8.addWidget(self.lineEdit_tempUThreshold)
-        self.lineEdit_harvestDate_create = QtWidgets.QLineEdit(self.layoutWidget_7)
+        self.lineEdit_harvestDate_create = QtWidgets.QLineEdit(self.page_createTank)
+        self.lineEdit_harvestDate_create.setGeometry(QtCore.QRect(430, 533, 161, 22))
+        self.lineEdit_harvestDate_create.setStyleSheet("border-image: url(:/Resources/darkBlackBG.png);\n"
+"color: rgb(235, 235, 235);\n"
+"font: 25 10pt \"Roboto Light\";\n"
+"")
         self.lineEdit_harvestDate_create.setObjectName("lineEdit_harvestDate_create")
-        self.verticalLayout_8.addWidget(self.lineEdit_harvestDate_create)
-        self.gridLayout_6.addLayout(self.verticalLayout_8, 0, 1, 1, 1)
         self.stackedWidget_2.addWidget(self.page_createTank)
         self.page_settings = QtWidgets.QWidget()
         self.page_settings.setStyleSheet("border-image: url(:/Resources/whiteBG.png);")
@@ -424,7 +511,7 @@ class Ui_MainWindow(object):
 "font: 25 25pt \"Roboto\";")
         self.label_displayName_2.setObjectName("label_displayName_2")
         self.button_dashboard = QtWidgets.QPushButton(self.page_mainPage)
-        self.button_dashboard.setGeometry(QtCore.QRect(0, 220, 291, 54))
+        self.button_dashboard.setGeometry(QtCore.QRect(0, 220, 290, 54))
         self.button_dashboard.setStyleSheet("QPushButton{\n"
 "border-image: url(:/Resources/dasboard.png);\n"
 "background-repeat: none;\n"
@@ -440,7 +527,7 @@ class Ui_MainWindow(object):
         self.button_dashboard.setText("")
         self.button_dashboard.setObjectName("button_dashboard")
         self.button_createTank = QtWidgets.QPushButton(self.page_mainPage)
-        self.button_createTank.setGeometry(QtCore.QRect(0, 280, 291, 54))
+        self.button_createTank.setGeometry(QtCore.QRect(0, 280, 290, 54))
         self.button_createTank.setStyleSheet("QPushButton{\n"
 "border-image: url(:/Resources/create.png);\n"
 "background-repeat: none;\n"
@@ -456,7 +543,7 @@ class Ui_MainWindow(object):
         self.button_createTank.setText("")
         self.button_createTank.setObjectName("button_createTank")
         self.button_analyzeTanks = QtWidgets.QPushButton(self.page_mainPage)
-        self.button_analyzeTanks.setGeometry(QtCore.QRect(0, 340, 291, 54))
+        self.button_analyzeTanks.setGeometry(QtCore.QRect(0, 340, 290, 54))
         self.button_analyzeTanks.setStyleSheet("QPushButton{\n"
 "border-image: url(:/Resources/analyze.png);\n"
 "background-repeat: none;\n"
@@ -472,7 +559,7 @@ class Ui_MainWindow(object):
         self.button_analyzeTanks.setText("")
         self.button_analyzeTanks.setObjectName("button_analyzeTanks")
         self.button_settings = QtWidgets.QPushButton(self.page_mainPage)
-        self.button_settings.setGeometry(QtCore.QRect(0, 400, 291, 54))
+        self.button_settings.setGeometry(QtCore.QRect(0, 400, 290, 54))
         self.button_settings.setStyleSheet("QPushButton{\n"
 "border-image: url(:/Resources/settings.png);\n"
 "background-repeat: none;\n"
@@ -499,26 +586,28 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
+        self.numberOfTanks=1
+        self.buttonsConnections()
+
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(0)
         self.stackedWidget_2.setCurrentIndex(1)
         self.close_button1.clicked.connect(MainWindow.close)
+        self.close_2.clicked.connect(MainWindow.close)
+        self.close_3.clicked.connect(MainWindow.close)
+        self.close_4.clicked.connect(MainWindow.close)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label_username.setText(_translate("MainWindow", "Username :"))
-        self.label_password.setText(_translate("MainWindow", "Password :"))
-        self.button_login.setText(_translate("MainWindow", "Login"))
-        self.label.setText(_translate("MainWindow", "Don\'t have an account? "))
-        self.button_createOne.setText(_translate("MainWindow", "Create one!"))
-        self.button_signup.setText(_translate("MainWindow", "Signup"))
-        self.label_2.setText(_translate("MainWindow", "First Name:"))
-        self.label_3.setText(_translate("MainWindow", "Last Name:"))
-        self.label_4.setText(_translate("MainWindow", "Username:"))
-        self.label_5.setText(_translate("MainWindow", "Password:"))
-        self.label_20.setText(_translate("MainWindow", "Email Address:"))
+        self.lineEdit_username_login.setText(_translate("MainWindow", "First Name"))
+        self.lineEdit_password_login.setText(_translate("MainWindow", "Last Name"))
+        self.lineEdit_firstName.setText(_translate("MainWindow", "First Name"))
+        self.lineEdit_lastName.setText(_translate("MainWindow", "Last Name"))
+        self.lineEdit_username_signup.setText(_translate("MainWindow", "Username"))
+        self.lineEdit_password_signup.setText(_translate("MainWindow", "Password"))
+        self.lineEdit_email_signup.setText(_translate("MainWindow", "Email"))
         self.label_displayName.setText(_translate("MainWindow", "Abdullah Elsheikh"))
         self.comboBox.setCurrentText(_translate("MainWindow", "Tank 1"))
         self.comboBox.setItemText(0, _translate("MainWindow", "Tank 1"))
@@ -530,19 +619,110 @@ class Ui_MainWindow(object):
         self.label_cleaning_2.setText(_translate("MainWindow", "Yes"))
         self.label_holes_2.setText(_translate("MainWindow", "1"))
         self.label_pipes_2.setText(_translate("MainWindow", "Yes"))
-        self.button_cleaning_2.setText(_translate("MainWindow", "Inspect fishnet for cleaning"))
-        self.button_holes_2.setText(_translate("MainWindow", "Inspect fishnet holes "))
-        self.button_pipe_2.setText(_translate("MainWindow", "Inspect pipe"))
-        self.button_main_create.setText(_translate("MainWindow", "Create a Tank!"))
-        self.label_14.setText(_translate("MainWindow", "Fish type:"))
-        self.label_15.setText(_translate("MainWindow", "Feeding schedule:"))
-        self.label_16.setText(_translate("MainWindow", "Water quality threshold:"))
-        self.label_17.setText(_translate("MainWindow", "Temperature lower threshold:"))
-        self.label_18.setText(_translate("MainWindow", "Temperature upper threshold:"))
-        self.label_19.setText(_translate("MainWindow", "Harverst date:"))
+        self.label_holes2.setText(_translate("MainWindow", "No"))
+        self.label_pipe2.setText(_translate("MainWindow", "Yes"))
+        self.label_cleaning2.setText(_translate("MainWindow", "No"))
+        self.lineEdit_fishType_create.setText(_translate("MainWindow", "Salmon"))
+        self.lineEdit_feedingSchedule.setText(_translate("MainWindow", "H:M:S"))
+        self.lineEdit_wqThreshold.setText(_translate("MainWindow", "0"))
+        self.lineEdit_tempLThreshold.setText(_translate("MainWindow", "Celsius"))
+        self.lineEdit_tempUThreshold.setText(_translate("MainWindow", "Celsius"))
+        self.lineEdit_harvestDate_create.setText(_translate("MainWindow", "YY/MM/DD"))
         self.label_8.setText(_translate("MainWindow", "Settings"))
         self.label_displayName_2.setText(_translate("MainWindow", "A"))
         self.label_displayName_3.setText(_translate("MainWindow", "User"))
+
+    def loginIsClicked(self):
+
+        username_login=self.lineEdit_username_login.text()
+        password_login=self.lineEdit_password_login.text()
+        self.stackedWidget.setCurrentIndex(2)
+        text = "Welcome," + username_login
+        self.label_displayName.setText(text)
+
+    def createOneIsClicked(self):
+
+        self.stackedWidget.setCurrentIndex(1)
+
+    def signupIsClicked(self):
+
+        firstName=self.lineEdit_firstName.text()
+        lastName=self.lineEdit_lastName.text()
+        username_signup=self.lineEdit_username_signup.text()
+        password_signup=self.lineEdit_password_signup.text()
+        email_signup=self.lineEdit_email_signup.text()
+
+        self.stackedWidget.setCurrentIndex(0)
+
+
+    def getBackToLogin(self):
+
+        self.stackedWidget.setCurrentIndex(0)
+
+    def analyzeTanksIsClicked(self):
+
+        self.stackedWidget_2.setCurrentIndex(2)
+
+    def createTankIsClicked(self):
+
+        self.stackedWidget_2.setCurrentIndex(3)
+
+    def settingsIsClicked(self):
+
+        self.stackedWidget_2.setCurrentIndex(4)
+
+    def dashboardIsClicked(self):
+
+        self.stackedWidget_2.setCurrentIndex(1)
+
+    def getBackToMainPage(self):
+
+        self.stackedWidget.setCurrentIndex(2)
+
+    def updateReadings(self):
+
+        temp=self.lineEdit_temp.text()
+        ph=self.lineEdit_ph.text()
+
+    def subscribeIsClicked(self):
+
+        if self.button_subscribe.text() == "Show report" :
+            print("Send email")
+
+        self.button_subscribe.setText("Show report")
+
+
+
+
+    def createTank(self):
+
+        fishType = self.lineEdit_fishType_create.text()
+        feedingSchedule = self.lineEdit_feedingSchedule.text()
+        waterQualityThreshold = self.lineEdit_wqThreshold.text()
+        temperatureLowerThresholdd = self.lineEdit_tempLThreshold.text()
+        temperatureUpperThreshold = self.lineEdit_tempUThreshold.text()
+        harvestDate = self.lineEdit_harvestDate_create.text()
+
+        self.numberOfTanks=self.numberOfTanks+1
+        text = "Tank " + str(self.numberOfTanks)
+        self.comboBox.addItem(text)
+
+
+
+    def buttonsConnections(self):
+
+        self.button_login.clicked.connect(self.loginIsClicked)
+        self.button_createOne.clicked.connect(self.createOneIsClicked)
+        self.button_signup.clicked.connect(self.signupIsClicked)
+        self.button_logout.clicked.connect(self.getBackToLogin)
+        self.button_analyzeTanks.clicked.connect(self.analyzeTanksIsClicked)
+        self.button_createTank.clicked.connect(self.createTankIsClicked)
+        self.button_settings.clicked.connect(self.settingsIsClicked)
+        self.button_dashboard.clicked.connect(self.dashboardIsClicked)
+        self.button_main_create.clicked.connect(self.createTank)
+        self.button_subscribe.clicked.connect(self.subscribeIsClicked)
+
+
 
 import photos_rc
 
@@ -554,4 +734,3 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
-
