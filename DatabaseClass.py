@@ -112,10 +112,8 @@ class Database:
         self.cursor.execute(tsql, tankID)
         result_set = self.cursor.fetchall()
         waterQualityList = []
-
         if len(result_set) == 0:
             return None
-
         for row in result_set:
             print("tankID = ", row[0])
             print("time = ", row[1])
@@ -211,4 +209,3 @@ class Database:
             print("Lastname = ", row[4])
             print("email = ", row[5])
             print("faceID = ", row[6])
-

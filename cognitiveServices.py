@@ -1,7 +1,7 @@
 import http.client, urllib.request, urllib.parse, urllib.error, base64
 
 class Server:
-    def __init__(self, imagePath, httpAddress, subscriptionAddress, predictionKey, contentType, predictionKeyTwo):
+    def __init__(self, httpAddress, subscriptionAddress, predictionKey, contentType, predictionKeyTwo):
         headers = {
             # Request headers
             'Prediction-Key': predictionKey,
@@ -13,13 +13,14 @@ class Server:
             # Request parameters
             'application': '{string}',
         })
-        try:
-            data1 = open(ImagePath, 'rb').read()
-            conn = http.client.HTTPSConnection(httpAddress)
-            conn.request("POST", subscriptionAddress, data1, headers)
-            response = conn.getresponse()
-            data = response.read()
-            print(data)
-            conn.close()
-        except Exception as e:
-            print("[Errno {0}] {1}".format(e.errno, e.strerror))
+
+
+    def getPrediction(self, imgPath):
+        data1 = open(imgPath, 'rb').read    
+        conn = http.client.HTTPSConnection(httpAddress)
+        conn.request("POST", subscriptionAddress, data1, self.headers)
+        response = conn.getresponse()
+        data = response.read()
+        prediction = data
+        conn.close()
+        return prediction
