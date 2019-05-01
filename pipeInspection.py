@@ -8,4 +8,4 @@ class PipeDetection(Server):
         self.predKey = 'bd5db334ffa249f1bd8ca2d43ccf5da3'
         self.contentType = 'application/octet-stream'
         self.predkey = '/subscriptions/16e8c7d2-4877-4c8f-bb77-ae2931dd33eb/resourceGroups/Test/providers/Microsoft.CognitiveServices/accounts/Test_Prediction'
-        super().__init__(self.imgPath, self.httpAddress, self.subAddress, self.predKey, self.contentType, self.predkey)
+        super().__init__(self.httpAddress, self.subAddress, self.predKey, self.contentType, self.predkey)
