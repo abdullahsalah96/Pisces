@@ -7,9 +7,11 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from DatabseClass import Database
 
 
 class Ui_MainWindow(object):
+    self.db = Databse()
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1000, 840)
@@ -633,7 +635,6 @@ class Ui_MainWindow(object):
         self.label_displayName_3.setText(_translate("MainWindow", "User"))
 
     def loginIsClicked(self):
-
         username_login=self.lineEdit_username_login.text()
         password_login=self.lineEdit_password_login.text()
         self.stackedWidget.setCurrentIndex(2)
