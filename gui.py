@@ -591,6 +591,7 @@ class Ui_MainWindow(object):
         self.numberOfTanks=1
         self.buttonsConnections()
 
+
         self.retranslateUi(MainWindow)
         self.stackedWidget.setCurrentIndex(0)
         self.stackedWidget_2.setCurrentIndex(1)
