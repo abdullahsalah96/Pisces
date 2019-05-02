@@ -1,0 +1,1267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1000</width>
+    <height>840</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">border-image: url(:/Resources/whiteBG.png);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1000</width>
+      <height>873</height>
+     </rect>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="page_login">
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/Resources/SignInBG.png);</string>
+     </property>
+     <widget class="QPushButton" name="button_login">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>530</y>
+        <width>320</width>
+        <height>44</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border-image: url(:/Resources/signIn.png);
+background-repeat: none;
+}
+
+QPushButton:hover{
+border-image: url(:/Resources/signInPressed.png);
+}
+
+QPushButton:pressed{
+border-image: url(:/Resources/signInPressed.png);
+}x</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="button_createOne">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>590</y>
+        <width>320</width>
+        <height>44</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border-image: url(:/Resources/signUp.png);
+background-repeat: none;
+}
+
+QPushButton:hover{
+border-image: url(:/Resources/signUpPressed.png);
+}
+
+QPushButton:pressed{
+border-image: url(:/Resources/signUpPressed.png);
+}x</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_username_login">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>341</y>
+        <width>361</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/Resources/darkBlackBG.png);
+color: rgb(130, 130, 144);
+font: 25 10pt &quot;Roboto Light&quot;;</string>
+      </property>
+      <property name="text">
+       <string>First Name</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="close_4">
+      <property name="geometry">
+       <rect>
+        <x>940</x>
+        <y>30</y>
+        <width>21</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border-image: url(:/Resources/exitGrey.png);
+background-repeat: none;
+}
+
+QPushButton:hover{
+border-image: url(:/Resources/exitRed.png);
+}
+
+QPushButton:pressed{
+border-image: url(:/Resources/exitRed.png);
+}x</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_password_login">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>422</y>
+        <width>361</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/Resources/darkBlackBG.png);
+color: rgb(130, 130, 144);
+font: 25 10pt &quot;Roboto Light&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Last Name</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_signup">
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/Resources/signUpBG.png);</string>
+     </property>
+     <widget class="QPushButton" name="button_signup">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>640</y>
+        <width>320</width>
+        <height>44</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border-image: url(:/Resources/signUp.png);
+background-repeat: none;
+}
+
+QPushButton:hover{
+border-image: url(:/Resources/signUpPressed.png);
+}
+
+QPushButton:pressed{
+border-image: url(:/Resources/signUpPressed.png);
+}x</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="close_3">
+      <property name="geometry">
+       <rect>
+        <x>940</x>
+        <y>30</y>
+        <width>21</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border-image: url(:/Resources/exitGrey.png);
+background-repeat: none;
+}
+
+QPushButton:hover{
+border-image: url(:/Resources/exitRed.png);
+}
+
+QPushButton:pressed{
+border-image: url(:/Resources/exitRed.png);
+}x</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_firstName">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>327</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/Resources/darkBlackBG.png);
+color: rgb(130, 130, 144);
+font: 25 10pt &quot;Roboto Light&quot;;</string>
+      </property>
+      <property name="text">
+       <string>First Name</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_lastName">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>327</y>
+        <width>141</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/Resources/darkBlackBG.png);
+color: rgb(130, 130, 144);
+font: 25 10pt &quot;Roboto Light&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Last Name</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_username_signup">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>490</y>
+        <width>371</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/Resources/darkBlackBG.png);
+color: rgb(130, 130, 144);
+font: 25 10pt &quot;Roboto Light&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Username</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_password_signup">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>570</y>
+        <width>371</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/Resources/darkBlackBG.png);
+color: rgb(130, 130, 144);
+font: 25 10pt &quot;Roboto Light&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Password</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_email_signup">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>410</y>
+        <width>371</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/Resources/darkBlackBG.png);
+color: rgb(130, 130, 144);
+font: 25 10pt &quot;Roboto Light&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Email</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_mainPage">
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/Resources/mainWidgetBG.png);</string>
+     </property>
+     <widget class="QPushButton" name="button_logout">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>770</y>
+        <width>130</width>
+        <height>42</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border-image: url(:/Resources/logoutPressed.png);
+background-repeat: none;
+}
+
+QPushButton:hover{
+border-image: url(:/Resources/logout.png);
+}
+
+QPushButton:pressed{
+border-image: url(:/Resources/logout.png);
+}x</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_displayName">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>133</y>
+        <width>161</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/Resources/blueBG.png);
+font: 25 12pt &quot;Roboto&quot;;
+color: rgb(235, 235, 235);</string>
+      </property>
+      <property name="text">
+       <string>Abdullah Elsheikh</string>
+      </property>
+     </widget>
+     <widget class="QStackedWidget" name="stackedWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>0</y>
+        <width>711</width>
+        <height>851</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/Resources/CreateBG.png);</string>
+      </property>
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="page_blank">
+       <property name="styleSheet">
+        <string notr="true">border-image: url(:/Resources/whiteBG.png);</string>
+       </property>
+      </widget>
+      <widget class="QWidget" name="page_dashboard">
+       <property name="styleSheet">
+        <string notr="true">border-image: url(:/Resources/dashboardWidget.png);</string>
+       </property>
+       <widget class="QPushButton" name="close_button1">
+        <property name="geometry">
+         <rect>
+          <x>640</x>
+          <y>20</y>
+          <width>21</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+border-image: url(:/Resources/exitBlue.png);
+background-repeat: none;
+}
+
+QPushButton:hover{
+border-image: url(:/Resources/exitWhiteBlue.png);
+}
+
+QPushButton:pressed{
+border-image: url(:/Resources/exitWhiteBlue.png);
+}x</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="comboBox">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>60</y>
+          <width>128</width>
+          <height>33</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QComboBox {
+border-image: url(:/Resources/comboBoxBG.png);
+    color: black;
+    font: 14px;
+    padding: 1px 0px 1px 3px; /* This (useless) line resolves a bug with the font color */
+}
+
+QComboBox:focus {
+    color: red;
+}
+
+QComboBox::drop-down 
+{
+    border: 0px; /* This seems to replace the whole arrow of the combo box */
+}
+
+/* Define a new custom arrow icon for the combo box */
+QComboBox::down-arrow {
+    border-image: url(:/Resources/comboBoxArrow.png);
+    width: 10px;
+    height: 7px;
+}</string>
+        </property>
+        <property name="editable">
+         <bool>false</bool>
+        </property>
+        <property name="currentText">
+         <string>Tank 1</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>Tank 1</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="label_cleaning_2">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>460</y>
+          <width>41</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-image: url(:/Resources/whiteBG.png);
+font: 25 12pt &quot;Roboto Light&quot;;
+color: rgb(245, 29, 69);</string>
+        </property>
+        <property name="text">
+         <string>Yes</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_holes_2">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>410</y>
+          <width>31</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-image: url(:/Resources/whiteBG.png);
+font: 25 12pt &quot;Roboto Light&quot;;
+color: rgb(245, 29, 69);</string>
+        </property>
+        <property name="text">
+         <string>1</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_pipes_2">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>500</y>
+          <width>41</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-image: url(:/Resources/whiteBG.png);
+font: 25 12pt &quot;Roboto Light&quot;;
+color: rgb(245, 29, 69);</string>
+        </property>
+        <property name="text">
+         <string>Yes</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="button_subscribe">
+        <property name="geometry">
+         <rect>
+          <x>350</x>
+          <y>780</y>
+          <width>127</width>
+          <height>33</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+border-image: url(:/Resources/subscribe.png);
+background-repeat: none;
+}
+
+QPushButton:hover{
+border-image: url(:/Resources/subscribePressed.png);
+}
+
+QPushButton:pressed{
+border-image: url(:/Resources/subscribePressed.png);
+}x</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="button_emailPath">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>780</y>
+          <width>127</width>
+          <height>33</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+border-image: url(:/Resources/EmailButton.png);
+background-repeat: none;
+}
+
+QPushButton:hover{
+border-image: url(:/Resources/EmailButtonPressed.png);
+}
+
+QPushButton:pressed{
+border-image: url(:/Resources/EmailButtonPressed.png);
+}x</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_temp">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>363</y>
+          <width>121</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-image: url(:/Resources/whiteBG.png);
+font: 25 12pt &quot;Roboto Light&quot;;
+color: rgb(35, 34, 40);</string>
+        </property>
+        <property name="text">
+         <string>22</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_pH">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>320</y>
+          <width>121</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-image: url(:/Resources/whiteBG.png);
+font: 25 12pt &quot;Roboto Light&quot;;
+color: rgb(35, 34, 40);</string>
+        </property>
+        <property name="text">
+         <string>6.2</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_feedingSchedule">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>270</y>
+          <width>121</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-image: url(:/Resources/whiteBG.png);
+font: 25 12pt &quot;Roboto Light&quot;;
+color: rgb(35, 34, 40);</string>
+        </property>
+        <property name="text">
+         <string>6:00:00</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_harvestDate">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>220</y>
+          <width>121</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-image: url(:/Resources/whiteBG.png);
+font: 25 12pt &quot;Roboto Light&quot;;
+color: rgb(35, 34, 40);</string>
+        </property>
+        <property name="text">
+         <string>2019/8/12</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_fishType">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>176</y>
+          <width>121</width>
+          <height>18</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-image: url(:/Resources/whiteBG.png);
+font: 25 12pt &quot;Roboto Light&quot;;
+color: rgb(35, 34, 40);</string>
+        </property>
+        <property name="text">
+         <string>Salmon</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_analyzeTanks">
+       <property name="styleSheet">
+        <string notr="true">border-image: url(:/Resources/AnalyzeBG.png);</string>
+       </property>
+       <widget class="QLabel" name="camLabel">
+        <property name="geometry">
+         <rect>
+          <x>91</x>
+          <y>240</y>
+          <width>533</width>
+          <height>260</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-image: url(:/Resources/darkBlackBG.png);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="close">
+        <property name="geometry">
+         <rect>
+          <x>640</x>
+          <y>20</y>
+          <width>21</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+border-image: url(:/Resources/exitBlue.png);
+background-repeat: none;
+}
+
+QPushButton:hover{
+border-image: url(:/Resources/exitWhiteBlue.png);
+}
+
+QPushButton:pressed{
+border-image: url(:/Resources/exitWhiteBlue.png);
+}x</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_holes2">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>645</y>
+          <width>161</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-image: url(:/Resources/whiteBG.png);
+color: rgb(60, 59, 63);
+font: 25 10pt &quot;Roboto Light&quot;;</string>
+        </property>
+        <property name="text">
+         <string>No</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_pipe2">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>737</y>
+          <width>161</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Roboto Light</family>
+          <pointsize>10</pointsize>
+          <weight>3</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-image: url(:/Resources/whiteBG.png);
+color: rgb(60, 59, 63);
+font: 25 10pt &quot;Roboto Light&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Yes</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_cleaning2">
+        <property name="geometry">
+         <rect>
+          <x>310</x>
+          <y>690</y>
+          <width>161</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Roboto Light</family>
+          <pointsize>10</pointsize>
+          <weight>3</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-image: url(:/Resources/whiteBG.png);
+color: rgb(60, 59, 63);
+font: 25 10pt &quot;Roboto Light&quot;;</string>
+        </property>
+        <property name="text">
+         <string>No</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="button_cleaning_2">
+        <property name="geometry">
+         <rect>
+          <x>280</x>
+          <y>560</y>
+          <width>127</width>
+          <height>33</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+border-image: url(:/Resources/Cleaning.png);
+background-repeat: none;
+}
+
+QPushButton:hover{
+border-image: url(:/Resources/CleaningPressed.png);
+}
+
+QPushButton:pressed{
+border-image: url(:/Resources/CleaningPressed.png);
+}x</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="button_holes_2">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>560</y>
+          <width>127</width>
+          <height>33</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+border-image: url(:/Resources/Holes.png);
+background-repeat: none;
+}
+
+QPushButton:hover{
+border-image: url(:/Resources/HolesPressed.png);
+}
+
+QPushButton:pressed{
+border-image: url(:/Resources/HolesPressed.png);
+}x</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="button_pipe_2">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>560</y>
+          <width>127</width>
+          <height>33</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+border-image: url(:/Resources/Pipes.png);
+background-repeat: none;
+}
+
+QPushButton:hover{
+border-image: url(:/Resources/PipesPressed.png);
+}
+
+QPushButton:pressed{
+border-image: url(:/Resources/PipesPressed.png);
+}x</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_createTank">
+       <widget class="QPushButton" name="button_main_create">
+        <property name="geometry">
+         <rect>
+          <x>250</x>
+          <y>775</y>
+          <width>127</width>
+          <height>33</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+	border-image: url(:/Resources/createButton.png);
+background-repeat: none;
+}
+
+QPushButton:hover{
+border-image: url(:/Resources/createButtonPressed.png);
+}
+
+QPushButton:pressed{
+border-image: url(:/Resources/createButtonPressed.png);
+}x</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="close_2">
+        <property name="geometry">
+         <rect>
+          <x>640</x>
+          <y>20</y>
+          <width>21</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+border-image: url(:/Resources/exitWhiteBlue.png);
+background-repeat: none;
+}
+
+QPushButton:hover{
+border-image: url(:/Resources/black_blue.png);
+}
+
+QPushButton:pressed{
+border-image: url(:/Resources/black_blue.png);
+}x</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_fishType_create">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>488</y>
+          <width>161</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-image: url(:/Resources/darkBlackBG.png);
+color: rgb(235, 235, 235);
+font: 25 10pt &quot;Roboto Light&quot;;
+</string>
+        </property>
+        <property name="text">
+         <string>Salmon</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_feedingSchedule">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>582</y>
+          <width>161</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-image: url(:/Resources/darkBlackBG.png);
+color: rgb(235, 235, 235);
+font: 25 10pt &quot;Roboto Light&quot;;
+</string>
+        </property>
+        <property name="text">
+         <string>H:M:S</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_wqThreshold">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>730</y>
+          <width>161</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-image: url(:/Resources/darkBlackBG.png);
+color: rgb(235, 235, 235);
+font: 25 10pt &quot;Roboto Light&quot;;
+</string>
+        </property>
+        <property name="text">
+         <string>0</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_tempLThreshold">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>630</y>
+          <width>171</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-image: url(:/Resources/darkBlackBG.png);
+color: rgb(235, 235, 235);
+font: 25 10pt &quot;Roboto Light&quot;;
+</string>
+        </property>
+        <property name="text">
+         <string>Celsius</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_tempUThreshold">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>680</y>
+          <width>161</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-image: url(:/Resources/darkBlackBG.png);
+color: rgb(235, 235, 235);
+font: 25 10pt &quot;Roboto Light&quot;;
+</string>
+        </property>
+        <property name="text">
+         <string>Celsius</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_harvestDate_create">
+        <property name="geometry">
+         <rect>
+          <x>430</x>
+          <y>533</y>
+          <width>161</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-image: url(:/Resources/darkBlackBG.png);
+color: rgb(235, 235, 235);
+font: 25 10pt &quot;Roboto Light&quot;;
+</string>
+        </property>
+        <property name="text">
+         <string>YY/MM/DD</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_settings">
+       <property name="styleSheet">
+        <string notr="true">border-image: url(:/Resources/whiteBG.png);</string>
+       </property>
+       <widget class="QLabel" name="label_8">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>40</y>
+          <width>91</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Settings</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QLabel" name="label_displayName_2">
+      <property name="geometry">
+       <rect>
+        <x>47</x>
+        <y>137</y>
+        <width>41</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/Resources/greyBG.png);
+color: rgb(60, 59, 63);
+font: 25 25pt &quot;Roboto&quot;;</string>
+      </property>
+      <property name="text">
+       <string>A</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="button_dashboard">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>220</y>
+        <width>290</width>
+        <height>54</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border-image: url(:/Resources/dasboard.png);
+background-repeat: none;
+}
+
+QPushButton:hover{
+border-image: url(:/Resources/dashboardPressed.png);
+}
+
+QPushButton:pressed{
+border-image: url(:/Resources/dashboardPressed.png);
+}x</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="button_createTank">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>280</y>
+        <width>290</width>
+        <height>54</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border-image: url(:/Resources/create.png);
+background-repeat: none;
+}
+
+QPushButton:hover{
+border-image: url(:/Resources/createPressed.png);
+}
+
+QPushButton:pressed{
+border-image: url(:/Resources/createPressed.png);
+}x</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="button_analyzeTanks">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>340</y>
+        <width>290</width>
+        <height>54</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border-image: url(:/Resources/analyze.png);
+background-repeat: none;
+}
+
+QPushButton:hover{
+border-image: url(:/Resources/analyzePressed.png);
+}
+
+QPushButton:pressed{
+border-image: url(:/Resources/analyzePressed.png);
+}x</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="button_settings">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>400</y>
+        <width>290</width>
+        <height>54</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border-image: url(:/Resources/settings.png);
+background-repeat: none;
+}
+
+QPushButton:hover{
+border-image: url(:/Resources/settingsPressed.png);
+}
+
+QPushButton:pressed{
+border-image: url(:/Resources/settingsPressed.png);
+}x</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_displayName_3">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>160</y>
+        <width>161</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/Resources/blueBG.png);
+font: 25 10pt &quot;Roboto&quot;;
+color: rgb(235, 235, 235);</string>
+      </property>
+      <property name="text">
+       <string>User</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="photos.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>close_button1</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>930</x>
+     <y>35</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>877</x>
+     <y>0</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>close_2</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>939</x>
+     <y>29</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>901</x>
+     <y>-9</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>close_3</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>940</x>
+     <y>30</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>930</x>
+     <y>-5</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>close_4</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>944</x>
+     <y>41</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>946</x>
+     <y>-13</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

@@ -233,36 +233,6 @@ class Ui_MainWindow(object):
         self.comboBox.setEditable(False)
         self.comboBox.setObjectName("comboBox")
         self.comboBox.addItem("")
-        self.lineEdit_nextFeeding = QtWidgets.QLineEdit(self.page_dashboard)
-        self.lineEdit_nextFeeding.setGeometry(QtCore.QRect(270, 270, 100, 18))
-        self.lineEdit_nextFeeding.setStyleSheet("border-image: url(:/Resources/whiteBG.png);\n"
-"font: 25 12pt \"Roboto Light\";\n"
-"color: rgb(35, 34, 40);")
-        self.lineEdit_nextFeeding.setObjectName("lineEdit_nextFeeding")
-        self.lineEdit_fishType_tank = QtWidgets.QLineEdit(self.page_dashboard)
-        self.lineEdit_fishType_tank.setGeometry(QtCore.QRect(270, 170, 100, 18))
-        self.lineEdit_fishType_tank.setStyleSheet("border-image: url(:/Resources/whiteBG.png);\n"
-"font: 25 12pt \"Roboto Light\";\n"
-"color: rgb(35, 34, 40);")
-        self.lineEdit_fishType_tank.setObjectName("lineEdit_fishType_tank")
-        self.lineEdit_harvestDate_tank = QtWidgets.QLineEdit(self.page_dashboard)
-        self.lineEdit_harvestDate_tank.setGeometry(QtCore.QRect(270, 220, 100, 18))
-        self.lineEdit_harvestDate_tank.setStyleSheet("border-image: url(:/Resources/whiteBG.png);\n"
-"font: 25 12pt \"Roboto Light\";\n"
-"color: rgb(35, 34, 40);")
-        self.lineEdit_harvestDate_tank.setObjectName("lineEdit_harvestDate_tank")
-        self.lineEdit_temp = QtWidgets.QLineEdit(self.page_dashboard)
-        self.lineEdit_temp.setGeometry(QtCore.QRect(270, 360, 51, 18))
-        self.lineEdit_temp.setStyleSheet("border-image: url(:/Resources/whiteBG.png);\n"
-"font: 25 12pt \"Roboto Light\";\n"
-"color: rgb(35, 34, 40);")
-        self.lineEdit_temp.setObjectName("lineEdit_temp")
-        self.lineEdit_ph = QtWidgets.QLineEdit(self.page_dashboard)
-        self.lineEdit_ph.setGeometry(QtCore.QRect(270, 310, 101, 18))
-        self.lineEdit_ph.setStyleSheet("border-image: url(:/Resources/whiteBG.png);\n"
-"font: 25 12pt \"Roboto Light\";\n"
-"color: rgb(35, 34, 40);")
-        self.lineEdit_ph.setObjectName("lineEdit_ph")
         self.label_cleaning_2 = QtWidgets.QLabel(self.page_dashboard)
         self.label_cleaning_2.setGeometry(QtCore.QRect(270, 460, 41, 18))
         self.label_cleaning_2.setStyleSheet("border-image: url(:/Resources/whiteBG.png);\n"
@@ -313,6 +283,36 @@ class Ui_MainWindow(object):
 "}x")
         self.button_emailPath.setText("")
         self.button_emailPath.setObjectName("button_emailPath")
+        self.label_temp = QtWidgets.QLabel(self.page_dashboard)
+        self.label_temp.setGeometry(QtCore.QRect(270, 363, 121, 18))
+        self.label_temp.setStyleSheet("border-image: url(:/Resources/whiteBG.png);\n"
+"font: 25 12pt \"Roboto Light\";\n"
+"color: rgb(35, 34, 40);")
+        self.label_temp.setObjectName("label_temp")
+        self.label_pH = QtWidgets.QLabel(self.page_dashboard)
+        self.label_pH.setGeometry(QtCore.QRect(270, 320, 121, 18))
+        self.label_pH.setStyleSheet("border-image: url(:/Resources/whiteBG.png);\n"
+"font: 25 12pt \"Roboto Light\";\n"
+"color: rgb(35, 34, 40);")
+        self.label_pH.setObjectName("label_pH")
+        self.label_feedingSchedule = QtWidgets.QLabel(self.page_dashboard)
+        self.label_feedingSchedule.setGeometry(QtCore.QRect(270, 270, 121, 18))
+        self.label_feedingSchedule.setStyleSheet("border-image: url(:/Resources/whiteBG.png);\n"
+"font: 25 12pt \"Roboto Light\";\n"
+"color: rgb(35, 34, 40);")
+        self.label_feedingSchedule.setObjectName("label_feedingSchedule")
+        self.label_harvestDate = QtWidgets.QLabel(self.page_dashboard)
+        self.label_harvestDate.setGeometry(QtCore.QRect(270, 220, 121, 18))
+        self.label_harvestDate.setStyleSheet("border-image: url(:/Resources/whiteBG.png);\n"
+"font: 25 12pt \"Roboto Light\";\n"
+"color: rgb(35, 34, 40);")
+        self.label_harvestDate.setObjectName("label_harvestDate")
+        self.label_fishType = QtWidgets.QLabel(self.page_dashboard)
+        self.label_fishType.setGeometry(QtCore.QRect(270, 176, 121, 18))
+        self.label_fishType.setStyleSheet("border-image: url(:/Resources/whiteBG.png);\n"
+"font: 25 12pt \"Roboto Light\";\n"
+"color: rgb(35, 34, 40);")
+        self.label_fishType.setObjectName("label_fishType")
         self.stackedWidget_2.addWidget(self.page_dashboard)
         self.page_analyzeTanks = QtWidgets.QWidget()
         self.page_analyzeTanks.setStyleSheet("border-image: url(:/Resources/AnalyzeBG.png);")
@@ -593,7 +593,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.stackedWidget.setCurrentIndex(0)
-        self.stackedWidget_2.setCurrentIndex(0)
+        self.stackedWidget_2.setCurrentIndex(1)
         self.close_button1.clicked.connect(MainWindow.close)
         self.close_2.clicked.connect(MainWindow.close)
         self.close_3.clicked.connect(MainWindow.close)
@@ -613,14 +613,14 @@ class Ui_MainWindow(object):
         self.label_displayName.setText(_translate("MainWindow", "Abdullah Elsheikh"))
         self.comboBox.setCurrentText(_translate("MainWindow", "Tank 1"))
         self.comboBox.setItemText(0, _translate("MainWindow", "Tank 1"))
-        self.lineEdit_nextFeeding.setText(_translate("MainWindow", "6:00:00"))
-        self.lineEdit_fishType_tank.setText(_translate("MainWindow", "Salmon"))
-        self.lineEdit_harvestDate_tank.setText(_translate("MainWindow", "2019/12/4"))
-        self.lineEdit_temp.setText(_translate("MainWindow", "22"))
-        self.lineEdit_ph.setText(_translate("MainWindow", "6.3"))
         self.label_cleaning_2.setText(_translate("MainWindow", "Yes"))
         self.label_holes_2.setText(_translate("MainWindow", "1"))
         self.label_pipes_2.setText(_translate("MainWindow", "Yes"))
+        self.label_temp.setText(_translate("MainWindow", "22"))
+        self.label_pH.setText(_translate("MainWindow", "6.2"))
+        self.label_feedingSchedule.setText(_translate("MainWindow", "6:00:00"))
+        self.label_harvestDate.setText(_translate("MainWindow", "2019/8/12"))
+        self.label_fishType.setText(_translate("MainWindow", "Salmon"))
         self.label_holes2.setText(_translate("MainWindow", "No"))
         self.label_pipe2.setText(_translate("MainWindow", "Yes"))
         self.label_cleaning2.setText(_translate("MainWindow", "No"))
@@ -725,6 +725,7 @@ class Ui_MainWindow(object):
         self.button_dashboard.clicked.connect(self.dashboardIsClicked)
         self.button_main_create.clicked.connect(self.createTank)
         self.button_subscribe.clicked.connect(self.subscribeIsClicked)
+
 
 
 
