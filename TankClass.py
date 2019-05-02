@@ -16,6 +16,7 @@ class Tank:
         return self.tankID
 
     def getFishType(self):
+        '''a function that returns tank's type of fish'''
         return self.typeOfFish
 
     def checkWaterQuality(self, waterQuality):

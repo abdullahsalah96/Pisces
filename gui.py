@@ -635,17 +635,17 @@ class Ui_MainWindow(object):
         self.label_displayName_3.setText(_translate("MainWindow", "User"))
 
     def loginIsClicked(self):
-        _translate = QtCore.QCoreApplication.translate
         self.stackedWidget_2.setCurrentIndex(1)
         username_login=self.lineEdit_username_login.text()
         password_login=self.lineEdit_password_login.text()
         self.user = self.db.authenticateLogIn(username_login, password_login)
         if(self.user):
             self.tank = self.db.loadTankList(self.user.getUserID())
-            self.label_fishType.setText(_translate("MainWindow", self.tank[0].getFishType()))
+            self.label_fishType.setText(self.tank[0].getFishType())
             self.stackedWidget.setCurrentIndex(2)
-            name = self.user.getFirstName()
-            self.label_displayName.setText(text)
+            firstName = self.user.getFirstName()
+            lastName = self.user.getLastName()
+            self.label_displayName.setText(firstName + lastName)
 
     def createOneIsClicked(self):
 
