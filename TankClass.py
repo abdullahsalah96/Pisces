@@ -15,6 +15,9 @@ class Tank:
         '''a function that returns tank ID'''
         return self.tankID
 
+    def getFishType(self):
+        return self.typeOfFish
+
     def checkWaterQuality(self, waterQuality):
         '''a function that returns true if the water quality level is above the specified threshold'''
         if(waterQuality > self.waterQualityThresh):
