@@ -9,9 +9,14 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from DatabaseClass import Database
 from UserClass import User
+from CameraClass import Camera
+import cv2
+from PyQt5.QtCore import QTimer
+
 
 class Ui_MainWindow(object):
     db = Database()
+    camTimer = QTimer()
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1000, 840)
@@ -653,10 +658,24 @@ class Ui_MainWindow(object):
                 self.label_holes_2.setText("-")
                 self.label_cleaning_2.setText("-")
                 self.label_pipes_2.setText("-")
+            self.camera = Camera(camAddress = 0)
+            self.camera.start()
+            self.camTimer.timeout.connect(lambda: self.camFeed())
+            self.camTimer.start()
             self.stackedWidget.setCurrentIndex(2)
             firstName = self.user.getFirstName()
             lastName = self.user.getLastName()
             self.label_displayName.setText(firstName + lastName)
+
+    def camFeed(self):
+        """
+        a function to show cam feed on cam label
+        """
+        if(cv2.waitKey == 27): #if the ESC button is pressed
+            cv2.destroyAllWindows()
+            self.camTimer.stop()
+        else:
+            cv2.imshow('frame', self.camera.getFrame())
 
     def createOneIsClicked(self):
         self.stackedWidget.setCurrentIndex(1)
