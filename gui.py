@@ -8,7 +8,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from DatabaseClass import Database
-
+from UserClass import User
 
 class Ui_MainWindow(object):
     db = Database()
@@ -641,25 +641,34 @@ class Ui_MainWindow(object):
         password_login=self.lineEdit_password_login.text()
         self.user = self.db.authenticateLogIn(username_login, password_login)
         if(self.user):
-            self.tank = self.db.loadTankList(self.user.getUserID())
-            self.label_fishType.setText(self.tank[0].getFishType())
+            if(self.db.loadTankList(self.user.getUserID()) != None):
+                self.tank = self.db.loadTankList(self.user.getUserID())
+                self.label_fishType.setText(self.tank[0].getFishType())
+            else:
+                self.label_fishType.setText("-")
+                self.label_harvestDate.setText("-")
+                self.label_feedingSchedule.setText("-")
+                self.label_temp.setText("-")
+                self.label_pH.setText("-")
+                self.label_holes_2.setText("-")
+                self.label_cleaning_2.setText("-")
+                self.label_pipes_2.setText("-")
             self.stackedWidget.setCurrentIndex(2)
             firstName = self.user.getFirstName()
             lastName = self.user.getLastName()
             self.label_displayName.setText(firstName + lastName)
 
     def createOneIsClicked(self):
-
         self.stackedWidget.setCurrentIndex(1)
 
     def signupIsClicked(self):
-
-        firstName=self.lineEdit_firstName.text()
-        lastName=self.lineEdit_lastName.text()
-        username_signup=self.lineEdit_username_signup.text()
-        password_signup=self.lineEdit_password_signup.text()
-        email_signup=self.lineEdit_email_signup.text()
-
+        firstName = self.lineEdit_firstName.text()
+        lastName = self.lineEdit_lastName.text()
+        username = self.lineEdit_username_signup.text()
+        password = self.lineEdit_password_signup.text()
+        email = self.lineEdit_email_signup.text()
+        newUser = User(firstName, lastName, username, password, email, None, None, None)
+        self.db.addNewUser(newUser)
         self.stackedWidget.setCurrentIndex(0)
 
 
@@ -698,9 +707,6 @@ class Ui_MainWindow(object):
             print("Send email")
 
         self.button_subscribe.setText("Show report")
-
-
-
 
     def createTank(self):
 
