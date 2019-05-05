@@ -12,6 +12,8 @@ from UserClass import User
 from CameraClass import Camera
 import cv2
 from PyQt5.QtCore import QTimer
+import photos_rc
+
 
 class Ui_MainWindow(object):
     db = Database()
@@ -20,6 +22,8 @@ class Ui_MainWindow(object):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1000, 840)
         MainWindow.setStyleSheet("border-image: url(:/Resources/whiteBG.png);")
+        MainWindow.setWindowFlags(QtCore.Qt.CustomizeWindowHint)
+        MainWindow.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.stackedWidget = QtWidgets.QStackedWidget(self.centralwidget)
@@ -711,7 +715,7 @@ class Ui_MainWindow(object):
         password_login=self.lineEdit_password_login.text()
         self.user = self.db.authenticateLogIn(username_login, password_login)
         if(self.user):
-            if(self.db.loadTankList(self.user.getUserID()) != None):
+            if(self.db.loadTankList(self.user.getUserID()) is not None):
                 self.tank = self.db.loadTankList(self.user.getUserID())
                 self.label_fishType.setText(self.tank[0].getFishType())
             else:
@@ -808,6 +812,8 @@ class Ui_MainWindow(object):
         self.comboBox.addItem(text)
 
 
+    def backToSignIn(self):
+        self.stackedWidget.setCurrentIndex(0)
 
     def buttonsConnections(self):
         self.button_login.clicked.connect(self.loginIsClicked)
@@ -820,10 +826,7 @@ class Ui_MainWindow(object):
         self.button_dashboard.clicked.connect(self.dashboardIsClicked)
         self.button_main_create.clicked.connect(self.createTank)
         self.button_subscribe.clicked.connect(self.subscribeIsClicked)
-
-
-
-import photos_rc
+        self.button_backToSignIn.clicked.connect(self.backToSignIn)
 
 
 if __name__ == "__main__":

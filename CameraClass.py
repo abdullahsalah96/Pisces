@@ -2,9 +2,10 @@ import cv2
 import threading
 import time
 import numpy as np
+
 class Camera(threading.Thread):
     def __init__(self, camAddress):
-        self.frame = np.zeros((640,480,3), np.uint8)
+        self.frame = np.zeros((640, 480, 3), np.uint8)
         self.cam = camAddress
 
         super().__init__(name = "cam thread")
