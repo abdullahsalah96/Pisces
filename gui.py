@@ -743,7 +743,6 @@ class Ui_MainWindow(object):
 
 
     def buttonsConnections(self):
-
         self.button_login.clicked.connect(self.loginIsClicked)
         self.button_createOne.clicked.connect(self.createOneIsClicked)
         self.button_signup.clicked.connect(self.signupIsClicked)
