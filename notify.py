@@ -21,6 +21,3 @@ class emailNotifier():
         self.message.set_subject(self.subject)
         self.message.set_html(self.body)
         self.client.send(self.message)
-
-em = emailNotifier("madeinalexmia@gmail.com","abdullahsalah96@outlook.com")
-em.sendEmail("hi", "from SendGrid")
