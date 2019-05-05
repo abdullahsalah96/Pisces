@@ -62,8 +62,13 @@ cv2.imshow("2", img)
 # test_result = CF.face.detect(test_url)
 test_faceId = getFaceID(test_url)
 
-data = open(url_to_image(test_url)).read()
-r = requests.post("https://host.url.com/upload/",data=data)
+with open("/home/abdullahsalah96/Downloads/me.jpg", 'rb') as f:
+  data = f.read()
+
+print(data)
+# r = requests.post("https://host.url.com/upload/img.png", data=data)
+# url = "https://host.url.com/upload/img.png"
+# cv2.imshow('5', url_to_image(url))
 
 r = authenticateFace(res[0]['faceId'], test_faceId)
 print(r)

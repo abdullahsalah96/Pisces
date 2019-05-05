@@ -6,10 +6,10 @@ import numpy as np
 import cognitive_face as CF
 
 class authenticateFace():
-    self.KEY = '9fae0e6855d74d83ab4d10b9bf198e9a'  # Replace with a valid Subscription Key here.
-    CF.Key.set(self.KEY)
-    self.BASE_URL = 'https://australiaeast.api.cognitive.microsoft.com/face/v1.0'  # Replace with your regional Base URL
-    CF.BaseUrl.set(self.BASE_URL)
+    KEY = '9fae0e6855d74d83ab4d10b9bf198e9a'  # Replace with a valid Subscription Key here.
+    CF.Key.set(KEY)
+    BASE_URL = 'https://australiaeast.api.cognitive.microsoft.com/face/v1.0'  # Replace with your regional Base URL
+    CF.BaseUrl.set(BASE_URL)
 
     def url_to_image(self, url):
       """
