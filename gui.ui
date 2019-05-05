@@ -153,6 +153,24 @@ font: 25 10pt &quot;Roboto Light&quot;;</string>
        <string>Last Name</string>
       </property>
      </widget>
+     <widget class="QLineEdit" name="lineEdit_signIn_status">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>290</y>
+        <width>361</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/Resources/darkBlackBG.png);
+color: rgb(245, 29, 69);
+font: 25 10pt &quot;Roboto Light&quot;;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="page_signup">
      <property name="styleSheet">

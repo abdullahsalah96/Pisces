@@ -8,10 +8,15 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from DatabaseClass import Database
+from UserClass import User
+from CameraClass import Camera
+import cv2
+from PyQt5.QtCore import QTimer
 
 
 class Ui_MainWindow(object):
     db = Database()
+    camTimer = QTimer()
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1000, 840)
@@ -591,6 +596,7 @@ class Ui_MainWindow(object):
         self.numberOfTanks=1
         self.buttonsConnections()
 
+
         self.retranslateUi(MainWindow)
         self.stackedWidget.setCurrentIndex(0)
         self.stackedWidget_2.setCurrentIndex(1)
@@ -640,22 +646,48 @@ class Ui_MainWindow(object):
         password_login=self.lineEdit_password_login.text()
         self.user = self.db.authenticateLogIn(username_login, password_login)
         if(self.user):
+            if(self.db.loadTankList(self.user.getUserID()) != None):
+                self.tank = self.db.loadTankList(self.user.getUserID())
+                self.label_fishType.setText(self.tank[0].getFishType())
+            else:
+                self.label_fishType.setText("-")
+                self.label_harvestDate.setText("-")
+                self.label_feedingSchedule.setText("-")
+                self.label_temp.setText("-")
+                self.label_pH.setText("-")
+                self.label_holes_2.setText("-")
+                self.label_cleaning_2.setText("-")
+                self.label_pipes_2.setText("-")
+            self.camera = Camera(camAddress = 0)
+            self.camera.start()
+            self.camTimer.timeout.connect(lambda: self.camFeed())
+            self.camTimer.start()
             self.stackedWidget.setCurrentIndex(2)
-            name = self.user.getFirstName()
-            self.label_displayName.setText(text)
+            firstName = self.user.getFirstName()
+            lastName = self.user.getLastName()
+            self.label_displayName.setText(firstName + lastName)
+
+    def camFeed(self):
+        """
+        a function to show cam feed on cam label
+        """
+        if(cv2.waitKey == 27): #if the ESC button is pressed
+            cv2.destroyAllWindows()
+            self.camTimer.stop()
+        else:
+            cv2.imshow('frame', self.camera.getFrame())
 
     def createOneIsClicked(self):
-
         self.stackedWidget.setCurrentIndex(1)
 
     def signupIsClicked(self):
-
-        firstName=self.lineEdit_firstName.text()
-        lastName=self.lineEdit_lastName.text()
-        username_signup=self.lineEdit_username_signup.text()
-        password_signup=self.lineEdit_password_signup.text()
-        email_signup=self.lineEdit_email_signup.text()
-
+        firstName = self.lineEdit_firstName.text()
+        lastName = self.lineEdit_lastName.text()
+        username = self.lineEdit_username_signup.text()
+        password = self.lineEdit_password_signup.text()
+        email = self.lineEdit_email_signup.text()
+        newUser = User(firstName, lastName, username, password, email, None, None, None)
+        self.db.addNewUser(newUser)
         self.stackedWidget.setCurrentIndex(0)
 
 
@@ -695,9 +727,6 @@ class Ui_MainWindow(object):
 
         self.button_subscribe.setText("Show report")
 
-
-
-
     def createTank(self):
 
         fishType = self.lineEdit_fishType_create.text()
@@ -714,7 +743,6 @@ class Ui_MainWindow(object):
 
 
     def buttonsConnections(self):
-
         self.button_login.clicked.connect(self.loginIsClicked)
         self.button_createOne.clicked.connect(self.createOneIsClicked)
         self.button_signup.clicked.connect(self.signupIsClicked)
