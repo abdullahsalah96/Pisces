@@ -26,6 +26,15 @@ class User:
         '''a function that returns user ID'''
         return self.userID
 
+    def setFaceID(self, faceID):
+        '''a function that sets face ID'''
+        self.faceID = faceID
+
+    def getFaceID(self):
+        '''a function that returns face ID'''
+        return self.faceID
+
+
     def creatTank(self, tankID, typeOfFish, waterQualityThresh, tempUpperThresh, tempLowerThresh):
         '''a function that appends a tank object to the user's tanks list
         and returns this newly created object'''

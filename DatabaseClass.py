@@ -149,6 +149,14 @@ class Database:
             print('Username already exists!')
             return False
 
+    def addFaceID(self, user):
+        """
+        takes user object and sets its face ID
+        """
+        tsql = "INSERT INTO [User] WHERE userID = ? (faceID) VALUES (?)"
+        with self.cursor.execute(tsql, user.getUserID(), user.getFaceID()):
+            print('Successfully Inserted!')
+        return None
 
     #take objects as parameter and adds new entry in database
     def addNewTank(self, tank, user):
