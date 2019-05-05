@@ -30,7 +30,7 @@
      <bool>true</bool>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="page_login">
      <property name="styleSheet">
@@ -67,7 +67,7 @@ border-image: url(:/Resources/signInPressed.png);
       <property name="geometry">
        <rect>
         <x>340</x>
-        <y>590</y>
+        <y>650</y>
         <width>320</width>
         <height>44</height>
        </rect>
@@ -166,6 +166,33 @@ font: 25 10pt &quot;Roboto Light&quot;;</string>
        <string notr="true">border-image: url(:/Resources/darkBlackBG.png);
 color: rgb(245, 29, 69);
 font: 25 10pt &quot;Roboto Light&quot;;</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="button_login_with_faceID">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>590</y>
+        <width>320</width>
+        <height>44</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border-image: url(:/Resources/signIn.png);
+background-repeat: none;
+}
+
+QPushButton:hover{
+border-image: url(:/Resources/signInPressed.png);
+}
+
+QPushButton:pressed{
+border-image: url(:/Resources/signInPressed.png);
+}x</string>
       </property>
       <property name="text">
        <string/>
@@ -383,7 +410,7 @@ color: rgb(235, 235, 235);</string>
        <string notr="true">border-image: url(:/Resources/CreateBG.png);</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="page_blank">
        <property name="styleSheet">
@@ -1061,6 +1088,76 @@ font: 25 10pt &quot;Roboto Light&quot;;
         </property>
         <property name="text">
          <string>Settings</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="button_open_cam">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>550</y>
+          <width>127</width>
+          <height>33</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+border-image: url(:/Resources/EmailButton.png);
+background-repeat: none;
+}
+
+QPushButton:hover{
+border-image: url(:/Resources/EmailButtonPressed.png);
+}
+
+QPushButton:pressed{
+border-image: url(:/Resources/EmailButtonPressed.png);
+}x</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="button_capture">
+        <property name="geometry">
+         <rect>
+          <x>370</x>
+          <y>550</y>
+          <width>127</width>
+          <height>33</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+border-image: url(:/Resources/EmailButton.png);
+background-repeat: none;
+}
+
+QPushButton:hover{
+border-image: url(:/Resources/EmailButtonPressed.png);
+}
+
+QPushButton:pressed{
+border-image: url(:/Resources/EmailButtonPressed.png);
+}x</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="camLabel_2">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>250</y>
+          <width>533</width>
+          <height>260</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border-image: url(:/Resources/darkBlackBG.png);</string>
+        </property>
+        <property name="text">
+         <string/>
         </property>
        </widget>
       </widget>
