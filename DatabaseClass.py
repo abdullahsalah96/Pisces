@@ -209,11 +209,12 @@ class Database:
         result_set = self.cursor.fetchall()
         print( str(len(result_set)) + " Entry in Database")
 
-        for row in result_set:
-            print("Id = ", row[0])
-            print("Username = ", row[1])
-            print("Password = ", row[2])
-            print("FirstName  = ", row[3])
-            print("Lastname = ", row[4])
-            print("email = ", row[5])
-            print("faceID = ", row[6])
+        return result_set;
+        # for row in result_set:
+        #     print("Id = ", row[0])
+        #     print("Username = ", row[1])
+        #     print("Password = ", row[2])
+        #     print("FirstName  = ", row[3])
+        #     print("Lastname = ", row[4])
+        #     print("email = ", row[5])
+        #     print("faceID = ", row[6])

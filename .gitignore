@@ -1,1 +1,11 @@
 __pycache__/
+.DS_Store
+.idea/encodings.xml
+.idea/Microsoft-Azure-Challenge-2019.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+GUI/__pycache__/photos_rc.cpython-36.pyc
+GUI/__pycache__/photos_rc.cpython-36.pyc
+*.pyc
