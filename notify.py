@@ -14,11 +14,11 @@ class emailNotifier():
 
     def sendEmail(self, subject, body, attachementPath, attachementName):
         """
-        a function that takes the subject and the body as input and sends an email
+        a function that takes the subject, body, attachment path
+        and attachement name as input and sends an email
         """
         self.subject = subject
         self.body = Content("text/plain", body)
-        # content = Content("text/plain", "and easy to do anywhere, even with Python")
         with open(attache+39/mentPath, 'rb') as fd:
              b64data = base64.b64encode(fd.read())
         attachment = Attachment()
