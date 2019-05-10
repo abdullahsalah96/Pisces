@@ -13,7 +13,10 @@ class waterQuality:
         self.headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ self.api_key)}
 
     def getPrediction(self):
-        '''a function that returns the prediction of the water salinity'''
+        '''
+        a function that returns the prediction list
+        returned from the web service
+        '''
         data =  {
                 "Inputs": {
                         "input1":
@@ -31,12 +34,13 @@ class waterQuality:
         return result
 
     def predictWaterSalinity(self):
+        '''
+        a function that returns the prediction list
+        returned from the web service
+        '''
         r = self.getPrediction()
         result = r.decode()
         print(result)
-        prediction_index = result.find("Value")
-        print(result[prediction_index:])
-
-
-wq = waterQuality("1", "1", "50", 7.5, 5)
-wq.predictWaterSalinity()
+        prediction_first_index = result.rfind(",") + 2
+        prediction_last_index = prediction_first_index + 8
+        return (result[prediction_first_index:prediction_last_index])
