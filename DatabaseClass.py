@@ -4,6 +4,7 @@ from datetime import datetime
 import TankClass
 import UserClass
 import WaterQualityClass
+from array import *
 
 
 class Database:
@@ -210,11 +211,19 @@ class Database:
         print( str(len(result_set)) + " Entry in Database")
 
         return result_set;
-        # for row in result_set:
-        #     print("Id = ", row[0])
-        #     print("Username = ", row[1])
-        #     print("Password = ", row[2])
-        #     print("FirstName  = ", row[3])
-        #     print("Lastname = ", row[4])
-        #     print("email = ", row[5])
-        #     print("faceID = ", row[6])
+
+
+    def getData(self,username,password):
+        userID = self.searchUser(username, password)
+        tsql = "SELECT * FROM Tanks WHERE userID = ?"
+        self.cursor.execute(tsql, userID)
+        result_set: array = self.cursor.fetchall()
+
+        for row in result_set:
+            tsql = "SELECT * FROM Water_Quality WHERE tankID = ?"
+            if(len(row)<3):
+                break
+            self.cursor.execute(tsql, row[3])
+            result_set2: array = (self.cursor.fetchall())
+
+        return [result_set,result_set2];

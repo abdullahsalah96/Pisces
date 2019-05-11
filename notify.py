@@ -19,7 +19,7 @@ class emailNotifier():
         """
         self.subject = subject
         self.body = Content("text/plain", body)
-        with open(attache+39/mentPath, 'rb') as fd:
+        with open(attachementPath, 'rb') as fd:
              b64data = base64.b64encode(fd.read())
         attachment = Attachment()
         attachment.content = str(b64data,'utf-8')
