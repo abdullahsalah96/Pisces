@@ -2,12 +2,12 @@ import urllib.request as urllib
 import json
 
 class waterQuality:
-    def __init__(self, date, time, pH, temperature, waterQualityLevel):
+    def __init__(self, date, time, pH, temperature, waterSalinity):
         self.date = date
         self.time = time
         self.pH = pH
         self.temperature = temperature
-        self.waterQualityLevel = waterQualityLevel
+        self.waterSalinity = waterSalinity
         self.url = 'https://ussouthcentral.services.azureml.net/workspaces/9b7b204be697483599b66bbbecd68702/services/0007b08e45444a31a8ecf7b1779af9b0/execute?api-version=2.0&details=true'
         self.api_key = 'FXGBv13k4qgzFdsdjqRk90V+yG1nzcPx9eTwEwMryCI7Cju/dsy/WlpgZjeblBUxM0/m7Rg9jQGED3ZsOKZDQg==' # Replace this with the API key for the web service
         self.headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ self.api_key)}

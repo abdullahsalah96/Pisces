@@ -4,7 +4,7 @@ import TankClass
 class User:
     # userTankList: TankClass
 
-    def __init__(self, firstName, lastName ,username, password, email, faceID, userID, userTankList):
+    def __init__(self, firstName, lastName ,username, password, email, faceID,reportLink, userID, userTankList):
         self.firstName = firstName
         self.lastName = lastName
         self.username = username
@@ -13,6 +13,7 @@ class User:
         self.userTankList = userTankList
         self.email = email
         self.faceID = faceID
+        self.reportLink = reportLink
 
     def getFirstName(self):
         '''a function that returns user's first name'''
@@ -34,11 +35,15 @@ class User:
         '''a function that returns face ID'''
         return self.faceID
 
+    def getReportLink(self):
+        return self.reportLink
 
-    def creatTank(self, tankID, typeOfFish, waterQualityThresh, tempUpperThresh, tempLowerThresh):
+    def creatTank(self, tankID, typeOfFish,feedingSchedule, waterSalinityUpperThresh,waterSalinityLowerThresh, tempUpperThresh, tempLowerThresh,
+                 pHUpperThresh,pHLowerThresh,harvestDate,needsCleaning,needsFixing, waterQualityHistory):
         '''a function that appends a tank object to the user's tanks list
         and returns this newly created object'''
-        newTank = TankClass.Tank(tankID, typeOfFish, waterQualityThresh, tempUpperThresh, tempLowerThresh)
+        newTank = TankClass.Tank(tankID, typeOfFish,feedingSchedule, waterSalinityUpperThresh,waterSalinityLowerThresh, tempUpperThresh, tempLowerThresh,
+                 pHUpperThresh,pHLowerThresh,harvestDate,needsCleaning,needsFixing, waterQualityHistory,None)
         self.userTankList.append(newTank)
         return newTank
 

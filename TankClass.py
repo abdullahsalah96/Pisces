@@ -3,13 +3,22 @@ from WaterQualityClass import waterQuality
 import datetime
 class Tank:
     # waterQualityHistory : WaterQualityClass
-    def __init__(self, tankID, typeOfFish, waterQualityThresh, tempUpperThresh, tempLowerThresh, waterQualityHistory):
+    def __init__(self, tankID, typeOfFish,feedingSchedule, waterSalinityUpperThresh,waterSalinityLowerThresh, tempUpperThresh, tempLowerThresh,
+                 pHUpperThresh,pHLowerThresh,harvestDate,needsCleaning,needsFixing, waterQualityHistory, holesList):
         self.tankID = tankID
         self.typeOfFish = typeOfFish
-        self.waterQualityThresh = waterQualityThresh
+        self.feedingSchedule = feedingSchedule
+        self.waterSalinityUpperThresh = waterSalinityUpperThresh
+        self.waterSalinityLowerThresh = waterSalinityLowerThresh
         self.tempUpperThresh = tempUpperThresh
         self.tempLowerThresh = tempLowerThresh
+        self.pHUpperThresh = pHUpperThresh
+        self.pHLowerThresh = pHLowerThresh
+        self.harvestDate = harvestDate
+        self.needsCleaning = needsCleaning
+        self.needsFixing = needsFixing
         self.waterQualityHistory = waterQualityHistory
+        self.holesList = holesList
 
     def getTankID(self):
         '''a function that returns tank ID'''
@@ -19,9 +28,9 @@ class Tank:
         '''a function that returns tank's type of fish'''
         return self.typeOfFish
 
-    def checkWaterQuality(self, waterQuality):
+    def checkWaterSalinity(self, waterSalinity):
         '''a function that returns true if the water quality level is above the specified threshold'''
-        if(waterQuality > self.waterQualityThresh):
+        if(waterSalinity < self.waterSalinityUpperThresh and waterSalinity > self.waterSalinityLowerThresh  ):
             return True
         else:
             return False
@@ -33,9 +42,16 @@ class Tank:
         else:
             return False
 
-    def addWaterQualityEntry(self, date, pH, temperature):
+    def checkTemp(self, pH):
+        '''a function that returns true if the pH is within the specified threshold'''
+        if(pH > self.pHLowerThresh and pH < self.pHUpperThresh):
+            return True
+        else:
+            return False
+
+    def addWaterQualityEntry(self, date, pH, temperature,waterSalinity):
         '''a function that add an entry to getting water quality and appends it to the history list'''
-        waterQEntry = waterQuality(date, pH, temperature)
+        waterQEntry = waterQuality(date, pH, temperature,waterSalinity)
         self.waterQualityHistory.append(waterQEntry)
 
     def getWaterQualityHistory(self):

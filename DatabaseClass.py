@@ -1,6 +1,7 @@
 import pyodbc
 from datetime import datetime
 
+import NetHolesClass
 import TankClass
 import UserClass
 import WaterQualityClass
@@ -52,6 +53,7 @@ class Database:
 
     #loads user data from database and returns user object
     def loadUser(self, userID):
+        print("LOADING User >>>>>>>>>>>>")
         tsql = "SELECT * FROM [User] WHERE userID = ?"
         self.cursor.execute(tsql, userID)
         result_set = self.cursor.fetchall()
@@ -64,18 +66,21 @@ class Database:
         print("Lastname = ", row[4])
         print("email = " , row[5])
         print("faceID = ", row[6] )
+        print("reportLink = ", row[7])
         username =  row[1]
         password =  row[2]
         firstName  =  row[3]
         lastName =  row[4]
         email = row[5]
         faceID = row[6]
+        reportLink = row[7]
         tankList = self.loadTankList(userID)
-        user = UserClass.User(firstName,lastName,username,password,email,faceID,userID,tankList)
+        user = UserClass.User(firstName,lastName,username,password,email,faceID,reportLink,userID,tankList)
         return user
 
     #load tanks list and returns it
     def loadTankList(self, userID):
+        print("LOADING TANK >>>>>>>>>>>>")
         tsql = "SELECT * FROM Tanks WHERE userID = ?"
         self.cursor.execute(tsql, userID)
         result_set = self.cursor.fetchall()
@@ -90,25 +95,38 @@ class Database:
             print("feedingSchedule = ", row[1])
             print("userID = ", row[2])
             print("tankID  = ", row[3])
-            print("waterQualityThresh = ", row[4])
-            print("tempLowerThresh = ", row[5])
-            print("tempUpperThresh = ", row[6])
-            print("harvestDate  = ", row[7] , "\n")
+            print("waterSalinityUpperThresh = ", row[4])
+            print("waterSalinityLowerThresh = ", row[5])
+            print("tempLowerThresh = ", row[6])
+            print("tempUpperThresh = ", row[7])
+            print("pHLowerThresh = ", row[8])
+            print("pHUpperThresh = ", row[9])
+            print("harvestDate  = ", row[10])
+            print("needsCleaning  = ", row[11])
+            print("needsFixing  = ", row[12])
             fishType = row[0]
             feedingSchedule = row[1]
             tankID = row[3]
-            waterQualityThresh =  row[4]
-            tempLowerThresh =  row[5]
-            tempUpperThresh =  row[6]
-            harvestDate = row[7]
+            waterSalinityUpperThresh =  row[4]
+            waterSalinityLowerThresh = row[5]
+            tempLowerThresh =  row[6]
+            tempUpperThresh =  row[7]
+            pHLowerThresh = row[8]
+            pHUpperThresh = row[9]
+            harvestDate = row[10]
+            needsCleaning = row[11]
+            needsFixing = row[12]
             waterQualityList = self.loadWaterQualityList(tankID)
-            tank = TankClass.Tank(tankID,fishType,waterQualityThresh,tempUpperThresh,tempLowerThresh,waterQualityList)
+            netHolesList = self.loadNetHolesList(tankID)
+            tank = TankClass.Tank(tankID,fishType,feedingSchedule,waterSalinityUpperThresh,waterSalinityLowerThresh,
+                                  tempUpperThresh,tempLowerThresh,pHUpperThresh,pHLowerThresh,harvestDate,needsCleaning,needsFixing,waterQualityList,netHolesList)
             tankList.append(tank)
 
         return tankList
 
     # load water quality list and returns it
     def loadWaterQualityList(self, tankID):
+        print("LOADING WATER QUALITY >>>>>>>>>>>>")
         tsql = "SELECT * FROM Water_Quality WHERE tankID = ?"
         self.cursor.execute(tsql, tankID)
         result_set = self.cursor.fetchall()
@@ -132,6 +150,28 @@ class Database:
 
         return waterQualityList
 
+        # load net holes list
+    def loadNetHolesList(self, tankID):
+        print("LOADING NetHoles >>>>>>>>>>>>")
+        tsql = "SELECT * FROM Holes WHERE tankID = ?"
+        self.cursor.execute(tsql, tankID)
+        result_set = self.cursor.fetchall()
+        holesList = []
+        if len(result_set) == 0:
+            return None
+        for row in result_set:
+            print("tankID = ", row[0])
+            print("holesCoord = ", row[1])
+            print("date = ", row[2])
+            print("time  = ", row[3])
+            holesCoord = row[1]
+            date = row[2]
+            time = row[3]
+            holeEntry = NetHolesClass.netHoles(holesCoord,date,time)
+            holesList.append(holeEntry)
+
+            return holesList
+
     #take objects as parameter and adds new entry in database
     #returns
     def addNewUser(self, user):
@@ -142,8 +182,8 @@ class Database:
         if(self.validateUsername(user.username)):
             print ('Inserting a new row into User Table')
             #Insert Query
-            tsql = "INSERT INTO [User] (username, password, firstName, lastName, email, faceID) VALUES (?,?,?,?,?,?);"
-            with self.cursor.execute(tsql, user.username, user.password, user.firstName, user.lastName, user.email,user.faceID):
+            tsql = "INSERT INTO [User] (username, password, firstName, lastName, email, faceID, reportLink) VALUES (?,?,?,?,?,?,?);"
+            with self.cursor.execute(tsql, user.username, user.password, user.firstName, user.lastName, user.email,user.faceID,user.reportLink):
                 print ('Successfully Inserted!')
             return True
         else:
@@ -163,9 +203,10 @@ class Database:
     def addNewTank(self, tank, user):
         print ('Inserting a new row into Tank Table')
         #Insert Query
-        tsql = "INSERT INTO Tanks (userID, fishType, waterQualityThresh, tempLowerThresh, tempUpperThresh) VALUES (?,?,?,?,?);"
-        with self.cursor.execute(tsql, user.getUserID(), tank.typeOfFish, tank.waterQualityThresh,
-        tank.tempLowerThresh, tank.tempUpperThresh):
+        tsql = "INSERT INTO Tanks (userID, fishType, feedingSchedule, waterSalinityUpperThresh,waterSalinityLowerThresh," \
+               "tempLowerThresh, tempUpperThresh, pHLowerThresh, pHUpperThresh, harvest_date, needsCleaning, needsFixing) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);"
+        with self.cursor.execute(tsql, user.getUserID(), tank.typeOfFish,tank.feedingSchedule, tank.waterSalinityUpperThresh,tank.waterSalinityLowerThresh,
+        tank.tempLowerThresh, tank.tempUpperThresh,tank.pHLowerThresh,tank.pHUpperThresh,tank.harvestDate, tank.needsCleaning,tank.needsFixing):
             print ('Successfully Inserted!')
         return None
 
@@ -175,10 +216,21 @@ class Database:
         time = datetime.now().time()
         date = datetime.now().date()
         #Insert Query
-        tsql = "INSERT INTO Water_Quality (time, date, pH, temperature, water_quality) VALUES (?,?,?,?,?);"
+        tsql = "INSERT INTO Water_Quality (time, date, pH, temperature, water_salinity) VALUES (?,?,?,?,?);"
         with self.cursor.execute(tsql, time, date, waterQuality.pH, waterQuality.temperature
-        , waterQuality.waterQualityLevel):
+        , waterQuality.waterSalinity):
             print ('Successfully Inserted!')
+        return None
+
+    # take objects as parameter and adds new entry in database
+    def addNewNetHoleEntry(self, netHoles):
+        print('Inserting a new row into Water_Quality Table')
+        time = datetime.now().time()
+        date = datetime.now().date()
+         # Insert Query
+        tsql = "INSERT INTO Water_Quality (holeCoordinates, date, time) VALUES (?,?,?);"
+        with self.cursor.execute(tsql, netHoles.holesCoord, netHoles.date,netHoles.time):
+            print('Successfully Inserted!')
         return None
 
     # take objects as parameter and delete entry in database
@@ -197,10 +249,17 @@ class Database:
             print ('Successfully Deleted!')
         return None
 
-    def deleteWaterQuality(self, waterQuality):
-        print ('Deleting water quality entry', waterQuality.waterQualityLevel)
-        tsql = "DELETE FROM Water_Quality WHERE water_quality = ?"
-        with self.cursor.execute(tsql, waterQuality.waterQualityLevel):
+    def deleteWaterQuality(self, tankID):
+        print ('Deleting water quality entry', tankID)
+        tsql = "DELETE FROM Water_Quality WHERE tankID = ?"
+        with self.cursor.execute(tsql, tankID):
+            print ('Successfully Deleted!')
+        return None
+
+    def deleteNetHole(self, tankID):
+        print ('Deleting water quality entry', tankID)
+        tsql = "DELETE FROM Holes WHERE tankID = ?"
+        with self.cursor.execute(tsql, tankID):
             print ('Successfully Deleted!')
         return None
 
