@@ -157,8 +157,11 @@ class Database:
         self.cursor.execute(tsql, tankID)
         result_set = self.cursor.fetchall()
         holesList = []
+        print("ENTRIES = ")
+        print(len(result_set))
         if len(result_set) == 0:
             return None
+
         for row in result_set:
             print("tankID = ", row[0])
             print("holesCoord = ", row[1])
@@ -170,7 +173,7 @@ class Database:
             holeEntry = NetHolesClass.netHoles(holesCoord,date,time)
             holesList.append(holeEntry)
 
-            return holesList
+        return holesList
 
     #take objects as parameter and adds new entry in database
     #returns
@@ -211,25 +214,21 @@ class Database:
         return None
 
     #take objects as parameter and adds new entry in database
-    def addNewWaterQuality(self, waterQuality):
+    def addNewWaterQuality(self, waterQuality, tank):
         print ('Inserting a new row into Water_Quality Table')
-        time = datetime.now().time()
-        date = datetime.now().date()
         #Insert Query
-        tsql = "INSERT INTO Water_Quality (time, date, pH, temperature, water_salinity) VALUES (?,?,?,?,?);"
-        with self.cursor.execute(tsql, time, date, waterQuality.pH, waterQuality.temperature
+        tsql = "INSERT INTO Water_Quality (tankID, time, date, pH, temperature, water_salinity) VALUES (?,?,?,?,?,?);"
+        with self.cursor.execute(tsql,tank.tankID, waterQuality.time, waterQuality.date, waterQuality.pH, waterQuality.temperature
         , waterQuality.waterSalinity):
             print ('Successfully Inserted!')
         return None
 
     # take objects as parameter and adds new entry in database
-    def addNewNetHoleEntry(self, netHoles):
-        print('Inserting a new row into Water_Quality Table')
-        time = datetime.now().time()
-        date = datetime.now().date()
+    def addNewNetHoleEntry(self, netHoles,tank):
+        print('Inserting a new row Holes Table')
          # Insert Query
-        tsql = "INSERT INTO Water_Quality (holeCoordinates, date, time) VALUES (?,?,?);"
-        with self.cursor.execute(tsql, netHoles.holesCoord, netHoles.date,netHoles.time):
+        tsql = "INSERT INTO Holes (tankID,holeCoordinates, date, time) VALUES (?,?,?,?);"
+        with self.cursor.execute(tsql,tank.tankID, netHoles.holesCoord, netHoles.date, netHoles.time):
             print('Successfully Inserted!')
         return None
 
@@ -244,7 +243,7 @@ class Database:
     # take objects as parameter and delete entry in database
     def deleteTank(self, tank):
         print ('Deleting tank', tank.getTankID())
-        tsql = "DELETE FROM Tank WHERE tankID = ?"
+        tsql = "DELETE FROM Tanks WHERE tankID = ?"
         with self.cursor.execute(tsql, tank.getTankID()):
             print ('Successfully Deleted!')
         return None
@@ -263,12 +262,24 @@ class Database:
             print ('Successfully Deleted!')
         return None
 
+    def deleteAllUserData(self, userID):
+        print(userID)
+        user = self.loadUser(userID)
+
+        for tank in user.getTankList():
+            self.deleteWaterQuality( tank.tankID)
+            self.deleteNetHole(tank.tankID)
+            self.deleteTank(tank)
+
+        self.deleteUser(user)
+
     def printUsers(self):
         tsql = "SELECT * FROM [User]"
         self.cursor.execute(tsql)
         result_set = self.cursor.fetchall()
         print( str(len(result_set)) + " Entry in Database")
-
+        for row in result_set:
+            self.loadUser(row[0])
         return result_set;
 
 
