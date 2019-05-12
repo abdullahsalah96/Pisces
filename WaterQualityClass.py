@@ -35,8 +35,7 @@ class waterQuality:
 
     def predictWaterSalinity(self):
         '''
-        a function that returns the prediction list
-        returned from the web service
+        a function that gets the water salinity's predicted value
         '''
         r = self.getPrediction()
         result = r.decode()

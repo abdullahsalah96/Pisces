@@ -2,7 +2,6 @@ import WaterQualityClass
 from WaterQualityClass import waterQuality
 import datetime
 class Tank:
-    # waterQualityHistory : WaterQualityClass
     def __init__(self, tankID, typeOfFish,feedingSchedule, waterSalinityUpperThresh,waterSalinityLowerThresh, tempUpperThresh, tempLowerThresh,
                  pHUpperThresh,pHLowerThresh,harvestDate,needsCleaning,needsFixing, waterQualityHistory, holesList):
         self.tankID = tankID
@@ -42,7 +41,7 @@ class Tank:
         else:
             return False
 
-    def checkTemp(self, pH):
+    def checkpH(self, pH):
         '''a function that returns true if the pH is within the specified threshold'''
         if(pH > self.pHLowerThresh and pH < self.pHUpperThresh):
             return True
