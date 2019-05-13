@@ -785,8 +785,6 @@ class Ui_MainWindow(object):
         temperatureLowerThreshold = self.lineEdit_tempLThreshold.text()
         temperatureUpperThreshold = self.lineEdit_tempUThreshold.text()
         harvestDate = self.lineEdit_harvestDate_create.text()
-        text = "Tank " + str(self.numberOfTanks)
-        self.comboBox.addItem(text)
         currentDT =  datetime.datetime.now() + datetime.timedelta(hours=  random.randint(0,24))
         newTank = Tank(None, fishType, currentDT.strftime("%H:%M:%S"), waterQualityThreshold,
          waterQualityThreshold, temperatureLowerThreshold, temperatureUpperThreshold,
@@ -822,7 +820,6 @@ class Ui_MainWindow(object):
         newUser = User(firstName, lastName, username, password, email, None, None, None)
         self.db.addNewUser(newUser)
         self.stackedWidget.setCurrentIndex(0)
-
 
     def getBackToLogin(self):
         self.stackedWidget.setCurrentIndex(0)

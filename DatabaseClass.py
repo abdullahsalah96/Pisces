@@ -201,6 +201,12 @@ class Database:
             print('Successfully Inserted!')
         return None
 
+    def addPowerBiReport(self, user):
+        tsql = "INSERT INTO [User] WHERE userID = ? (reportLink) VALUES (?)"
+        with self.cursor.execute(tsql, user.getUserID(), user.getReportLink()):
+            print('Successfully Inserted!')
+        return None
+
     #take objects as parameter and adds new entry in database
     def addNewTank(self, tank, user):
         print ('Inserting a new row into Tank Table')

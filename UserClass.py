@@ -40,6 +40,10 @@ class User:
         '''a function that sets face ID'''
         self.faceID = faceID
 
+    def setReportLink(self, reportLink):
+        '''a function that sets report link'''
+        self.reportLink = reportLink
+
     def getFaceID(self):
         '''a function that returns face ID'''
         return self.faceID
