@@ -9,8 +9,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from DatabaseClass import Database
 from UserClass import User
+from TankClass import Tank
 from CameraClass import Camera
+from notify import emailNotifier
 import cv2
+import datetime
+import random
 from PyQt5.QtCore import QTimer
 import photos_rc
 
@@ -663,8 +667,6 @@ class Ui_MainWindow(object):
         self.label_displayName_3.setObjectName("label_displayName_3")
         self.stackedWidget.addWidget(self.page_mainPage)
         MainWindow.setCentralWidget(self.centralwidget)
-
-        self.numberOfTanks=1
         self.buttonsConnections()
 
         self.retranslateUi(MainWindow)
@@ -715,18 +717,7 @@ class Ui_MainWindow(object):
         password_login=self.lineEdit_password_login.text()
         self.user = self.db.authenticateLogIn(username_login, password_login)
         if(self.user):
-            if(self.db.loadTankList(self.user.getUserID()) is not None):
-                self.tank = self.db.loadTankList(self.user.getUserID())
-                self.label_fishType.setText(self.tank[0].getFishType())
-            else:
-                self.label_fishType.setText("-")
-                self.label_harvestDate.setText("-")
-                self.label_feedingSchedule.setText("-")
-                self.label_temp.setText("-")
-                self.label_pH.setText("-")
-                self.label_holes_2.setText("-")
-                self.label_cleaning_2.setText("-")
-                self.label_pipes_2.setText("-")
+            self.updateDashboard()
             # self.camera = Camera(camAddress = 0)
             # self.camera.start()
             # self.camTimer.timeout.connect(lambda: self.camFeed())
@@ -734,9 +725,80 @@ class Ui_MainWindow(object):
             self.stackedWidget.setCurrentIndex(2)
             firstName = self.user.getFirstName()
             lastName = self.user.getLastName()
-            self.label_displayName.setText(firstName + lastName)
+            self.label_displayName.setText(firstName + " " + lastName)
         else:
             self.label.setText("Invalid Username or password")
+
+    def updateDashboard(self):
+         if(self.db.loadTankList(self.user.getUserID()) is not None):
+             self.tank = self.db.loadTankList(self.user.getUserID())
+             self.comboBox.clear()
+             tanks_list = []
+             self.numberOfTanks = len(self.tank)
+             print("tanks: ", len(self.tank))
+             for num in range(len(self.tank)):
+                 tanks_list.append("Tank " + str(num+1))
+                 print(self.tank[num].getFishType())
+             self.comboBox.addItems(tanks_list)
+         else:
+             self.label_fishType.setText("-")
+             self.label_harvestDate.setText("-")
+             self.label_feedingSchedule.setText("-")
+             self.label_temp.setText("-")
+             self.label_pH.setText("-")
+             self.label_holes_2.setText("-")
+             self.label_cleaning_2.setText("-")
+             self.label_pipes_2.setText("-")
+
+
+    def loadTankData(self):
+        for tankIndex in range(len(self.tank)):
+            if(self.comboBox.currentIndex() == tankIndex):
+                WQ = self.db.loadWaterQualityList(self.tank[tankIndex].getTankID())
+                holes = self.db.loadNetHolesList(self.tank[tankIndex].getTankID())
+                if(holes):
+                    self.label_holes_2.setText(str(len(holes)))
+                    for i in range(len(holes)):
+                        print(i, holes[i].getHoleCoord())
+                else:
+                    self.label_holes_2.setText(str(0))
+                self.label_fishType.setText(self.tank[tankIndex].getFishType())
+                self.label_harvestDate.setText(self.tank[tankIndex].getHarvestDate())
+                self.label_feedingSchedule.setText(self.tank[tankIndex].getFeedingSchedule())
+                if(WQ):
+                    self.label_pH.setText(str(WQ[len(WQ)-1].getpH()))
+                    self.label_temp.setText(str(WQ[len(WQ)-1].getTemp()))
+                    self.label_cleaning_2.setText(str(self.tank[tankIndex].getFishnetState()))
+                    self.label_pipes_2.setText(str(self.tank[tankIndex].getPipeState()))
+                else:
+                    self.label_pH.setText("--")
+                    self.label_temp.setText("--")
+                    self.label_cleaning_2.setText(str(self.tank[tankIndex].getFishnetState()))
+                    self.label_pipes_2.setText(str(self.tank[tankIndex].getPipeState()))
+
+
+    def createTank(self):
+        #change feeding schedule and harvest date
+        fishType = self.lineEdit_fishType_create.text()
+        feedingSchedule = self.lineEdit_feedingSchedule.text()
+        waterQualityThreshold = self.lineEdit_wqThreshold.text()
+        temperatureLowerThreshold = self.lineEdit_tempLThreshold.text()
+        temperatureUpperThreshold = self.lineEdit_tempUThreshold.text()
+        harvestDate = self.lineEdit_harvestDate_create.text()
+        text = "Tank " + str(self.numberOfTanks)
+        self.comboBox.addItem(text)
+        currentDT =  datetime.datetime.now() + datetime.timedelta(hours=  random.randint(0,24))
+        newTank = Tank(None, fishType, currentDT.strftime("%H:%M:%S"), waterQualityThreshold,
+         waterQualityThreshold, temperatureLowerThreshold, temperatureUpperThreshold,
+         20, 20, currentDT.strftime("%Y/%m/%d"), False, False, None, None)
+        self.db.addNewTank(newTank, self.user)
+        self.updateDashboard()
+        self.numberOfTanks=self.numberOfTanks+1
+
+    def sendEmail(self):
+       email = "No-Reply@Pisces.com"
+       notifier = emailNotifier(email, self.user)
+       notifier.sendEmail()
 
     def camFeed(self):
         """
@@ -763,53 +825,31 @@ class Ui_MainWindow(object):
 
 
     def getBackToLogin(self):
-
         self.stackedWidget.setCurrentIndex(0)
 
     def analyzeTanksIsClicked(self):
-
         self.stackedWidget_2.setCurrentIndex(2)
 
     def createTankIsClicked(self):
-
         self.stackedWidget_2.setCurrentIndex(3)
 
     def settingsIsClicked(self):
-
         self.stackedWidget_2.setCurrentIndex(4)
 
     def dashboardIsClicked(self):
-
         self.stackedWidget_2.setCurrentIndex(1)
 
     def getBackToMainPage(self):
-
         self.stackedWidget.setCurrentIndex(2)
 
     def updateReadings(self):
-
         temp=self.lineEdit_temp.text()
         ph=self.lineEdit_ph.text()
 
     def subscribeIsClicked(self):
-
         if self.button_subscribe.text() == "Show report" :
             print("Send email")
-
         self.button_subscribe.setText("Show report")
-
-    def createTank(self):
-
-        fishType = self.lineEdit_fishType_create.text()
-        feedingSchedule = self.lineEdit_feedingSchedule.text()
-        waterQualityThreshold = self.lineEdit_wqThreshold.text()
-        temperatureLowerThresholdd = self.lineEdit_tempLThreshold.text()
-        temperatureUpperThreshold = self.lineEdit_tempUThreshold.text()
-        harvestDate = self.lineEdit_harvestDate_create.text()
-
-        self.numberOfTanks=self.numberOfTanks+1
-        text = "Tank " + str(self.numberOfTanks)
-        self.comboBox.addItem(text)
 
 
     def backToSignIn(self):
@@ -827,6 +867,10 @@ class Ui_MainWindow(object):
         self.button_main_create.clicked.connect(self.createTank)
         self.button_subscribe.clicked.connect(self.subscribeIsClicked)
         self.button_backToSignIn.clicked.connect(self.backToSignIn)
+        self.comboBox.currentIndexChanged.connect(self.loadTankData)
+        self.button_main_create.clicked.connect(self.createTank)
+        self.button_emailPath.clicked.connect(self.sendEmail)
+
 
 
 if __name__ == "__main__":

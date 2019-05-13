@@ -15,6 +15,12 @@ class User:
         self.faceID = faceID
         self.reportLink = reportLink
 
+    def getUsername(self):
+        return self.username
+
+    def getPassword(self):
+        return self.password
+
     def getFirstName(self):
         '''a function that returns user's first name'''
         return self.firstName
@@ -26,6 +32,9 @@ class User:
     def getUserID(self):
         '''a function that returns user ID'''
         return self.userID
+
+    def getEmail(self):
+        return self.email
 
     def setFaceID(self, faceID):
         '''a function that sets face ID'''

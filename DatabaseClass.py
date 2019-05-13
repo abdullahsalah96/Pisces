@@ -85,7 +85,6 @@ class Database:
         self.cursor.execute(tsql, userID)
         result_set = self.cursor.fetchall()
         tankList = []
-
         print(len(result_set))
         if len(result_set) == 0:
             return None

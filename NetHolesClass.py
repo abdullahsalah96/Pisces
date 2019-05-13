@@ -3,3 +3,6 @@ class netHoles:
         self.holesCoord = holesCoord
         self.date = date
         self.time = time
+
+    def getHoleCoord(self):
+        return str(self.holesCoord)

@@ -12,6 +12,12 @@ class waterQuality:
         self.api_key = 'FXGBv13k4qgzFdsdjqRk90V+yG1nzcPx9eTwEwMryCI7Cju/dsy/WlpgZjeblBUxM0/m7Rg9jQGED3ZsOKZDQg==' # Replace this with the API key for the web service
         self.headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ self.api_key)}
 
+    def getpH(self):
+        return self.pH
+
+    def getTemp(self):
+        return self.temperature
+
     def getPrediction(self):
         '''
         a function that returns the prediction list

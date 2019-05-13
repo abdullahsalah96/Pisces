@@ -23,9 +23,22 @@ class Tank:
         '''a function that returns tank ID'''
         return self.tankID
 
+
     def getFishType(self):
         '''a function that returns tank's type of fish'''
         return self.typeOfFish
+
+    def getHarvestDate(self):
+        return str(self.harvestDate)
+
+    def getFeedingSchedule(self):
+        return str(self.feedingSchedule)
+
+    def getPipeState(self):
+        return self.needsFixing
+
+    def getFishnetState(self):
+        return self.needsCleaning
 
     def checkWaterSalinity(self, waterSalinity):
         '''a function that returns true if the water quality level is above the specified threshold'''
