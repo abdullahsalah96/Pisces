@@ -754,10 +754,10 @@ class Ui_MainWindow(object):
         self.user = self.db.authenticateLogIn(username_login, password_login)
         if(self.user):
             self.updateDashboard()
-            # self.camera = Camera(camAddress = 0)
-            # self.camera.start()
-            # self.camTimer.timeout.connect(lambda: self.camFeed())
-            # self.camTimer.start()
+            self.camera = Camera(camAddress = 0)
+            self.camera.start()
+            self.camTimer.timeout.connect(lambda: self.camFeed())
+            self.camTimer.start()
             self.stackedWidget.setCurrentIndex(2)
             firstName = self.user.getFirstName()
             firstLetter = firstName[0]
@@ -846,7 +846,15 @@ class Ui_MainWindow(object):
             cv2.destroyAllWindows()
             self.camTimer.stop()
         else:
-            cv2.imshow('frame', self.camera.getFrame())
+            #cv2.imshow('frame', self.camera.getFrame())
+            frame = self.camera.getFrame()
+            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            img = QtGui.QImage(frame, frame.shape[1], frame.shape[0], QtGui.QImage.Format_RGB888)
+            pix = QtGui.QPixmap.fromImage(img)
+            self.camLabel.setScaledContents(True)
+            self.camLabel_2.setScaledContents(True)
+            self.camLabel.setPixmap(pix)
+            self.camLabel_2.setPixmap(pix)
 
     def createOneIsClicked(self):
         self.stackedWidget.setCurrentIndex(1)
