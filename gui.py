@@ -757,7 +757,7 @@ class Ui_MainWindow(object):
             self.camera = Camera(camAddress = 0)
             self.camera.start()
             self.camTimer.timeout.connect(lambda: self.camFeed())
-            self.camTimer.start()
+            self.camTimer.start(200)
             self.stackedWidget.setCurrentIndex(2)
             firstName = self.user.getFirstName()
             firstLetter = firstName[0]

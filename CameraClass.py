@@ -24,7 +24,6 @@ class Camera(threading.Thread):
             while True:
                 ret, self.frame = cap.read()
                 #self.frame = cv2.resize(self.frame, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_AREA)
-                cv2.imshow('Input', self.frame)
                 self.key = cv2.waitKey(1)
                 if self.key == 27:
                     break
