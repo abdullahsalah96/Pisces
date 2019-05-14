@@ -15,6 +15,7 @@ from TankClass import Tank
 from CameraClass import Camera
 from notify import emailNotifier
 from face import authenticateFace
+from NetHoleInspection import NetHoleDetection
 import numpy as np
 import cv2
 import os
