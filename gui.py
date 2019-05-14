@@ -755,6 +755,7 @@ class Ui_MainWindow(object):
         if(self.user):
             self.updateDashboard()
             self.camera = Camera(camAddress = 0)
+            self.camera.setDaemon(True)
             self.camera.start()
             self.camTimer.timeout.connect(lambda: self.camFeed())
             self.camTimer.start(200)
