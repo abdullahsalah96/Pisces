@@ -5,6 +5,7 @@
 # Created by: PyQt5 UI code generator 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
+import webbrowser
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from DatabaseClass import Database
@@ -788,31 +789,6 @@ class Ui_MainWindow(object):
              self.label_pipes_2.setText("-")
 
 
-    # def loadTankData(self):
-    #     for tankIndex in range(len(self.tank)):
-    #         if(self.comboBox.currentIndex() == tankIndex):
-    #             WQ = self.db.loadWaterQualityList(self.tank[tankIndex].getTankID())
-    #             holes = self.db.loadNetHolesList(self.tank[tankIndex].getTankID())
-    #             if(holes):
-    #                 self.label_holes_2.setText(str(len(holes)))
-    #                 for i in range(len(holes)):
-    #                     print(i, holes[i].getHoleCoord())
-    #             else:
-    #                 self.label_holes_2.setText(str(0))
-    #             self.label_fishType.setText(self.tank[tankIndex].getFishType())
-    #             self.label_harvestDate.setText(self.tank[tankIndex].getHarvestDate())
-    #             self.label_feedingSchedule.setText(self.tank[tankIndex].getFeedingSchedule())
-    #             if(WQ):
-    #                 self.label_pH.setText(str(WQ[len(WQ)-1].getpH()))
-    #                 self.label_temp.setText(str(WQ[len(WQ)-1].getTemp()))
-    #                 self.label_cleaning_2.setText(str(self.tank[tankIndex].getFishnetState()))
-    #                 self.label_pipes_2.setText(str(self.tank[tankIndex].getPipeState()))
-    #             else:
-    #                 self.label_pH.setText("--")
-    #                 self.label_temp.setText("--")
-    #                 self.label_cleaning_2.setText(str(self.tank[tankIndex].getFishnetState()))
-    #                 self.label_pipes_2.setText(str(self.tank[tankIndex].getPipeState()))
-
     def loadTankData(self):
          for tankIndex in range(len(self.tank)):
                 if (self.comboBox.currentIndex() == tankIndex):
@@ -910,7 +886,8 @@ class Ui_MainWindow(object):
 
     def subscribeIsClicked(self):
         ##open power bi link
-        pass
+        webbrowser.open_new(self.user.reportLink)
+
 
 
     def backToSignIn(self):
