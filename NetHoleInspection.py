@@ -10,19 +10,19 @@ class NetHoleDetection(Server):
         self.predkey = '/subscriptions/16e8c7d2-4877-4c8f-bb77-ae2931dd33eb/resourceGroups/Test/providers/Microsoft.CognitiveServices/accounts/Test_Prediction'
         super().__init__(self.httpAddress, self.subAddress, self.predKey, self.contentType, self.predkey)
 
-    def predict(self, imgPath):
+    def predict(self, img):
         """
         a function that returns:
             * 1 if the fishnet doesn't have a hole
             * 2 if the fishnet has a hole
             * 0 otherwise
         """
-        pred = self.getPrediction(imgPath).decode()
+        pred = self.getPrediction(img).decode()
         print(pred)
         tag_index = pred.find("tagId") + 8
         if(pred[tag_index:tag_index+1] == 'f'):
-            return 1
+            return 'No Hole'
         elif(pred[tag_index:tag_index+1] == '4'):
-            return 2
+            return 'Hole'
         else:
-            return 0
+            return "Can't Determine"

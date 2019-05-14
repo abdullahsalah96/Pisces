@@ -5,10 +5,12 @@
 # Created by: PyQt5 UI code generator 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
+import base64
 import webbrowser
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from DatabaseClass import Database
+from NetHoleInspection import NetHoleDetection
 from UserClass import User
 from TankClass import Tank
 from CameraClass import Camera
@@ -838,8 +840,16 @@ class Ui_MainWindow(object):
 
 
     def getNetHolePrediction(self):
+        self.label_holes2.setText('Analyzing...')
         n = NetHoleDetection()
-        self.netHolePrediction = n.predict()
+        pred = n.predict(self.feed)
+        self.label_holes2.setText(str(pred))
+
+
+    def analyzeNetHole(self):
+            t = threading.Thread(name='thread', target=self.getNetHolePrediction)
+            t.setDaemon(True)
+            t.start()
 
 
     def sendEmail(self):
@@ -940,6 +950,7 @@ class Ui_MainWindow(object):
         self.comboBox.currentIndexChanged.connect(self.loadTankData)
         self.button_emailPath.clicked.connect(self.sendEmail)
         self.button_capture.clicked.connect(self.captureImage)
+        self.button_holes_2.clicked.connect(self.analyzeNetHole)
 
 
 if __name__ == "__main__":

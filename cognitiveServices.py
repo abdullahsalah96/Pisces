@@ -1,3 +1,4 @@
+import cv2
 import http.client, urllib.request, urllib.parse, urllib.error, base64
 
 class Server:
@@ -17,13 +18,13 @@ class Server:
         })
 
 
-    def getPrediction(self, imgPath):
+    def getPrediction(self, img):
         """
         a function that gets prediction list from Azure service
         """
-        data1 = open(imgPath, 'rb').read()
+        data = cv2.imencode('.jpg', img)[1].tostring()
         conn = http.client.HTTPSConnection(self.httpAddress)
-        conn.request("POST", self.subscriptionAddress, data1, self.headers)
+        conn.request("POST", self.subscriptionAddress, data, self.headers)
         response = conn.getresponse()
         data = response.read()
         conn.close()
