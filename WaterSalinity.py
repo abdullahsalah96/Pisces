@@ -7,7 +7,7 @@ class waterSalinityPrediction:
         self.api_key = 'FXGBv13k4qgzFdsdjqRk90V+yG1nzcPx9eTwEwMryCI7Cju/dsy/WlpgZjeblBUxM0/m7Rg9jQGED3ZsOKZDQg==' # Replace this with the API key for the web service
         self.headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ self.api_key)}
 
-    def getPrediction(self):
+    def getPrediction(self,temp):
         '''
         a function that returns the prediction list
         returned from the web service
@@ -17,7 +17,7 @@ class waterSalinityPrediction:
                         "input1":
                         {
                             "ColumnNames": ["T_degC"],
-                            "Values": [ [ str(self.temperature) ]]
+                            "Values": [ [temp]]
                         },        },
                     "GlobalParameters": {
                     }
@@ -28,11 +28,11 @@ class waterSalinityPrediction:
         result = response.read()
         return result
 
-    def predictWaterSalinity(self):
+    def predictWaterSalinity(self, temp):
         '''
         a function that gets the water salinity's predicted value
         '''
-        r = self.getPrediction()
+        r = self.getPrediction(temp)
         result = r.decode()
         print(result)
         prediction_first_index = result.rfind(",") + 2

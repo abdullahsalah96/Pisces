@@ -9,10 +9,13 @@ import base64
 import webbrowser
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+
+import WaterSalinity
 from DatabaseClass import Database
 from UserClass import User
 from TankClass import Tank
 from CameraClass import Camera
+from WaterSalinity import waterSalinityPrediction
 from notify import emailNotifier
 from face import authenticateFace
 from NetHoleInspection import NetHoleDetection
@@ -885,9 +888,24 @@ class Ui_MainWindow(object):
 
 
     def analyzeNetHole(self):
-            t = threading.Thread(name='thread', target=self.getNetHolePrediction)
-            t.setDaemon(True)
-            t.start()
+        t = threading.Thread(name='thread', target=self.getNetHolePrediction)
+        t.setDaemon(True)
+        t.start()
+
+
+    def getWaterSalinityPrediction(self):
+        temp = self.lineEdit_temp.text()
+        print(temp)
+        p = waterSalinityPrediction()
+        pred = p.predictWaterSalinity(temp)
+        self.label_waterSalinity.setText(str(pred))
+
+
+    def analyzeWaterSalinity(self):
+        print("WATER SALINITY")
+        t = threading.Thread(name='thread', target=self.getWaterSalinityPrediction)
+        t.setDaemon(True)
+        t.start()
 
 
     def sendEmail(self):
@@ -1003,6 +1021,7 @@ class Ui_MainWindow(object):
         self.button_capture.clicked.connect(self.captureImage)
         self.button_holes_2.clicked.connect(self.analyzeNetHole)
         self.button_login_with_faceID.clicked.connect(self.faceIDClicked)
+        self.button_pipe_3.clicked.connect(self.analyzeWaterSalinity)
 
 
 if __name__ == "__main__":
