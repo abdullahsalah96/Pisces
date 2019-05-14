@@ -4,12 +4,23 @@ import urllib
 import cv2
 import numpy as np
 import cognitive_face as CF
+import requests
+
 
 class authenticateFace():
-    KEY = '9fae0e6855d74d83ab4d10b9bf198e9a'  # Replace with a valid Subscription Key here.
-    CF.Key.set(KEY)
-    BASE_URL = 'https://australiaeast.api.cognitive.microsoft.com/face/v1.0'  # Replace with your regional Base URL
-    CF.BaseUrl.set(BASE_URL)
+    def __init__(self):
+        KEY = '9fae0e6855d74d83ab4d10b9bf198e9a'  # Replace with a valid Subscription Key here.
+        CF.Key.set(KEY)
+        self.headers = {'Content-Type': 'application/octet-stream', 'Ocp-Apim-Subscription-Key': KEY}
+        self.face_api_url = 'https://australiaeast.api.cognitive.microsoft.com/face/v1.0/detect'
+        self.base_url = 'https://australiaeast.api.cognitive.microsoft.com/face/v1.0'
+        CF.BaseUrl.set(self.base_url)
+        self.params = {
+        'returnFaceId': 'true',
+        'returnFaceLandmarks': 'false',
+        'returnFaceAttributes': 'age,gender,headPose,smile,facialHair,glasses,' +
+        'emotion,hair,makeup,occlusion,accessories,blur,exposure,noise'
+        }
 
     def url_to_image(self, url):
       """
@@ -30,14 +41,28 @@ class authenticateFace():
         img = url_to_image(url)
         return img[top:top+height, left:left+width]
 
-    def getFaceData(self, url):
-        return CF.face.detect(url)
+    def getFaceData(self, imgPath):
+        data = open(imgPath, 'rb')
+        response = response = requests.post(self.face_api_url, params=self.params, headers=self.headers, data=data)
+        faces = response.json()
+        print(faces)
+        return faces
 
-    def getFaceID(self, url):
-        return getFaceData(url)[0]['faceId']
+    def getFaceID(self, imgPath):
+        return self.getFaceData(imgPath)[0]['faceId']
 
-    def authenticateFace(faceID1, faceID2):
+    def verifyPerson(self, faceID1, faceID2):
         """
         returns True if the faces are identical and false otherwise
         """
         return CF.face.verify(faceID1, faceID2)['isIdentical']
+
+
+f = authenticateFace()
+face1 = f.getFaceID("/home/abdullahsalah96/Downloads/me.jpg")
+face2 = f.getFaceID("/home/abdullahsalah96/Downloads/me2.jpg")
+
+print("facd1: ", face1)
+print("face2: ", face2)
+
+print(f.verifyPerson(face1, face2))
