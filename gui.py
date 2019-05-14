@@ -10,12 +10,12 @@ import webbrowser
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from DatabaseClass import Database
-from NetHoleInspection import NetHoleDetection
 from UserClass import User
 from TankClass import Tank
 from CameraClass import Camera
 from notify import emailNotifier
 from face import authenticateFace
+import numpy as np
 import cv2
 import os
 import datetime
@@ -28,6 +28,9 @@ class Ui_MainWindow(object):
     db = Database()
     camTimer = QTimer()
     netHolePrediction = ""
+    camera = Camera(camAddress = 0)
+    camera.setDaemon(True)
+    feed = np.zeros((640, 480, 3), np.uint8)
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1000, 840)
@@ -753,14 +756,19 @@ class Ui_MainWindow(object):
 
 
     def loginIsClicked(self):
+        # if(self.feed.all() == 0):
+        #     print("frame is empty")
+        # else:
+        #     print("frame is not empty")
+        #     self.path = '/home/abdullahsalah96/International Codes/Microsoft-Azure-Challenge-2019/IMG_PATH'
+        #     cv2.imwrite(os.path.join(self.path , 'img.jpg'), self.feed)
+
         self.stackedWidget_2.setCurrentIndex(1)
         username_login=self.lineEdit_username_login.text()
         password_login=self.lineEdit_password_login.text()
         self.user = self.db.authenticateLogIn(username_login, password_login)
         if(self.user):
             self.updateDashboard()
-            self.camera = Camera(camAddress = 0)
-            self.camera.setDaemon(True)
             self.camera.start()
             self.camTimer.timeout.connect(lambda: self.camFeed())
             self.camTimer.start(200)
@@ -772,6 +780,35 @@ class Ui_MainWindow(object):
             self.label_displayName_2.setText(firstLetter)
         else:
             self.label.setText("Invalid Username or password")
+
+    def faceIDClicked(self):
+        self.stackedWidget_2.setCurrentIndex(1)
+        self.camera.start()
+        self.camTimer.timeout.connect(lambda: self.faceIDFeed())
+        self.camTimer.start(200)
+        # if(self.user):
+        #     self.updateDashboard()
+        #     self.stackedWidget.setCurrentIndex(2)
+        #     firstName = self.user.getFirstName()
+        #     firstLetter = firstName[0]
+        #     lastName = self.user.getLastName()
+        #     self.label_displayName.setText(firstName + " " + lastName)
+        #     self.label_displayName_2.setText(firstLetter)
+        # else:
+        #     self.label.setText("Invalid Username or password")
+
+    def faceIDFeed(self):
+        """
+        a function to show cam feed
+        """
+        if(cv2.waitKey == 27): #if the ESC button is pressed
+            cv2.destroyAllWindows()
+            self.camTimer.stop()
+        else:
+            self.feed= self.camera.getFrame()
+            frame = cv2.cvtColor(self.feed, cv2.COLOR_BGR2RGB)
+            cv2.imshow('frame', self.feed)
+
 
     def updateDashboard(self):
          if(self.user.getTankList() is not None):
@@ -875,13 +912,27 @@ class Ui_MainWindow(object):
             self.camLabel.setPixmap(pix)
             self.camLabel_2.setPixmap(pix)
 
+
     def captureImage(self):
-        print("Captured")
         img = self.feed
-        path = '/home/abdullahsalah96/International Codes/Microsoft-Azure-Challenge-2019/IMG_PATH'
-        cv2.imwrite(os.path.join(path , 'img.jpg'), img)
-        t = threading.Thread(target=addFaceIDToDatabase)
+        print("Captured")
+        self.path = '/home/abdullahsalah96/International Codes/Microsoft-Azure-Challenge-2019/IMG_PATH'
+        cv2.imwrite(os.path.join(self.path , 'img.jpg'), img)
+        t = threading.Thread(target=self.addFaceIDToDatabase)
         t.setDaemon(True)
+        t.start()
+
+    def FaceID(self):
+        self.f = authenticateFace()
+        face = self.f.getFaceID(os.path.join(self.path , 'img.jpg'))
+        print("face ID: ", face)
+        return face
+
+
+    def addFaceIDToDatabase(self):
+        face = self.FaceID()
+        self.user.setFaceID(face)
+        self.db.addFaceID(self.user)
 
 
     def addFaceIDToDatabase(self):
@@ -931,7 +982,6 @@ class Ui_MainWindow(object):
         ##open power bi link
         webbrowser.open_new(self.user.reportLink)
 
-
     def backToSignIn(self):
         self.stackedWidget.setCurrentIndex(0)
 
@@ -951,6 +1001,7 @@ class Ui_MainWindow(object):
         self.button_emailPath.clicked.connect(self.sendEmail)
         self.button_capture.clicked.connect(self.captureImage)
         self.button_holes_2.clicked.connect(self.analyzeNetHole)
+        self.button_login_with_faceID.clicked.connect(self.faceIDClicked)
 
 
 if __name__ == "__main__":
