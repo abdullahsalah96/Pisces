@@ -27,11 +27,28 @@ class Database:
         else:
             return self.loadUser(userID)
 
+    #checks if user exists in database and returns user object or return None
+    def authenticatePerson(self, faceID):
+        userID = self.searchUserFaceID(faceID)
+        if face == None:
+            return None
+        else:
+            return self.loadUser(userID)
 
     #searches for user in database and if it exists returns its ID
     def searchUser(self, username, password):
         tsql = "SELECT * FROM [User] WHERE username = ? AND password = ?"
         self.cursor.execute(tsql, username, password)
+        result_set = self.cursor.fetchall()
+        if len(result_set):
+            return result_set[0][0]
+        else:
+            return None
+
+    #searches for user in database and if it exists returns its ID
+    def searchUserFaceID(self, faceID):
+        tsql = "SELECT * FROM [User] WHERE faceId = ?"
+        self.cursor.execute(tsql, faceID)
         result_set = self.cursor.fetchall()
         if len(result_set):
             return result_set[0][0]
@@ -196,10 +213,15 @@ class Database:
         """
         takes user object and sets its face ID
         """
-        tsql = "INSERT INTO [User] WHERE userID = ? (faceID) VALUES (?)"
-        with self.cursor.execute(tsql, user.getUserID(), user.getFaceID()):
+        # UPDATE table SET id = id + 1 WHERE id >= 9
+        tsql = "UPDATE [User] SET faceId = ? WHERE userID = ?"
+        with self.cursor.execute(tsql, user.getFaceID(), user.getUserID()):
             print('Successfully Inserted Face ID!')
         return None
+        # tsql = "INSERT INTO [User] WHERE userID = ? (faceID) VALUES (?)"
+        # with self.cursor.execute(tsql, user.getUserID(), user.getFaceID()):
+        #     print('Successfully Inserted Face ID!')
+        # return None
 
     def addPowerBiReport(self, user):
         tsql = "INSERT INTO [User] WHERE userID = ? (reportLink) VALUES (?)"

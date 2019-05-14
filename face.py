@@ -8,9 +8,8 @@ import cognitive_face as CF
 import requests
 
 
-class authenticateFace(threading.Thread):
+class authenticateFace():
     def __init__(self):
-        super().__init__(name = "face thread")
         KEY = '9fae0e6855d74d83ab4d10b9bf198e9a'  # Replace with a valid Subscription Key here.
         CF.Key.set(KEY)
         self.headers = {'Content-Type': 'application/octet-stream', 'Ocp-Apim-Subscription-Key': KEY}
