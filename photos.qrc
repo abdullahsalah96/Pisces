@@ -3,6 +3,65 @@
     <file>Resources/analyze.png</file>
     <file>Resources/AnalyzeBG.png</file>
     <file>Resources/analyzePressed.png</file>
+    <file>Resources/back.png</file>
+    <file>Resources/backPressed.png</file>
+    <file>Resources/backSignIn.png</file>
+    <file>Resources/backSignInPressed.png</file>
+    <file>Resources/black_blue.png</file>
+    <file>Resources/blueBG.png</file>
+    <file>Resources/capture.png</file>
+    <file>Resources/capturePressed.png</file>
+    <file>Resources/Cleaning.png</file>
+    <file>Resources/CleaningPressed.png</file>
+    <file>Resources/comboBoxArrow.png</file>
+    <file>Resources/comboBoxBG.png</file>
+    <file>Resources/create.png</file>
+    <file>Resources/CreateBG.png</file>
+    <file>Resources/createButton.png</file>
+    <file>Resources/createButtonPressed.png</file>
+    <file>Resources/createPressed.png</file>
+    <file>Resources/darkBlackBG.png</file>
+    <file>Resources/dasboard.png</file>
+    <file>Resources/dashboardPressed.png</file>
+    <file>Resources/dashboardWidget.png</file>
+    <file>Resources/EmailButton.png</file>
+    <file>Resources/EmailButtonPressed.png</file>
+    <file>Resources/exitBlue.png</file>
+    <file>Resources/exitGrey.png</file>
+    <file>Resources/exitRed.png</file>
+    <file>Resources/exitWhiteBlue.png</file>
+    <file>Resources/faceID.png</file>
+    <file>Resources/faceIDClicked.png</file>
+    <file>Resources/faceIDWidget.png</file>
+    <file>Resources/greyBG.png</file>
+    <file>Resources/Holes.png</file>
+    <file>Resources/HolesPressed.png</file>
+    <file>Resources/logout.png</file>
+    <file>Resources/logoutPressed.png</file>
+    <file>Resources/mainWidgetBG.png</file>
+    <file>Resources/openCam.png</file>
+    <file>Resources/openCamPressed.png</file>
+    <file>Resources/Pipes.png</file>
+    <file>Resources/PipesPressed.png</file>
+    <file>Resources/predict.png</file>
+    <file>Resources/predictPressed.png</file>
+    <file>Resources/semiDarkBG.png</file>
+    <file>Resources/settings.png</file>
+    <file>Resources/settingsPressed.png</file>
+    <file>Resources/settingsWidget.png</file>
+    <file>Resources/signIn.png</file>
+    <file>Resources/signInBG.png</file>
+    <file>Resources/SignInBG.png</file>
+    <file>Resources/signInPressed.png</file>
+    <file>Resources/signUp.png</file>
+    <file>Resources/signUpBG.png</file>
+    <file>Resources/signUpPressed.png</file>
+    <file>Resources/subscribe.png</file>
+    <file>Resources/subscribePressed.png</file>
+    <file>Resources/whiteBG.png</file>
+    <file>Resources/analyze.png</file>
+    <file>Resources/AnalyzeBG.png</file>
+    <file>Resources/analyzePressed.png</file>
     <file>Resources/backSignIn.png</file>
     <file>Resources/backSignInPressed.png</file>
     <file>Resources/black_blue.png</file>

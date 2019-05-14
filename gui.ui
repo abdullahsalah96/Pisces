@@ -30,7 +30,7 @@
      <bool>true</bool>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="page_login">
      <property name="styleSheet">
@@ -437,10 +437,10 @@ color: rgb(235, 235, 235);</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image: url(:/Resources/CreateBG.png);</string>
+       <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="page_blank">
        <property name="styleSheet">
@@ -990,6 +990,9 @@ font: 25 10pt &quot;Roboto Light&quot;;</string>
        </widget>
       </widget>
       <widget class="QWidget" name="page_createTank">
+       <property name="styleSheet">
+        <string notr="true">border-image: url(:/Resources/CreateBG.png);</string>
+       </property>
        <widget class="QPushButton" name="button_main_create">
         <property name="geometry">
          <rect>
@@ -1166,13 +1169,13 @@ font: 25 10pt &quot;Roboto Light&quot;;
       </widget>
       <widget class="QWidget" name="page_settings">
        <property name="styleSheet">
-        <string notr="true">border-image: url(:/Resources/whiteBG.png);</string>
+        <string notr="true">border-image: url(:/Resources/settingsWidget.png);</string>
        </property>
        <widget class="QPushButton" name="button_open_cam">
         <property name="geometry">
          <rect>
-          <x>200</x>
-          <y>550</y>
+          <x>210</x>
+          <y>770</y>
           <width>127</width>
           <height>33</height>
          </rect>
@@ -1198,8 +1201,8 @@ border-image: url(:/Resources/openCamPressed.png);
        <widget class="QPushButton" name="button_capture">
         <property name="geometry">
          <rect>
-          <x>340</x>
-          <y>550</y>
+          <x>360</x>
+          <y>770</y>
           <width>127</width>
           <height>33</height>
          </rect>
@@ -1225,14 +1228,41 @@ border-image: url(:/Resources/capturePressed.png);
        <widget class="QLabel" name="camLabel_2">
         <property name="geometry">
          <rect>
-          <x>70</x>
-          <y>250</y>
-          <width>533</width>
-          <height>260</height>
+          <x>80</x>
+          <y>460</y>
+          <width>553</width>
+          <height>271</height>
          </rect>
         </property>
         <property name="styleSheet">
          <string notr="true">border-image: url(:/Resources/darkBlackBG.png);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton">
+        <property name="geometry">
+         <rect>
+          <x>640</x>
+          <y>20</y>
+          <width>21</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+border-image: url(:/Resources/exitWhiteBlue.png);
+background-repeat: none;
+}
+
+QPushButton:hover{
+border-image: url(:/Resources/black_blue.png);
+}
+
+QPushButton:pressed{
+border-image: url(:/Resources/black_blue.png);
+}x</string>
         </property>
         <property name="text">
          <string/>
@@ -1385,6 +1415,108 @@ color: rgb(235, 235, 235);</string>
       </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="page_faceLogin">
+     <property name="styleSheet">
+      <string notr="true">border-image: url(:/Resources/faceIDWidget.png);</string>
+     </property>
+     <widget class="QLabel" name="label_camera">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>230</y>
+        <width>781</width>
+        <height>391</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/Resources/darkBlackBG.png);</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="close_5">
+      <property name="geometry">
+       <rect>
+        <x>940</x>
+        <y>30</y>
+        <width>21</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border-image: url(:/Resources/exitGrey.png);
+background-repeat: none;
+}
+
+QPushButton:hover{
+border-image: url(:/Resources/exitRed.png);
+}
+
+QPushButton:pressed{
+border-image: url(:/Resources/exitRed.png);
+}x</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="button_faceSignIn">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>680</y>
+        <width>320</width>
+        <height>44</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border-image: url(:/Resources/signIn.png);
+background-repeat: none;
+}
+
+QPushButton:hover{
+border-image: url(:/Resources/signInPressed.png);
+}
+
+QPushButton:pressed{
+border-image: url(:/Resources/signInPressed.png);
+}x</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="button_back">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>740</y>
+        <width>320</width>
+        <height>44</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+background-repeat: none;
+border-image: url(:/Resources/back.png);
+}
+
+QPushButton:hover{
+	border-image: url(:/Resources/backPressed.png);
+}
+
+QPushButton:pressed{
+	border-image: url(:/Resources/backPressed.png);
+}x</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
  </widget>
@@ -1469,6 +1601,38 @@ color: rgb(235, 235, 235);</string>
     <hint type="destinationlabel">
      <x>905</x>
      <y>-13</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>close_5</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>951</x>
+     <y>40</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>921</x>
+     <y>-6</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>942</x>
+     <y>34</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>854</x>
+     <y>-16</y>
     </hint>
    </hints>
   </connection>

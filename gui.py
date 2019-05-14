@@ -5,6 +5,7 @@
 # Created by: PyQt5 UI code generator 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
+
 import base64
 import webbrowser
 
@@ -28,13 +29,18 @@ import threading
 from PyQt5.QtCore import QTimer
 import photos_rc
 
+
 class Ui_MainWindow(object):
     db = Database()
     camTimer = QTimer()
+    faceCamTimer = QTimer()
     netHolePrediction = ""
     camera = Camera(camAddress = 0)
     camera.setDaemon(True)
     feed = np.zeros((640, 480, 3), np.uint8)
+    faceCam = Camera(camAddress = 0)
+    faceCam.setDaemon(True)
+    faceFeed = np.zeros((640, 480, 3), np.uint8)
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1000, 840)
@@ -128,7 +134,7 @@ class Ui_MainWindow(object):
         self.button_login_with_faceID.setText("")
         self.button_login_with_faceID.setObjectName("button_login_with_faceID")
         self.label = QtWidgets.QLabel(self.page_login)
-        self.label.setGeometry(QtCore.QRect(390, 290, 241, 31))
+        self.label.setGeometry(QtCore.QRect(400, 290, 241, 31))
         self.label.setStyleSheet("border-image: url(:/Resources/semiDarkBG.png);\n"
 "color: rgb(245, 29, 69);\n"
 "font: 25 10pt \"Roboto Light\";")
@@ -244,7 +250,7 @@ class Ui_MainWindow(object):
         self.label_displayName.setObjectName("label_displayName")
         self.stackedWidget_2 = QtWidgets.QStackedWidget(self.page_mainPage)
         self.stackedWidget_2.setGeometry(QtCore.QRect(290, 0, 711, 851))
-        self.stackedWidget_2.setStyleSheet("border-image: url(:/Resources/CreateBG.png);")
+        self.stackedWidget_2.setStyleSheet("")
         self.stackedWidget_2.setObjectName("stackedWidget_2")
         self.page_blank = QtWidgets.QWidget()
         self.page_blank.setStyleSheet("border-image: url(:/Resources/whiteBG.png);")
@@ -512,6 +518,7 @@ class Ui_MainWindow(object):
         self.label_waterSalinity.setObjectName("label_waterSalinity")
         self.stackedWidget_2.addWidget(self.page_analyzeTanks)
         self.page_createTank = QtWidgets.QWidget()
+        self.page_createTank.setStyleSheet("border-image: url(:/Resources/CreateBG.png);")
         self.page_createTank.setObjectName("page_createTank")
         self.button_main_create = QtWidgets.QPushButton(self.page_createTank)
         self.button_main_create.setGeometry(QtCore.QRect(250, 775, 127, 33))
@@ -592,10 +599,10 @@ class Ui_MainWindow(object):
         self.lineEdit_harvestDate_create.setObjectName("lineEdit_harvestDate_create")
         self.stackedWidget_2.addWidget(self.page_createTank)
         self.page_settings = QtWidgets.QWidget()
-        self.page_settings.setStyleSheet("border-image: url(:/Resources/whiteBG.png);")
+        self.page_settings.setStyleSheet("border-image: url(:/Resources/settingsWidget.png);")
         self.page_settings.setObjectName("page_settings")
         self.button_open_cam = QtWidgets.QPushButton(self.page_settings)
-        self.button_open_cam.setGeometry(QtCore.QRect(200, 550, 127, 33))
+        self.button_open_cam.setGeometry(QtCore.QRect(210, 770, 127, 33))
         self.button_open_cam.setStyleSheet("QPushButton{\n"
 "border-image: url(:/Resources/openCam.png);\n"
 "background-repeat: none;\n"
@@ -611,7 +618,7 @@ class Ui_MainWindow(object):
         self.button_open_cam.setText("")
         self.button_open_cam.setObjectName("button_open_cam")
         self.button_capture = QtWidgets.QPushButton(self.page_settings)
-        self.button_capture.setGeometry(QtCore.QRect(340, 550, 127, 33))
+        self.button_capture.setGeometry(QtCore.QRect(360, 770, 127, 33))
         self.button_capture.setStyleSheet("QPushButton{\n"
 "border-image: url(:/Resources/capture.png);\n"
 "background-repeat: none;\n"
@@ -627,10 +634,26 @@ class Ui_MainWindow(object):
         self.button_capture.setText("")
         self.button_capture.setObjectName("button_capture")
         self.camLabel_2 = QtWidgets.QLabel(self.page_settings)
-        self.camLabel_2.setGeometry(QtCore.QRect(70, 250, 533, 260))
+        self.camLabel_2.setGeometry(QtCore.QRect(80, 460, 553, 271))
         self.camLabel_2.setStyleSheet("border-image: url(:/Resources/darkBlackBG.png);")
         self.camLabel_2.setText("")
         self.camLabel_2.setObjectName("camLabel_2")
+        self.pushButton = QtWidgets.QPushButton(self.page_settings)
+        self.pushButton.setGeometry(QtCore.QRect(640, 20, 21, 21))
+        self.pushButton.setStyleSheet("QPushButton{\n"
+"border-image: url(:/Resources/exitWhiteBlue.png);\n"
+"background-repeat: none;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"border-image: url(:/Resources/black_blue.png);\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"border-image: url(:/Resources/black_blue.png);\n"
+"}x")
+        self.pushButton.setText("")
+        self.pushButton.setObjectName("pushButton")
         self.stackedWidget_2.addWidget(self.page_settings)
         self.label_displayName_2 = QtWidgets.QLabel(self.page_mainPage)
         self.label_displayName_2.setGeometry(QtCore.QRect(47, 137, 41, 31))
@@ -709,6 +732,63 @@ class Ui_MainWindow(object):
 "color: rgb(235, 235, 235);")
         self.label_displayName_3.setObjectName("label_displayName_3")
         self.stackedWidget.addWidget(self.page_mainPage)
+        self.page_faceLogin = QtWidgets.QWidget()
+        self.page_faceLogin.setStyleSheet("border-image: url(:/Resources/faceIDWidget.png);")
+        self.page_faceLogin.setObjectName("page_faceLogin")
+        self.label_camera = QtWidgets.QLabel(self.page_faceLogin)
+        self.label_camera.setGeometry(QtCore.QRect(110, 230, 781, 391))
+        self.label_camera.setStyleSheet("border-image: url(:/Resources/darkBlackBG.png);")
+        self.label_camera.setText("")
+        self.label_camera.setObjectName("label_camera")
+        self.close_5 = QtWidgets.QPushButton(self.page_faceLogin)
+        self.close_5.setGeometry(QtCore.QRect(940, 30, 21, 21))
+        self.close_5.setStyleSheet("QPushButton{\n"
+"border-image: url(:/Resources/exitGrey.png);\n"
+"background-repeat: none;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"border-image: url(:/Resources/exitRed.png);\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"border-image: url(:/Resources/exitRed.png);\n"
+"}x")
+        self.close_5.setText("")
+        self.close_5.setObjectName("close_5")
+        self.button_faceSignIn = QtWidgets.QPushButton(self.page_faceLogin)
+        self.button_faceSignIn.setGeometry(QtCore.QRect(340, 680, 320, 44))
+        self.button_faceSignIn.setStyleSheet("QPushButton{\n"
+"border-image: url(:/Resources/signIn.png);\n"
+"background-repeat: none;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"border-image: url(:/Resources/signInPressed.png);\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"border-image: url(:/Resources/signInPressed.png);\n"
+"}x")
+        self.button_faceSignIn.setText("")
+        self.button_faceSignIn.setObjectName("button_faceSignIn")
+        self.button_back = QtWidgets.QPushButton(self.page_faceLogin)
+        self.button_back.setGeometry(QtCore.QRect(340, 740, 320, 44))
+        self.button_back.setStyleSheet("QPushButton{\n"
+"background-repeat: none;\n"
+"border-image: url(:/Resources/back.png);\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"    border-image: url(:/Resources/backPressed.png);\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"    border-image: url(:/Resources/backPressed.png);\n"
+"}x")
+        self.button_back.setText("")
+        self.button_back.setObjectName("button_back")
+        self.stackedWidget.addWidget(self.page_faceLogin)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.buttonsConnections()
@@ -721,6 +801,8 @@ class Ui_MainWindow(object):
         self.close_3.clicked.connect(MainWindow.close)
         self.close_4.clicked.connect(MainWindow.close)
         self.close.clicked.connect(MainWindow.close)
+        self.close_5.clicked.connect(MainWindow.close)
+        self.pushButton.clicked.connect(MainWindow.close)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -785,11 +867,17 @@ class Ui_MainWindow(object):
         else:
             self.label.setText("Invalid Username or password")
 
+    def signInWithFace(self):
+        pass
+
     def faceIDClicked(self):
-        self.stackedWidget_2.setCurrentIndex(1)
-        self.camera.start()
-        self.camTimer.timeout.connect(lambda: self.faceIDFeed())
-        self.camTimer.start(200)
+        self.stackedWidget.setCurrentIndex(3)
+        self.faceCam.start()
+        self.faceCamTimer.timeout.connect(lambda: self.faceIDFeed())
+        self.faceCamTimer.start(200)
+        # self.camera.start()
+        # self.camTimer.timeout.connect(lambda: self.faceIDFeed())
+        # self.camTimer.start(200)
         # if(self.user):
         #     self.updateDashboard()
         #     self.stackedWidget.setCurrentIndex(2)
@@ -807,11 +895,14 @@ class Ui_MainWindow(object):
         """
         if(cv2.waitKey == 27): #if the ESC button is pressed
             cv2.destroyAllWindows()
-            self.camTimer.stop()
+            self.faceCamTimer.stop()
         else:
-            self.feed= self.camera.getFrame()
-            frame = cv2.cvtColor(self.feed, cv2.COLOR_BGR2RGB)
-            cv2.imshow('frame', self.feed)
+            self.faceFeed= self.faceCam.getFrame()
+            frame = cv2.cvtColor(self.faceFeed, cv2.COLOR_BGR2RGB)
+            img = QtGui.QImage(frame, frame.shape[1], frame.shape[0], QtGui.QImage.Format_RGB888)
+            pix = QtGui.QPixmap.fromImage(img)
+            self.label_camera.setScaledContents(True)
+            self.label_camera.setPixmap(pix)
 
 
     def updateDashboard(self):
@@ -1003,6 +1094,8 @@ class Ui_MainWindow(object):
 
     def backToSignIn(self):
         self.stackedWidget.setCurrentIndex(0)
+        self.faceCamTimer.stop()
+        self.faceCam.closeCam()
 
     def buttonsConnections(self):
         self.button_login.clicked.connect(self.loginIsClicked)
@@ -1022,6 +1115,8 @@ class Ui_MainWindow(object):
         self.button_holes_2.clicked.connect(self.analyzeNetHole)
         self.button_login_with_faceID.clicked.connect(self.faceIDClicked)
         self.button_pipe_3.clicked.connect(self.analyzeWaterSalinity)
+        self.button_back.clicked.connect(self.backToSignIn)
+        self.button_faceSignIn.clicked.connect(self.signInWithFace)
 
 
 if __name__ == "__main__":

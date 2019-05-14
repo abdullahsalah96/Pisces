@@ -14,20 +14,24 @@ class Camera(threading.Thread):
 
     def openCam(self):
         # Webcam
-        cap = cv2.VideoCapture(self.cam)
+        self.cap = cv2.VideoCapture(self.cam)
 
         # Check if the webcam is opened correctly
-        if not cap.isOpened():
+        if not self.cap.isOpened():
             raise IOError("Cannot open webcam")
         else:
             while True:
-                ret, self.frame = cap.read()
+                ret, self.frame = self.cap.read()
                 #self.frame = cv2.resize(self.frame, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_AREA)
                 self.key = cv2.waitKey(1)
                 if self.key == 27:
                     break
-        cap.release()
+        self.cap.release()
         cv2.destroyAllWindows()
 
     def getFrame(self):
         return self.frame
+
+    def closeCam(self):
+        cv2.destroyAllWindows()
+        self.cap.release()
