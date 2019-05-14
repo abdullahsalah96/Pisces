@@ -40,6 +40,12 @@ class Tank:
     def getFishnetState(self):
         return self.needsCleaning
 
+    def getWaterQualityHistory(self):
+        return self.waterQualityHistory
+
+    def getNetHolesList(self):
+        return self.holesList
+
     def checkWaterSalinity(self, waterSalinity):
         '''a function that returns true if the water quality level is above the specified threshold'''
         if(waterSalinity < self.waterSalinityUpperThresh and waterSalinity > self.waterSalinityLowerThresh  ):

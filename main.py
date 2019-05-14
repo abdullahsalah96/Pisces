@@ -16,4 +16,6 @@ rdg = RandomDataGenerator.RDG()
 
 
 user = database.authenticateLogIn('rowan','1234')
-print(user.userID)
+
+database.deleteTank(user.getTankList()[3])
+#print(user.getTankList()[3].getFishType())

@@ -91,18 +91,18 @@ class Database:
 
         for row in result_set:
             print("fishtype = ", row[0])
-            print("feedingSchedule = ", row[1])
-            print("userID = ", row[2])
-            print("tankID  = ", row[3])
-            print("waterSalinityUpperThresh = ", row[4])
-            print("waterSalinityLowerThresh = ", row[5])
-            print("tempLowerThresh = ", row[6])
-            print("tempUpperThresh = ", row[7])
-            print("pHLowerThresh = ", row[8])
-            print("pHUpperThresh = ", row[9])
-            print("harvestDate  = ", row[10])
-            print("needsCleaning  = ", row[11])
-            print("needsFixing  = ", row[12])
+            # print("feedingSchedule = ", row[1])
+            # print("userID = ", row[2])
+            # print("tankID  = ", row[3])
+            # print("waterSalinityUpperThresh = ", row[4])
+            # print("waterSalinityLowerThresh = ", row[5])
+            # print("tempLowerThresh = ", row[6])
+            # print("tempUpperThresh = ", row[7])
+            # print("pHLowerThresh = ", row[8])
+            # print("pHUpperThresh = ", row[9])
+            # print("harvestDate  = ", row[10])
+            # print("needsCleaning  = ", row[11])
+            # print("needsFixing  = ", row[12])
             fishType = row[0]
             feedingSchedule = row[1]
             tankID = row[3]
@@ -133,12 +133,12 @@ class Database:
         if len(result_set) == 0:
             return None
         for row in result_set:
-            print("tankID = ", row[0])
-            print("time = ", row[1])
-            print("date = ", row[2])
-            print("pH  = ", row[3])
-            print("temp  = ", row[4])
-            print("waterQualityLevel = ", row[5])
+            # print("tankID = ", row[0])
+            # print("time = ", row[1])
+            # print("date = ", row[2])
+            # print("pH  = ", row[3])
+            # print("temp  = ", row[4])
+            # print("waterQualityLevel = ", row[5])
             time = row[1]
             date = row[2]
             pH = row[3]
@@ -162,10 +162,10 @@ class Database:
             return None
 
         for row in result_set:
-            print("tankID = ", row[0])
-            print("holesCoord = ", row[1])
-            print("date = ", row[2])
-            print("time  = ", row[3])
+            # print("tankID = ", row[0])
+            # print("holesCoord = ", row[1])
+            # print("date = ", row[2])
+            # print("time  = ", row[3])
             holesCoord = row[1]
             date = row[2]
             time = row[3]

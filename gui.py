@@ -767,8 +767,8 @@ class Ui_MainWindow(object):
             self.label.setText("Invalid Username or password")
 
     def updateDashboard(self):
-         if(self.db.loadTankList(self.user.getUserID()) is not None):
-             self.tank = self.db.loadTankList(self.user.getUserID())
+         if(self.user.getTankList() is not None):
+             self.tank = self.user.getTankList()
              self.comboBox.clear()
              tanks_list = []
              self.numberOfTanks = len(self.tank)
@@ -788,30 +788,56 @@ class Ui_MainWindow(object):
              self.label_pipes_2.setText("-")
 
 
+    # def loadTankData(self):
+    #     for tankIndex in range(len(self.tank)):
+    #         if(self.comboBox.currentIndex() == tankIndex):
+    #             WQ = self.db.loadWaterQualityList(self.tank[tankIndex].getTankID())
+    #             holes = self.db.loadNetHolesList(self.tank[tankIndex].getTankID())
+    #             if(holes):
+    #                 self.label_holes_2.setText(str(len(holes)))
+    #                 for i in range(len(holes)):
+    #                     print(i, holes[i].getHoleCoord())
+    #             else:
+    #                 self.label_holes_2.setText(str(0))
+    #             self.label_fishType.setText(self.tank[tankIndex].getFishType())
+    #             self.label_harvestDate.setText(self.tank[tankIndex].getHarvestDate())
+    #             self.label_feedingSchedule.setText(self.tank[tankIndex].getFeedingSchedule())
+    #             if(WQ):
+    #                 self.label_pH.setText(str(WQ[len(WQ)-1].getpH()))
+    #                 self.label_temp.setText(str(WQ[len(WQ)-1].getTemp()))
+    #                 self.label_cleaning_2.setText(str(self.tank[tankIndex].getFishnetState()))
+    #                 self.label_pipes_2.setText(str(self.tank[tankIndex].getPipeState()))
+    #             else:
+    #                 self.label_pH.setText("--")
+    #                 self.label_temp.setText("--")
+    #                 self.label_cleaning_2.setText(str(self.tank[tankIndex].getFishnetState()))
+    #                 self.label_pipes_2.setText(str(self.tank[tankIndex].getPipeState()))
+
     def loadTankData(self):
-        for tankIndex in range(len(self.tank)):
-            if(self.comboBox.currentIndex() == tankIndex):
-                WQ = self.db.loadWaterQualityList(self.tank[tankIndex].getTankID())
-                holes = self.db.loadNetHolesList(self.tank[tankIndex].getTankID())
-                if(holes):
-                    self.label_holes_2.setText(str(len(holes)))
-                    for i in range(len(holes)):
-                        print(i, holes[i].getHoleCoord())
-                else:
-                    self.label_holes_2.setText(str(0))
-                self.label_fishType.setText(self.tank[tankIndex].getFishType())
-                self.label_harvestDate.setText(self.tank[tankIndex].getHarvestDate())
-                self.label_feedingSchedule.setText(self.tank[tankIndex].getFeedingSchedule())
-                if(WQ):
-                    self.label_pH.setText(str(WQ[len(WQ)-1].getpH()))
-                    self.label_temp.setText(str(WQ[len(WQ)-1].getTemp()))
-                    self.label_cleaning_2.setText(str(self.tank[tankIndex].getFishnetState()))
-                    self.label_pipes_2.setText(str(self.tank[tankIndex].getPipeState()))
-                else:
-                    self.label_pH.setText("--")
-                    self.label_temp.setText("--")
-                    self.label_cleaning_2.setText(str(self.tank[tankIndex].getFishnetState()))
-                    self.label_pipes_2.setText(str(self.tank[tankIndex].getPipeState()))
+         for tankIndex in range(len(self.tank)):
+                if (self.comboBox.currentIndex() == tankIndex):
+                        WQ = self.user.getTankList()[tankIndex].getWaterQualityHistory()
+                        holes = self.user.getTankList()[tankIndex].getNetHolesList()
+                        if (holes):
+                                self.label_holes_2.setText(str(len(holes)))
+                                for i in range(len(holes)):
+                                        print(i, holes[i].getHoleCoord())
+                        else:
+                                self.label_holes_2.setText(str(0))
+                        self.label_fishType.setText(self.tank[tankIndex].getFishType())
+                        self.label_harvestDate.setText(self.tank[tankIndex].getHarvestDate())
+                        self.label_feedingSchedule.setText(self.tank[tankIndex].getFeedingSchedule())
+                        if (WQ):
+                                self.label_pH.setText(str(WQ[len(WQ) - 1].getpH()))
+                                self.label_temp.setText(str(WQ[len(WQ) - 1].getTemp()))
+                                self.label_cleaning_2.setText(str(self.tank[tankIndex].getFishnetState()))
+                                self.label_pipes_2.setText(str(self.tank[tankIndex].getPipeState()))
+                        else:
+                                self.label_pH.setText("--")
+                                self.label_temp.setText("--")
+                                self.label_cleaning_2.setText(str(self.tank[tankIndex].getFishnetState()))
+                                self.label_pipes_2.setText(str(self.tank[tankIndex].getPipeState()))
+
 
 
     def createTank(self):
@@ -825,10 +851,11 @@ class Ui_MainWindow(object):
         currentDT =  datetime.datetime.now() + datetime.timedelta(hours=  random.randint(0,24))
         newTank = Tank(None, fishType, currentDT.strftime("%H:%M:%S"), waterQualityThreshold,
          waterQualityThreshold, temperatureLowerThreshold, temperatureUpperThreshold,
-         20, 20, currentDT.strftime("%Y/%m/%d"), False, False, None, None)
+         '20', '20', currentDT.strftime("%Y/%m/%d"), False, False, None, None)
         self.db.addNewTank(newTank, self.user)
         self.updateDashboard()
         self.numberOfTanks=self.numberOfTanks+1
+
 
     def sendEmail(self):
        email = "No-Reply@Pisces.com"
@@ -863,6 +890,7 @@ class Ui_MainWindow(object):
 
     def analyzeTanksIsClicked(self):
         self.stackedWidget_2.setCurrentIndex(2)
+        print("here")
 
     def createTankIsClicked(self):
         self.stackedWidget_2.setCurrentIndex(3)
@@ -901,7 +929,6 @@ class Ui_MainWindow(object):
         self.button_subscribe.clicked.connect(self.subscribeIsClicked)
         self.button_backToSignIn.clicked.connect(self.backToSignIn)
         self.comboBox.currentIndexChanged.connect(self.loadTankData)
-        self.button_main_create.clicked.connect(self.createTank)
         self.button_emailPath.clicked.connect(self.sendEmail)
 
 
