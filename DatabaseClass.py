@@ -198,7 +198,7 @@ class Database:
         """
         tsql = "INSERT INTO [User] WHERE userID = ? (faceID) VALUES (?)"
         with self.cursor.execute(tsql, user.getUserID(), user.getFaceID()):
-            print('Successfully Inserted!')
+            print('Successfully Inserted Face ID!')
         return None
 
     def addPowerBiReport(self, user):

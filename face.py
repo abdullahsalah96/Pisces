@@ -1,14 +1,16 @@
 import requests
 import simplejson as json
 import urllib
+import threading
 import cv2
 import numpy as np
 import cognitive_face as CF
 import requests
 
 
-class authenticateFace():
+class authenticateFace(threading.Thread):
     def __init__(self):
+        super().__init__(name = "face thread")
         KEY = '9fae0e6855d74d83ab4d10b9bf198e9a'  # Replace with a valid Subscription Key here.
         CF.Key.set(KEY)
         self.headers = {'Content-Type': 'application/octet-stream', 'Ocp-Apim-Subscription-Key': KEY}
@@ -58,11 +60,11 @@ class authenticateFace():
         return CF.face.verify(faceID1, faceID2)['isIdentical']
 
 
-f = authenticateFace()
-face1 = f.getFaceID("/home/abdullahsalah96/Downloads/me.jpg")
-face2 = f.getFaceID("/home/abdullahsalah96/Downloads/me2.jpg")
-
-print("facd1: ", face1)
-print("face2: ", face2)
-
-print(f.verifyPerson(face1, face2))
+# f = authenticateFace()
+# face1 = f.getFaceID("/home/abdullahsalah96/Downloads/me.jpg")
+# face2 = f.getFaceID("/home/abdullahsalah96/Downloads/me2.jpg")
+#
+# print("facd1: ", face1)
+# print("face2: ", face2)
+#
+# print(f.verifyPerson(face1, face2))

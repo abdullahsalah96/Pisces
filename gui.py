@@ -13,16 +13,19 @@ from UserClass import User
 from TankClass import Tank
 from CameraClass import Camera
 from notify import emailNotifier
+from face import authenticateFace
 import cv2
+import os
 import datetime
 import random
+import threading
 from PyQt5.QtCore import QTimer
 import photos_rc
-
 
 class Ui_MainWindow(object):
     db = Database()
     camTimer = QTimer()
+    netHolePrediction = ""
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1000, 840)
@@ -834,6 +837,11 @@ class Ui_MainWindow(object):
         self.numberOfTanks=self.numberOfTanks+1
 
 
+    def getNetHolePrediction(self):
+        n = NetHoleDetection()
+        self.netHolePrediction = n.predict()
+
+
     def sendEmail(self):
        email = "No-Reply@Pisces.com"
        notifier = emailNotifier(email, self.user)
@@ -848,14 +856,30 @@ class Ui_MainWindow(object):
             self.camTimer.stop()
         else:
             #cv2.imshow('frame', self.camera.getFrame())
-            frame = self.camera.getFrame()
-            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            self.feed= self.camera.getFrame()
+            frame = cv2.cvtColor(self.feed, cv2.COLOR_BGR2RGB)
             img = QtGui.QImage(frame, frame.shape[1], frame.shape[0], QtGui.QImage.Format_RGB888)
             pix = QtGui.QPixmap.fromImage(img)
             self.camLabel.setScaledContents(True)
             self.camLabel_2.setScaledContents(True)
             self.camLabel.setPixmap(pix)
             self.camLabel_2.setPixmap(pix)
+
+    def captureImage(self):
+        print("Captured")
+        img = self.feed
+        path = '/home/abdullahsalah96/International Codes/Microsoft-Azure-Challenge-2019/IMG_PATH'
+        cv2.imwrite(os.path.join(path , 'img.jpg'), img)
+        t = threading.Thread(target=addFaceIDToDatabase)
+        t.setDaemon(True)
+
+
+    def addFaceIDToDatabase(self):
+        self.f = authenticateFace()
+        face = self.f.getFaceID(os.path.join(path , 'img.jpg'))
+        print("face ID: ", face)
+        self.user.setFaceID(face)
+        self.db.addFaceID(self.user)
 
     def createOneIsClicked(self):
         self.stackedWidget.setCurrentIndex(1)
@@ -898,7 +922,6 @@ class Ui_MainWindow(object):
         webbrowser.open_new(self.user.reportLink)
 
 
-
     def backToSignIn(self):
         self.stackedWidget.setCurrentIndex(0)
 
@@ -916,6 +939,7 @@ class Ui_MainWindow(object):
         self.button_backToSignIn.clicked.connect(self.backToSignIn)
         self.comboBox.currentIndexChanged.connect(self.loadTankData)
         self.button_emailPath.clicked.connect(self.sendEmail)
+        self.button_capture.clicked.connect(self.captureImage)
 
 
 if __name__ == "__main__":

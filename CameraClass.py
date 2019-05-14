@@ -7,7 +7,6 @@ class Camera(threading.Thread):
     def __init__(self, camAddress):
         self.frame = np.zeros((640, 480, 3), np.uint8)
         self.cam = camAddress
-
         super().__init__(name = "cam thread")
 
     def run(self):
@@ -32,6 +31,3 @@ class Camera(threading.Thread):
 
     def getFrame(self):
         return self.frame
-
-    def openRovCamera(self):
-        print("unavailable at a moment")
