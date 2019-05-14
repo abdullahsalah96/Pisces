@@ -759,8 +759,10 @@ class Ui_MainWindow(object):
             # self.camTimer.start()
             self.stackedWidget.setCurrentIndex(2)
             firstName = self.user.getFirstName()
+            firstLetter = firstName[0]
             lastName = self.user.getLastName()
             self.label_displayName.setText(firstName + " " + lastName)
+            self.label_displayName_2.setText(firstLetter)
         else:
             self.label.setText("Invalid Username or password")
 
