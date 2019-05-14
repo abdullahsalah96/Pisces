@@ -35,7 +35,7 @@ class Ui_MainWindow(object):
         self.stackedWidget.setMouseTracking(True)
         self.stackedWidget.setObjectName("stackedWidget")
         self.page_login = QtWidgets.QWidget()
-        self.page_login.setStyleSheet("border-image: url(:/Resources/SignInBG.png);")
+        self.page_login.setStyleSheet("border-image: url(:/Resources/signInBG.png);")
         self.page_login.setObjectName("page_login")
         self.button_login = QtWidgets.QPushButton(self.page_login)
         self.button_login.setGeometry(QtCore.QRect(340, 530, 320, 44))
@@ -70,7 +70,7 @@ class Ui_MainWindow(object):
         self.button_createOne.setText("")
         self.button_createOne.setObjectName("button_createOne")
         self.lineEdit_username_login = QtWidgets.QLineEdit(self.page_login)
-        self.lineEdit_username_login.setGeometry(QtCore.QRect(310, 341, 361, 31))
+        self.lineEdit_username_login.setGeometry(QtCore.QRect(310, 341, 381, 31))
         self.lineEdit_username_login.setStyleSheet("border-image: url(:/Resources/darkBlackBG.png);\n"
 "color: rgb(130, 130, 144);\n"
 "font: 25 10pt \"Roboto Light\";")
@@ -92,10 +92,11 @@ class Ui_MainWindow(object):
         self.close_4.setText("")
         self.close_4.setObjectName("close_4")
         self.lineEdit_password_login = QtWidgets.QLineEdit(self.page_login)
-        self.lineEdit_password_login.setGeometry(QtCore.QRect(310, 422, 361, 31))
+        self.lineEdit_password_login.setGeometry(QtCore.QRect(310, 422, 381, 31))
         self.lineEdit_password_login.setStyleSheet("border-image: url(:/Resources/darkBlackBG.png);\n"
 "color: rgb(130, 130, 144);\n"
 "font: 25 10pt \"Roboto Light\";")
+        self.lineEdit_password_login.setEchoMode(QtWidgets.QLineEdit.Password)
         self.lineEdit_password_login.setObjectName("lineEdit_password_login")
         self.button_login_with_faceID = QtWidgets.QPushButton(self.page_login)
         self.button_login_with_faceID.setGeometry(QtCore.QRect(340, 590, 320, 44))
@@ -272,36 +273,30 @@ class Ui_MainWindow(object):
 "{\n"
 "    border: 0px; /* This seems to replace the whole arrow of the combo box */\n"
 "}\n"
-"\n"
-"/* Define a new custom arrow icon for the combo box */\n"
-"QComboBox::down-arrow {\n"
-"    border-image: url(:/Resources/comboBoxArrow.png);\n"
-"    width: 10px;\n"
-"    height: 7px;\n"
-"}")
+"")
         self.comboBox.setEditable(False)
         self.comboBox.setObjectName("comboBox")
         self.comboBox.addItem("")
         self.label_cleaning_2 = QtWidgets.QLabel(self.page_dashboard)
-        self.label_cleaning_2.setGeometry(QtCore.QRect(270, 460, 41, 18))
+        self.label_cleaning_2.setGeometry(QtCore.QRect(300, 459, 41, 18))
         self.label_cleaning_2.setStyleSheet("border-image: url(:/Resources/whiteBG.png);\n"
 "font: 25 12pt \"Roboto Light\";\n"
 "color: rgb(245, 29, 69);")
         self.label_cleaning_2.setObjectName("label_cleaning_2")
         self.label_holes_2 = QtWidgets.QLabel(self.page_dashboard)
-        self.label_holes_2.setGeometry(QtCore.QRect(270, 410, 31, 18))
+        self.label_holes_2.setGeometry(QtCore.QRect(300, 411, 31, 18))
         self.label_holes_2.setStyleSheet("border-image: url(:/Resources/whiteBG.png);\n"
 "font: 25 12pt \"Roboto Light\";\n"
 "color: rgb(245, 29, 69);")
         self.label_holes_2.setObjectName("label_holes_2")
         self.label_pipes_2 = QtWidgets.QLabel(self.page_dashboard)
-        self.label_pipes_2.setGeometry(QtCore.QRect(270, 500, 41, 18))
+        self.label_pipes_2.setGeometry(QtCore.QRect(300, 505, 41, 18))
         self.label_pipes_2.setStyleSheet("border-image: url(:/Resources/whiteBG.png);\n"
 "font: 25 12pt \"Roboto Light\";\n"
 "color: rgb(245, 29, 69);")
         self.label_pipes_2.setObjectName("label_pipes_2")
         self.button_subscribe = QtWidgets.QPushButton(self.page_dashboard)
-        self.button_subscribe.setGeometry(QtCore.QRect(350, 780, 127, 33))
+        self.button_subscribe.setGeometry(QtCore.QRect(350, 770, 127, 33))
         self.button_subscribe.setStyleSheet("QPushButton{\n"
 "border-image: url(:/Resources/subscribe.png);\n"
 "background-repeat: none;\n"
@@ -317,7 +312,7 @@ class Ui_MainWindow(object):
         self.button_subscribe.setText("")
         self.button_subscribe.setObjectName("button_subscribe")
         self.button_emailPath = QtWidgets.QPushButton(self.page_dashboard)
-        self.button_emailPath.setGeometry(QtCore.QRect(200, 780, 127, 33))
+        self.button_emailPath.setGeometry(QtCore.QRect(200, 770, 127, 33))
         self.button_emailPath.setStyleSheet("QPushButton{\n"
 "border-image: url(:/Resources/EmailButton.png);\n"
 "background-repeat: none;\n"
@@ -333,31 +328,31 @@ class Ui_MainWindow(object):
         self.button_emailPath.setText("")
         self.button_emailPath.setObjectName("button_emailPath")
         self.label_temp = QtWidgets.QLabel(self.page_dashboard)
-        self.label_temp.setGeometry(QtCore.QRect(270, 363, 121, 18))
+        self.label_temp.setGeometry(QtCore.QRect(300, 364, 121, 18))
         self.label_temp.setStyleSheet("border-image: url(:/Resources/whiteBG.png);\n"
 "font: 25 12pt \"Roboto Light\";\n"
 "color: rgb(35, 34, 40);")
         self.label_temp.setObjectName("label_temp")
         self.label_pH = QtWidgets.QLabel(self.page_dashboard)
-        self.label_pH.setGeometry(QtCore.QRect(270, 320, 121, 18))
+        self.label_pH.setGeometry(QtCore.QRect(300, 320, 121, 18))
         self.label_pH.setStyleSheet("border-image: url(:/Resources/whiteBG.png);\n"
 "font: 25 12pt \"Roboto Light\";\n"
 "color: rgb(35, 34, 40);")
         self.label_pH.setObjectName("label_pH")
         self.label_feedingSchedule = QtWidgets.QLabel(self.page_dashboard)
-        self.label_feedingSchedule.setGeometry(QtCore.QRect(270, 270, 121, 18))
+        self.label_feedingSchedule.setGeometry(QtCore.QRect(300, 270, 121, 18))
         self.label_feedingSchedule.setStyleSheet("border-image: url(:/Resources/whiteBG.png);\n"
 "font: 25 12pt \"Roboto Light\";\n"
 "color: rgb(35, 34, 40);")
         self.label_feedingSchedule.setObjectName("label_feedingSchedule")
         self.label_harvestDate = QtWidgets.QLabel(self.page_dashboard)
-        self.label_harvestDate.setGeometry(QtCore.QRect(270, 220, 121, 18))
+        self.label_harvestDate.setGeometry(QtCore.QRect(300, 220, 121, 18))
         self.label_harvestDate.setStyleSheet("border-image: url(:/Resources/whiteBG.png);\n"
 "font: 25 12pt \"Roboto Light\";\n"
 "color: rgb(35, 34, 40);")
         self.label_harvestDate.setObjectName("label_harvestDate")
         self.label_fishType = QtWidgets.QLabel(self.page_dashboard)
-        self.label_fishType.setGeometry(QtCore.QRect(270, 176, 121, 18))
+        self.label_fishType.setGeometry(QtCore.QRect(300, 176, 121, 18))
         self.label_fishType.setStyleSheet("border-image: url(:/Resources/whiteBG.png);\n"
 "font: 25 12pt \"Roboto Light\";\n"
 "color: rgb(35, 34, 40);")
@@ -367,7 +362,7 @@ class Ui_MainWindow(object):
         self.page_analyzeTanks.setStyleSheet("border-image: url(:/Resources/AnalyzeBG.png);")
         self.page_analyzeTanks.setObjectName("page_analyzeTanks")
         self.camLabel = QtWidgets.QLabel(self.page_analyzeTanks)
-        self.camLabel.setGeometry(QtCore.QRect(91, 240, 533, 260))
+        self.camLabel.setGeometry(QtCore.QRect(91, 205, 533, 260))
         self.camLabel.setStyleSheet("border-image: url(:/Resources/darkBlackBG.png);")
         self.camLabel.setText("")
         self.camLabel.setObjectName("camLabel")
@@ -388,13 +383,13 @@ class Ui_MainWindow(object):
         self.close.setText("")
         self.close.setObjectName("close")
         self.label_holes2 = QtWidgets.QLabel(self.page_analyzeTanks)
-        self.label_holes2.setGeometry(QtCore.QRect(310, 645, 161, 21))
+        self.label_holes2.setGeometry(QtCore.QRect(310, 600, 101, 21))
         self.label_holes2.setStyleSheet("border-image: url(:/Resources/whiteBG.png);\n"
 "color: rgb(60, 59, 63);\n"
 "font: 25 10pt \"Roboto Light\";")
         self.label_holes2.setObjectName("label_holes2")
         self.label_pipe2 = QtWidgets.QLabel(self.page_analyzeTanks)
-        self.label_pipe2.setGeometry(QtCore.QRect(310, 737, 161, 21))
+        self.label_pipe2.setGeometry(QtCore.QRect(310, 692, 101, 21))
         font = QtGui.QFont()
         font.setFamily("Roboto Light")
         font.setPointSize(10)
@@ -407,7 +402,7 @@ class Ui_MainWindow(object):
 "font: 25 10pt \"Roboto Light\";")
         self.label_pipe2.setObjectName("label_pipe2")
         self.label_cleaning2 = QtWidgets.QLabel(self.page_analyzeTanks)
-        self.label_cleaning2.setGeometry(QtCore.QRect(310, 690, 161, 21))
+        self.label_cleaning2.setGeometry(QtCore.QRect(310, 645, 101, 21))
         font = QtGui.QFont()
         font.setFamily("Roboto Light")
         font.setPointSize(10)
@@ -420,7 +415,7 @@ class Ui_MainWindow(object):
 "font: 25 10pt \"Roboto Light\";")
         self.label_cleaning2.setObjectName("label_cleaning2")
         self.button_cleaning_2 = QtWidgets.QPushButton(self.page_analyzeTanks)
-        self.button_cleaning_2.setGeometry(QtCore.QRect(280, 560, 127, 33))
+        self.button_cleaning_2.setGeometry(QtCore.QRect(283, 520, 127, 33))
         self.button_cleaning_2.setStyleSheet("QPushButton{\n"
 "border-image: url(:/Resources/Cleaning.png);\n"
 "background-repeat: none;\n"
@@ -436,7 +431,7 @@ class Ui_MainWindow(object):
         self.button_cleaning_2.setText("")
         self.button_cleaning_2.setObjectName("button_cleaning_2")
         self.button_holes_2 = QtWidgets.QPushButton(self.page_analyzeTanks)
-        self.button_holes_2.setGeometry(QtCore.QRect(140, 560, 127, 33))
+        self.button_holes_2.setGeometry(QtCore.QRect(140, 520, 127, 33))
         self.button_holes_2.setStyleSheet("QPushButton{\n"
 "border-image: url(:/Resources/Holes.png);\n"
 "background-repeat: none;\n"
@@ -452,7 +447,7 @@ class Ui_MainWindow(object):
         self.button_holes_2.setText("")
         self.button_holes_2.setObjectName("button_holes_2")
         self.button_pipe_2 = QtWidgets.QPushButton(self.page_analyzeTanks)
-        self.button_pipe_2.setGeometry(QtCore.QRect(430, 560, 127, 33))
+        self.button_pipe_2.setGeometry(QtCore.QRect(430, 520, 127, 33))
         self.button_pipe_2.setStyleSheet("QPushButton{\n"
 "border-image: url(:/Resources/Pipes.png);\n"
 "background-repeat: none;\n"
@@ -467,6 +462,41 @@ class Ui_MainWindow(object):
 "}x")
         self.button_pipe_2.setText("")
         self.button_pipe_2.setObjectName("button_pipe_2")
+        self.button_pipe_3 = QtWidgets.QPushButton(self.page_analyzeTanks)
+        self.button_pipe_3.setGeometry(QtCore.QRect(438, 642, 222, 34))
+        self.button_pipe_3.setStyleSheet("QPushButton{\n"
+"border-image: url(:/Resources/predict.png);\n"
+"background-repeat: none;\n"
+"}\n"
+"\n"
+"QPushButton:hover{\n"
+"border-image: url(:/Resources/predictPressed.png);\n"
+"}\n"
+"\n"
+"QPushButton:pressed{\n"
+"border-image: url(:/Resources/predictPressed.png);\n"
+"}x")
+        self.button_pipe_3.setText("")
+        self.button_pipe_3.setObjectName("button_pipe_3")
+        self.lineEdit_temp = QtWidgets.QLineEdit(self.page_analyzeTanks)
+        self.lineEdit_temp.setGeometry(QtCore.QRect(575, 600, 101, 22))
+        self.lineEdit_temp.setStyleSheet("border-image: url(:/Resources/whiteBG.png);\n"
+"color: rgb(60, 59, 63);\n"
+"font: 25 10pt \"Roboto Light\";")
+        self.lineEdit_temp.setObjectName("lineEdit_temp")
+        self.label_waterSalinity = QtWidgets.QLabel(self.page_analyzeTanks)
+        self.label_waterSalinity.setGeometry(QtCore.QRect(580, 692, 71, 21))
+        font = QtGui.QFont()
+        font.setFamily("Roboto Light")
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(3)
+        self.label_waterSalinity.setFont(font)
+        self.label_waterSalinity.setStyleSheet("border-image: url(:/Resources/whiteBG.png);\n"
+"color: rgb(60, 59, 63);\n"
+"font: 25 10pt \"Roboto Light\";")
+        self.label_waterSalinity.setObjectName("label_waterSalinity")
         self.stackedWidget_2.addWidget(self.page_analyzeTanks)
         self.page_createTank = QtWidgets.QWidget()
         self.page_createTank.setObjectName("page_createTank")
@@ -508,42 +538,42 @@ class Ui_MainWindow(object):
         self.lineEdit_fishType_create = QtWidgets.QLineEdit(self.page_createTank)
         self.lineEdit_fishType_create.setGeometry(QtCore.QRect(430, 488, 161, 21))
         self.lineEdit_fishType_create.setStyleSheet("border-image: url(:/Resources/darkBlackBG.png);\n"
-"color: rgb(235, 235, 235);\n"
+"color: rgb(198, 198, 199);\n"
 "font: 25 10pt \"Roboto Light\";\n"
 "")
         self.lineEdit_fishType_create.setObjectName("lineEdit_fishType_create")
         self.lineEdit_feedingSchedule = QtWidgets.QLineEdit(self.page_createTank)
-        self.lineEdit_feedingSchedule.setGeometry(QtCore.QRect(430, 582, 161, 21))
+        self.lineEdit_feedingSchedule.setGeometry(QtCore.QRect(430, 584, 161, 21))
         self.lineEdit_feedingSchedule.setStyleSheet("border-image: url(:/Resources/darkBlackBG.png);\n"
-"color: rgb(235, 235, 235);\n"
+"color: rgb(198, 198, 199);\n"
 "font: 25 10pt \"Roboto Light\";\n"
 "")
         self.lineEdit_feedingSchedule.setObjectName("lineEdit_feedingSchedule")
         self.lineEdit_wqThreshold = QtWidgets.QLineEdit(self.page_createTank)
-        self.lineEdit_wqThreshold.setGeometry(QtCore.QRect(430, 730, 161, 21))
+        self.lineEdit_wqThreshold.setGeometry(QtCore.QRect(430, 732, 161, 21))
         self.lineEdit_wqThreshold.setStyleSheet("border-image: url(:/Resources/darkBlackBG.png);\n"
-"color: rgb(235, 235, 235);\n"
+"color: rgb(198, 198, 199);\n"
 "font: 25 10pt \"Roboto Light\";\n"
 "")
         self.lineEdit_wqThreshold.setObjectName("lineEdit_wqThreshold")
         self.lineEdit_tempLThreshold = QtWidgets.QLineEdit(self.page_createTank)
-        self.lineEdit_tempLThreshold.setGeometry(QtCore.QRect(430, 630, 171, 21))
+        self.lineEdit_tempLThreshold.setGeometry(QtCore.QRect(430, 632, 171, 21))
         self.lineEdit_tempLThreshold.setStyleSheet("border-image: url(:/Resources/darkBlackBG.png);\n"
-"color: rgb(235, 235, 235);\n"
+"color: rgb(198, 198, 199);\n"
 "font: 25 10pt \"Roboto Light\";\n"
 "")
         self.lineEdit_tempLThreshold.setObjectName("lineEdit_tempLThreshold")
         self.lineEdit_tempUThreshold = QtWidgets.QLineEdit(self.page_createTank)
-        self.lineEdit_tempUThreshold.setGeometry(QtCore.QRect(430, 680, 161, 21))
+        self.lineEdit_tempUThreshold.setGeometry(QtCore.QRect(430, 682, 161, 21))
         self.lineEdit_tempUThreshold.setStyleSheet("border-image: url(:/Resources/darkBlackBG.png);\n"
-"color: rgb(235, 235, 235);\n"
+"color: rgb(198, 198, 199);\n"
 "font: 25 10pt \"Roboto Light\";\n"
 "")
         self.lineEdit_tempUThreshold.setObjectName("lineEdit_tempUThreshold")
         self.lineEdit_harvestDate_create = QtWidgets.QLineEdit(self.page_createTank)
-        self.lineEdit_harvestDate_create.setGeometry(QtCore.QRect(430, 533, 161, 22))
+        self.lineEdit_harvestDate_create.setGeometry(QtCore.QRect(430, 535, 161, 22))
         self.lineEdit_harvestDate_create.setStyleSheet("border-image: url(:/Resources/darkBlackBG.png);\n"
-"color: rgb(235, 235, 235);\n"
+"color: rgb(198, 198, 199);\n"
 "font: 25 10pt \"Roboto Light\";\n"
 "")
         self.lineEdit_harvestDate_create.setObjectName("lineEdit_harvestDate_create")
@@ -579,7 +609,7 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QPushButton:pressed{\n"
-"border-image: url(:/Resources/EmailButtonPressed.png);\n"
+"border-image: url(:/Resources/capturePressed.png);\n"
 "}x")
         self.button_capture.setText("")
         self.button_capture.setObjectName("button_capture")
@@ -667,6 +697,7 @@ class Ui_MainWindow(object):
         self.label_displayName_3.setObjectName("label_displayName_3")
         self.stackedWidget.addWidget(self.page_mainPage)
         MainWindow.setCentralWidget(self.centralwidget)
+
         self.buttonsConnections()
 
         self.retranslateUi(MainWindow)
@@ -676,6 +707,7 @@ class Ui_MainWindow(object):
         self.close_2.clicked.connect(MainWindow.close)
         self.close_3.clicked.connect(MainWindow.close)
         self.close_4.clicked.connect(MainWindow.close)
+        self.close.clicked.connect(MainWindow.close)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -689,7 +721,7 @@ class Ui_MainWindow(object):
         self.lineEdit_password_signup.setText(_translate("MainWindow", "Password"))
         self.lineEdit_email_signup.setText(_translate("MainWindow", "Email"))
         self.label_displayName.setText(_translate("MainWindow", "Abdullah Elsheikh"))
-        self.comboBox.setCurrentText(_translate("MainWindow", "Tank 1"))
+        self.comboBox.setProperty("currentText", _translate("MainWindow", "Tank 1"))
         self.comboBox.setItemText(0, _translate("MainWindow", "Tank 1"))
         self.label_cleaning_2.setText(_translate("MainWindow", "Yes"))
         self.label_holes_2.setText(_translate("MainWindow", "1"))
@@ -702,14 +734,17 @@ class Ui_MainWindow(object):
         self.label_holes2.setText(_translate("MainWindow", "No"))
         self.label_pipe2.setText(_translate("MainWindow", "Yes"))
         self.label_cleaning2.setText(_translate("MainWindow", "No"))
-        self.lineEdit_fishType_create.setText(_translate("MainWindow", "Salmon"))
+        self.lineEdit_temp.setText(_translate("MainWindow", "Enter Temp"))
+        self.label_waterSalinity.setText(_translate("MainWindow", "--"))
+        self.lineEdit_fishType_create.setText(_translate("MainWindow", "Fish Type"))
         self.lineEdit_feedingSchedule.setText(_translate("MainWindow", "H:M:S"))
         self.lineEdit_wqThreshold.setText(_translate("MainWindow", "0"))
         self.lineEdit_tempLThreshold.setText(_translate("MainWindow", "Celsius"))
         self.lineEdit_tempUThreshold.setText(_translate("MainWindow", "Celsius"))
-        self.lineEdit_harvestDate_create.setText(_translate("MainWindow", "YY/MM/DD"))
+        self.lineEdit_harvestDate_create.setText(_translate("MainWindow", "YY-MM-DD"))
         self.label_displayName_2.setText(_translate("MainWindow", "A"))
         self.label_displayName_3.setText(_translate("MainWindow", "User"))
+
 
     def loginIsClicked(self):
         self.stackedWidget_2.setCurrentIndex(1)
@@ -844,9 +879,8 @@ class Ui_MainWindow(object):
         ph=self.lineEdit_ph.text()
 
     def subscribeIsClicked(self):
-        if self.button_subscribe.text() == "Show report" :
-            print("Send email")
-        self.button_subscribe.setText("Show report")
+        ##open power bi link
+        pass
 
 
     def backToSignIn(self):
@@ -867,7 +901,6 @@ class Ui_MainWindow(object):
         self.comboBox.currentIndexChanged.connect(self.loadTankData)
         self.button_main_create.clicked.connect(self.createTank)
         self.button_emailPath.clicked.connect(self.sendEmail)
-
 
 
 if __name__ == "__main__":
