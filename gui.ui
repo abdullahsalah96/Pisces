@@ -1171,37 +1171,10 @@ font: 25 10pt &quot;Roboto Light&quot;;
        <property name="styleSheet">
         <string notr="true">border-image: url(:/Resources/settingsWidget.png);</string>
        </property>
-       <widget class="QPushButton" name="button_open_cam">
-        <property name="geometry">
-         <rect>
-          <x>210</x>
-          <y>770</y>
-          <width>127</width>
-          <height>33</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-border-image: url(:/Resources/openCam.png);
-background-repeat: none;
-}
-
-QPushButton:hover{
-border-image: url(:/Resources/openCamPressed.png);
-}
-
-QPushButton:pressed{
-border-image: url(:/Resources/openCamPressed.png);
-}x</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
        <widget class="QPushButton" name="button_capture">
         <property name="geometry">
          <rect>
-          <x>360</x>
+          <x>290</x>
           <y>770</y>
           <width>127</width>
           <height>33</height>
@@ -1511,6 +1484,24 @@ QPushButton:hover{
 QPushButton:pressed{
 	border-image: url(:/Resources/backPressed.png);
 }x</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_faceLogin">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>90</y>
+        <width>181</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/Resources/semiDarkBG.png);
+color: rgb(245, 29, 69);
+font: 25 12pt &quot;Roboto Light&quot;;</string>
       </property>
       <property name="text">
        <string/>
