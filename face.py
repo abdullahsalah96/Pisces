@@ -42,15 +42,16 @@ class authenticateFace():
         img = url_to_image(url)
         return img[top:top+height, left:left+width]
 
-    def getFaceData(self, imgPath):
-        data = open(imgPath, 'rb')
+    def getFaceData(self, img):
+        data = cv2.imencode('.jpg', img)[1].tostring()
+        # data = cv2.imencode('.jpg', np.float32(img))
         response = response = requests.post(self.face_api_url, params=self.params, headers=self.headers, data=data)
         faces = response.json()
         print(faces)
         return faces
 
-    def getFaceID(self, imgPath):
-        return self.getFaceData(imgPath)[0]['faceId']
+    def getFaceID(self, img):
+        return self.getFaceData(img)[0]['faceId']
 
     def verifyPerson(self, faceID1, faceID2):
         """

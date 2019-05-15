@@ -30,7 +30,7 @@ class Database:
     #checks if user exists in database and returns user object or return None
     def authenticatePerson(self, faceID):
         userID = self.searchUserFaceID(faceID)
-        if face == None:
+        if userID == None:
             return None
         else:
             return self.loadUser(userID)

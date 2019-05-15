@@ -40,9 +40,7 @@ class Ui_MainWindow(object):
     camera = Camera(camAddress = 0)
     camera.setDaemon(True)
     feed = np.zeros((640, 480, 3), np.uint8)
-    faceCam = Camera(camAddress = 0)
-    faceCam.setDaemon(True)
-    faceFeed = np.zeros((640, 480, 3), np.uint8)
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1000, 840)
@@ -870,26 +868,40 @@ class Ui_MainWindow(object):
             self.label.setText("Invalid Username or password")
 
     def signInWithFace(self):
-        pass
+        self.faceImg = self.faceCam.getFrame()
+        print("Captured")
+        t = threading.Thread(target=self.authorizeFace)
+        t.setDaemon(True)
+        t.start()
+
+    def authorizeFace(self):
+        print(" in thread ")
+        f = authenticateFace()
+        face = f.getFaceID(self.faceImg)
+        self.user = self.db.authenticatePerson(face)
+        if(self.user):
+            print("User was found")
+            self.updateDashboard()
+            self.stackedWidget.setCurrentIndex(2)
+            firstName = self.user.getFirstName()
+            firstLetter = firstName[0]
+            lastName = self.user.getLastName()
+            self.label_displayName.setText(firstName + " " + lastName)
+            self.label_displayName_2.setText(firstLetter)
+        else:
+            print("User was not found")
+        # print(face1)
 
     def faceIDClicked(self):
+        self.faceCam = Camera(camAddress = 0)
+        self.faceCam.setDaemon(True)
+        self.faceFeed = np.zeros((640, 480, 3), np.uint8)
         self.stackedWidget.setCurrentIndex(3)
         self.faceCam.start()
         self.faceCamTimer.timeout.connect(lambda: self.faceIDFeed())
         self.faceCamTimer.start(200)
-        # self.camera.start()
-        # self.camTimer.timeout.connect(lambda: self.faceIDFeed())
-        # self.camTimer.start(200)
-        # if(self.user):
-        #     self.updateDashboard()
-        #     self.stackedWidget.setCurrentIndex(2)
-        #     firstName = self.user.getFirstName()
-        #     firstLetter = firstName[0]
-        #     lastName = self.user.getLastName()
-        #     self.label_displayName.setText(firstName + " " + lastName)
-        #     self.label_displayName_2.setText(firstLetter)
-        # else:
-        #     self.label.setText("Invalid Username or password")
+
+
 
     def faceIDFeed(self):
         """
@@ -1050,30 +1062,16 @@ class Ui_MainWindow(object):
 
 
     def captureImage(self):
-        img = self.feed
+        self.img = self.feed
         print("Captured")
-        self.path = '/home/abdullahsalah96/International Codes/Microsoft-Azure-Challenge-2019/IMG_PATH'
-        cv2.imwrite(os.path.join(self.path , 'img.jpg'), img)
         t = threading.Thread(target=self.addFaceIDToDatabase)
         t.setDaemon(True)
         t.start()
 
-    def FaceID(self):
-        self.f = authenticateFace()
-        face = self.f.getFaceID(os.path.join(self.path , 'img.jpg'))
-        print("face ID: ", face)
-        return face
-
 
     def addFaceIDToDatabase(self):
-        face = self.FaceID()
-        self.user.setFaceID(face)
-        self.db.addFaceID(self.user)
-
-
-    def addFaceIDToDatabase(self):
-        self.f = authenticateFace()
-        face = self.f.getFaceID(os.path.join(self.path , 'img.jpg'))
+        f = authenticateFace()
+        face = f.getFaceID(self.img)
         print("face ID: ", face)
         self.user.setFaceID(face)
         self.db.addFaceID(self.user)
