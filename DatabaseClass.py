@@ -5,6 +5,7 @@ import NetHolesClass
 import TankClass
 import UserClass
 import WaterQualityClass
+from face import authenticateFace
 from array import *
 
 
@@ -47,13 +48,22 @@ class Database:
 
     #searches for user in database and if it exists returns its ID
     def searchUserFaceID(self, faceID):
-        tsql = "SELECT * FROM [User] WHERE faceId = ?"
-        self.cursor.execute(tsql, faceID)
+        # tsql = "SELECT * FROM [User] WHERE faceId = ?"
+        # WHERE column IS NOT NULL
+        f = authenticateFace()
+        tsql = "SELECT * FROM [User] WHERE faceId IS NOT NULL"
+        self.cursor.execute(tsql)
         result_set = self.cursor.fetchall()
-        if len(result_set):
-            return result_set[0][0]
-        else:
-            return None
+        for i in range(len(result_set)):
+            face = result_set[i][6]
+            verified = f.verifyPerson(faceID, face)
+            if(verified):
+                print("Verified")
+                return result_set[i][0]
+        # if len(result_set):
+        #     return result_set[0][0]
+        # else:
+        #     return None
 
     def validateUsername(self, username):
         """

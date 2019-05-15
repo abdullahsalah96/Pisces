@@ -440,7 +440,7 @@ color: rgb(235, 235, 235);</string>
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="page_blank">
        <property name="styleSheet">
@@ -576,22 +576,22 @@ color: rgb(245, 29, 69);</string>
          <rect>
           <x>350</x>
           <y>770</y>
-          <width>127</width>
-          <height>33</height>
+          <width>126</width>
+          <height>32</height>
          </rect>
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{
-border-image: url(:/Resources/subscribe.png);
+border-image: url(:/Resources/report.png);
 background-repeat: none;
 }
 
 QPushButton:hover{
-border-image: url(:/Resources/subscribePressed.png);
+border-image: url(:/Resources/reportPressed.png);
 }
 
 QPushButton:pressed{
-border-image: url(:/Resources/subscribePressed.png);
+border-image: url(:/Resources/reportPressed.png);
 }x</string>
         </property>
         <property name="text">

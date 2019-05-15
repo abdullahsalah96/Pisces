@@ -1,5 +1,7 @@
 <RCC>
   <qresource>
+    <file>Resources/report.png</file>
+    <file>Resources/reportPressed.png</file>
     <file>Resources/analyze.png</file>
     <file>Resources/AnalyzeBG.png</file>
     <file>Resources/analyzePressed.png</file>

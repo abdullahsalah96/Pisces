@@ -31,16 +31,13 @@ from PyQt5.QtCore import QTimer
 import photos_rc
 from pipeInspection import PipeDetection
 
-
 class Ui_MainWindow(object):
     db = Database()
     camTimer = QTimer()
-    faceCamTimer = QTimer()
     netHolePrediction = ""
     camera = Camera(camAddress = 0)
     camera.setDaemon(True)
     feed = np.zeros((640, 480, 3), np.uint8)
-
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1000, 840)
@@ -315,18 +312,18 @@ class Ui_MainWindow(object):
 "color: rgb(245, 29, 69);")
         self.label_pipes_2.setObjectName("label_pipes_2")
         self.button_subscribe = QtWidgets.QPushButton(self.page_dashboard)
-        self.button_subscribe.setGeometry(QtCore.QRect(350, 770, 127, 33))
+        self.button_subscribe.setGeometry(QtCore.QRect(350, 770, 126, 32))
         self.button_subscribe.setStyleSheet("QPushButton{\n"
-"border-image: url(:/Resources/subscribe.png);\n"
+"border-image: url(:/Resources/report.png);\n"
 "background-repeat: none;\n"
 "}\n"
 "\n"
 "QPushButton:hover{\n"
-"border-image: url(:/Resources/subscribePressed.png);\n"
+"border-image: url(:/Resources/reportPressed.png);\n"
 "}\n"
 "\n"
 "QPushButton:pressed{\n"
-"border-image: url(:/Resources/subscribePressed.png);\n"
+"border-image: url(:/Resources/reportPressed.png);\n"
 "}x")
         self.button_subscribe.setText("")
         self.button_subscribe.setObjectName("button_subscribe")
@@ -601,24 +598,8 @@ class Ui_MainWindow(object):
         self.page_settings = QtWidgets.QWidget()
         self.page_settings.setStyleSheet("border-image: url(:/Resources/settingsWidget.png);")
         self.page_settings.setObjectName("page_settings")
-        self.button_open_cam = QtWidgets.QPushButton(self.page_settings)
-        self.button_open_cam.setGeometry(QtCore.QRect(210, 770, 127, 33))
-        self.button_open_cam.setStyleSheet("QPushButton{\n"
-"border-image: url(:/Resources/openCam.png);\n"
-"background-repeat: none;\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"border-image: url(:/Resources/openCamPressed.png);\n"
-"}\n"
-"\n"
-"QPushButton:pressed{\n"
-"border-image: url(:/Resources/openCamPressed.png);\n"
-"}x")
-        self.button_open_cam.setText("")
-        self.button_open_cam.setObjectName("button_open_cam")
         self.button_capture = QtWidgets.QPushButton(self.page_settings)
-        self.button_capture.setGeometry(QtCore.QRect(360, 770, 127, 33))
+        self.button_capture.setGeometry(QtCore.QRect(290, 770, 127, 33))
         self.button_capture.setStyleSheet("QPushButton{\n"
 "border-image: url(:/Resources/capture.png);\n"
 "background-repeat: none;\n"
@@ -788,6 +769,13 @@ class Ui_MainWindow(object):
 "}x")
         self.button_back.setText("")
         self.button_back.setObjectName("button_back")
+        self.label_faceLogin = QtWidgets.QLabel(self.page_faceLogin)
+        self.label_faceLogin.setGeometry(QtCore.QRect(450, 90, 181, 21))
+        self.label_faceLogin.setStyleSheet("border-image: url(:/Resources/semiDarkBG.png);\n"
+"color: rgb(245, 29, 69);\n"
+"font: 25 12pt \"Roboto Light\";")
+        self.label_faceLogin.setText("")
+        self.label_faceLogin.setObjectName("label_faceLogin")
         self.stackedWidget.addWidget(self.page_faceLogin)
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -840,15 +828,7 @@ class Ui_MainWindow(object):
         self.label_displayName_2.setText(_translate("MainWindow", "A"))
         self.label_displayName_3.setText(_translate("MainWindow", "User"))
 
-
     def loginIsClicked(self):
-        # if(self.feed.all() == 0):
-        #     print("frame is empty")
-        # else:
-        #     print("frame is not empty")
-        #     self.path = '/home/abdullahsalah96/International Codes/Microsoft-Azure-Challenge-2019/IMG_PATH'
-        #     cv2.imwrite(os.path.join(self.path , 'img.jpg'), self.feed)
-
         self.stackedWidget_2.setCurrentIndex(1)
         username_login=self.lineEdit_username_login.text()
         password_login=self.lineEdit_password_login.text()
@@ -868,14 +848,14 @@ class Ui_MainWindow(object):
             self.label.setText("Invalid Username or password")
 
     def signInWithFace(self):
-        self.faceImg = self.faceCam.getFrame()
+        self.faceImg = self.camera.getFrame()
         print("Captured")
         t = threading.Thread(target=self.authorizeFace)
         t.setDaemon(True)
         t.start()
 
     def authorizeFace(self):
-        print(" in thread ")
+        self.label_faceLogin.setText("Logging in")
         f = authenticateFace()
         face = f.getFaceID(self.faceImg)
         self.user = self.db.authenticatePerson(face)
@@ -890,34 +870,18 @@ class Ui_MainWindow(object):
             self.label_displayName_2.setText(firstLetter)
         else:
             print("User was not found")
+            self.label_faceLogin.setText("Not Found")
+
         # print(face1)
 
     def faceIDClicked(self):
-        self.faceCam = Camera(camAddress = 0)
-        self.faceCam.setDaemon(True)
-        self.faceFeed = np.zeros((640, 480, 3), np.uint8)
+        self.camera = Camera(camAddress = 0)
+        self.camera.setDaemon(True)
+        self.feed = np.zeros((640, 480, 3), np.uint8)
         self.stackedWidget.setCurrentIndex(3)
-        self.faceCam.start()
-        self.faceCamTimer.timeout.connect(lambda: self.faceIDFeed())
-        self.faceCamTimer.start(200)
-
-
-
-    def faceIDFeed(self):
-        """
-        a function to show cam feed
-        """
-        if(cv2.waitKey == 27): #if the ESC button is pressed
-            cv2.destroyAllWindows()
-            self.faceCamTimer.stop()
-        else:
-            self.faceFeed= self.faceCam.getFrame()
-            frame = cv2.cvtColor(self.faceFeed, cv2.COLOR_BGR2RGB)
-            img = QtGui.QImage(frame, frame.shape[1], frame.shape[0], QtGui.QImage.Format_RGB888)
-            pix = QtGui.QPixmap.fromImage(img)
-            self.label_camera.setScaledContents(True)
-            self.label_camera.setPixmap(pix)
-
+        self.camera.start()
+        self.camTimer.timeout.connect(lambda: self.camFeed())
+        self.camTimer.start(200)
 
     def updateDashboard(self):
          if(self.user.getTankList() is not None):
@@ -965,7 +929,6 @@ class Ui_MainWindow(object):
                                 self.label_temp.setText("--")
                                 self.label_cleaning_2.setText(str(self.tank[tankIndex].getFishnetState()))
                                 self.label_pipes_2.setText(str(self.tank[tankIndex].getPipeState()))
-
 
 
     def createTank(self):
@@ -1057,8 +1020,11 @@ class Ui_MainWindow(object):
             pix = QtGui.QPixmap.fromImage(img)
             self.camLabel.setScaledContents(True)
             self.camLabel_2.setScaledContents(True)
+            self.label_camera.setScaledContents(True)
+            self.label_camera.setPixmap(pix)
             self.camLabel.setPixmap(pix)
             self.camLabel_2.setPixmap(pix)
+
 
 
     def captureImage(self):
@@ -1117,8 +1083,8 @@ class Ui_MainWindow(object):
 
     def backToSignIn(self):
         self.stackedWidget.setCurrentIndex(0)
-        self.faceCamTimer.stop()
-        self.faceCam.closeCam()
+        self.camTimer.stop()
+        self.camera.closeCam()
 
     def buttonsConnections(self):
         self.button_login.clicked.connect(self.loginIsClicked)
