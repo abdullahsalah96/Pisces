@@ -13,6 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 import WaterSalinity
 from DatabaseClass import Database
+from NetCleaningInspection import NetCleaning
 from UserClass import User
 from TankClass import Tank
 from CameraClass import Camera
@@ -28,6 +29,7 @@ import random
 import threading
 from PyQt5.QtCore import QTimer
 import photos_rc
+from pipeInspection import PipeDetection
 
 
 class Ui_MainWindow(object):
@@ -984,7 +986,32 @@ class Ui_MainWindow(object):
         t.start()
 
 
+    def getNetCleaningPrediction(self):
+        self.label_cleaning2.setText('Analyzing...')
+        n = NetCleaning()
+        pred = n.predict(self.feed)
+        self.label_cleaning2.setText(str(pred))
+
+    def analyzeNetCleaning(self):
+        t = threading.Thread(name='thread', target=self.getNetCleaningPrediction)
+        t.setDaemon(True)
+        t.start()
+
+
+    def getPipesPrediction(self):
+        self.label_pipe2.setText('Analyzing...')
+        n = PipeDetection()
+        pred = n.predict(self.feed)
+        self.label_pipe2.setText(str(pred))
+
+    def analyzePipes(self):
+        t = threading.Thread(name='thread', target=self.getPipesPrediction)
+        t.setDaemon(True)
+        t.start()
+
+
     def getWaterSalinityPrediction(self):
+        self.label_waterSalinity.setText('Analyzing...')
         temp = self.lineEdit_temp.text()
         print(temp)
         p = waterSalinityPrediction()
@@ -1012,7 +1039,6 @@ class Ui_MainWindow(object):
             cv2.destroyAllWindows()
             self.camTimer.stop()
         else:
-            #cv2.imshow('frame', self.camera.getFrame())
             self.feed= self.camera.getFrame()
             frame = cv2.cvtColor(self.feed, cv2.COLOR_BGR2RGB)
             img = QtGui.QImage(frame, frame.shape[1], frame.shape[0], QtGui.QImage.Format_RGB888)
@@ -1047,7 +1073,7 @@ class Ui_MainWindow(object):
 
     def addFaceIDToDatabase(self):
         self.f = authenticateFace()
-        face = self.f.getFaceID(os.path.join(path , 'img.jpg'))
+        face = self.f.getFaceID(os.path.join(self.path , 'img.jpg'))
         print("face ID: ", face)
         self.user.setFaceID(face)
         self.db.addFaceID(self.user)
@@ -1089,7 +1115,6 @@ class Ui_MainWindow(object):
         ph=self.lineEdit_ph.text()
 
     def subscribeIsClicked(self):
-        ##open power bi link
         webbrowser.open_new(self.user.reportLink)
 
     def backToSignIn(self):
@@ -1117,6 +1142,8 @@ class Ui_MainWindow(object):
         self.button_pipe_3.clicked.connect(self.analyzeWaterSalinity)
         self.button_back.clicked.connect(self.backToSignIn)
         self.button_faceSignIn.clicked.connect(self.signInWithFace)
+        self.button_cleaning_2.clicked.connect(self.analyzeNetCleaning)
+        self.button_pipe_2.clicked.connect(self.analyzePipes)
 
 
 if __name__ == "__main__":

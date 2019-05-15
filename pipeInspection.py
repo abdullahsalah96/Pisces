@@ -22,8 +22,8 @@ class PipeDetection(Server):
         print(pred)
         tag_index = pred.find("tagId") + 8
         if(pred[tag_index:tag_index+1] == 'f'): #change this to start of non broken pipes tag
-            return 1
+            return 'No'
         elif(pred[tag_index:tag_index+1] == '4'): #change this to start of broken pipes tag
-            return 2
+            return 'Yes'
         else:
-            return 0
+            return "Can't Determine"

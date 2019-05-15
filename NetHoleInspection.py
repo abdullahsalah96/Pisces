@@ -21,8 +21,8 @@ class NetHoleDetection(Server):
         print(pred)
         tag_index = pred.find("tagId") + 8
         if(pred[tag_index:tag_index+1] == 'f'):
-            return 'No Hole'
+            return 'No'
         elif(pred[tag_index:tag_index+1] == '4'):
-            return 'Hole'
+            return 'Yes'
         else:
             return "Can't Determine"
