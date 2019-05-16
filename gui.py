@@ -954,12 +954,10 @@ class Ui_MainWindow(object):
         pred = n.predict(self.feed)
         self.label_holes2.setText(str(pred))
 
-
     def analyzeNetHole(self):
         t = threading.Thread(name='thread', target=self.getNetHolePrediction)
         t.setDaemon(True)
         t.start()
-
 
     def getNetCleaningPrediction(self):
         self.label_cleaning2.setText('Analyzing...')
@@ -984,7 +982,6 @@ class Ui_MainWindow(object):
         t.setDaemon(True)
         t.start()
 
-
     def getWaterSalinityPrediction(self):
         self.label_waterSalinity.setText('Analyzing...')
         temp = self.lineEdit_temp.text()
@@ -999,7 +996,6 @@ class Ui_MainWindow(object):
         t = threading.Thread(name='thread', target=self.getWaterSalinityPrediction)
         t.setDaemon(True)
         t.start()
-
 
     def sendEmail(self):
        email = "No-Reply@Pisces.com"
@@ -1025,15 +1021,12 @@ class Ui_MainWindow(object):
             self.camLabel.setPixmap(pix)
             self.camLabel_2.setPixmap(pix)
 
-
-
     def captureImage(self):
         self.img = self.feed
         print("Captured")
         t = threading.Thread(target=self.addFaceIDToDatabase)
         t.setDaemon(True)
         t.start()
-
 
     def addFaceIDToDatabase(self):
         f = authenticateFace()
