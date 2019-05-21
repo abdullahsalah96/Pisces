@@ -21,9 +21,9 @@ class NetCleaning(Server):
         pred = self.getPrediction(imgPath).decode()
         print(pred)
         tag_index = pred.find("tagId") + 8
-        if(pred[tag_index:tag_index+1] == 'f'): #change this to start of clean tag
+        if(pred[tag_index:tag_index+1] == '3'): #change this to start of clean tag
             return 'No'
-        elif(pred[tag_index:tag_index+1] == '4'): #change this to start of not clean tag
+        elif(pred[tag_index:tag_index+1] == '1'): #change this to start of not clean tag
             return 'Yes'
         else:
             return "Can't Determine"
