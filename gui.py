@@ -35,7 +35,8 @@ class Ui_MainWindow(object):
     db = Database()
     camTimer = QTimer()
     netHolePrediction = ""
-    camera = Camera(camAddress = 0)
+    # camera = Camera(camAddress = 0)
+    camera = Camera(camAddress = "rtsp://192.168.1.10:554/user=admin&password=alex1234&channel=1&stream=0.sdp?real_stream--rtp-caching=100")
     camera.setDaemon(True)
     feed = np.zeros((640, 480, 3), np.uint8)
     def setupUi(self, MainWindow):
