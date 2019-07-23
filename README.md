@@ -23,4 +23,6 @@ statistical functions. This helps generate a set of results that determine the w
 #### Pipes inspection:
 Pipes are used to transport a variety of content every day to feed the fish and maintain constant temperature levels. It’s too hard to determine if the pipe has a crack or needs fixing as it is not convenient to have divers do these inspections manually. Pisces provides a service to determine if there are any cracks in the pipes or if they need fixing. This is done by positioning the ROV in front of the pipe to be inspected and pressing the “Pipes” button which consequently updates the label with the model’s prediction of whether the pipe needs to be changed or not.
 
+We participated with this app in Microsoft Azure Machine Leraning ROV Challenge 2019 in Tennessee, USA and were awarded the 1st place.
+
 Make sure to check the Documentation here: https://drive.google.com/open?id=1zSFODKs4V49pMu21Px__RKyJmiVuDXze
